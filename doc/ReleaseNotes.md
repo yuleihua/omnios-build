@@ -4,6 +4,20 @@
 
 # Release Notes for OmniOSce v11 r151022
 
+## r151022bc (2018-06-04)
+Weekly release for w/c 4th of June 2018.
+> This is a non-reboot update.
+
+### Security fixes
+
+* `git` upgraded to version 2.13.7:
+  * [CVE-2018-11233](https://cve.mitre.org/cgi-bin/cvename.cgi?name=2018-11233)
+  * [CVE-2018-11235](https://cve.mitre.org/cgi-bin/cvename.cgi?name=2018-11235)
+
+<br>
+
+----
+
 ## r151022ba (2018-05-17)
 Weekly release for w/c 17th of May 2018.
 > This is a non-reboot update.
