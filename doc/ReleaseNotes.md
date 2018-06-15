@@ -4,6 +4,18 @@
 
 # Release Notes for OmniOSce v11 r151026
 
+## r151026g (2018-06-18)
+Weekly release for w/c 18th of June 2018.
+> This is a non-reboot update.
+
+### Changes
+
+* `rsync` has been updated and is now twice as fast at checksumming data.
+
+<br>
+
+----
+
 ## r151026e (2018-06-04)
 Weekly release for w/c 4th of June 2018.
 > This is a non-reboot update.
