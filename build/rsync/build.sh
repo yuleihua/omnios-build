@@ -34,9 +34,10 @@ SUMMARY="rsync - faster, flexible replacement for rcp"
 DESC="$SUMMARY"
 
 REMOVE_PREVIOUS=1
-BUILDARCH=32
+BUILDARCH=64
+CFLAGS="-g -O2"
 
-CONFIGURE_OPTS_32+=" --bindir=/usr/bin --with-included-popt"
+CONFIGURE_OPTS_64+=" --bindir=/usr/bin --with-included-popt"
 
 TESTSUITE_FILTER='^[A-Z#][A-Z ]|^-|[0-9] (passed|failed|skipped|missing)'
 
