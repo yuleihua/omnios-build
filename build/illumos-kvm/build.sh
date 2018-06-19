@@ -37,7 +37,7 @@ DESC="$SUMMARY"
 
 # Unless building with HEAD from joyent/illumos-kvm[-cmd], specify the
 # revision to use.
-KVM_ROLLBACK=2e4a241d60562d0b259ce7d40e0cadae7a75c3ed
+KVM_ROLLBACK=6d6a2a62a21b2f301ba4c493beeebc860d618a7d
 KVM_CMD_ROLLBACK=70a3b9ac0fffc05cbe541164c097f51040addc8c
 
 # These are the dependencies for both the module and the cmds
@@ -52,7 +52,7 @@ BUILD_DEPENDS_IPS="
 BUILDARCH=64
 
 # Unset the prefix because we actually DO want things in kernel etc
-PREFIX="" 
+PREFIX=""
 
 download_source() {
     logmsg "Obtaining source files"
