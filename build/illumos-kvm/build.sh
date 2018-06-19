@@ -29,10 +29,8 @@
 
 # Unless building with HEAD from joyent/illumos-kvm[-cmd], specify the
 # revision to use.
-# KVM uses an opt-in HVM exclusion lock introduced in OS-6400 - we don't have
-# that in OmniOS r151022
-KVM_ROLLBACK=a8befd521c7e673749c64f118585814009fe4b73
-KVM_CMD_ROLLBACK=
+KVM_ROLLBACK=6d6a2a62a21b2f301ba4c493beeebc860d618a7d
+KVM_CMD_ROLLBACK=70a3b9ac0fffc05cbe541164c097f51040addc8c
 
 # First we build the kernel module
 PROG=illumos-kvm
