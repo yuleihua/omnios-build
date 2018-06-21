@@ -50,7 +50,7 @@ pre_python_64() {
 save_function clean_up clean_up_orig
 
 init
-download_source $PROG $PROG $VER
+download_source pymodules/$PROG $PROG $VER
 patch_source
 prep_build
 python_build

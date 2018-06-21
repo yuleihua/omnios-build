@@ -39,7 +39,7 @@ DESC="$SUMMARY"
 RUN_DEPENDS_IPS+="library/libxml2 library/libxslt"
 
 init
-download_source $PROG $PROG $VER
+download_source pymodules/$PROG $PROG $VER
 patch_source
 prep_build
 python_build
