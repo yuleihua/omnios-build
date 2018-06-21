@@ -41,7 +41,7 @@ BUILD_DEPENDS_IPS="swig"
 RUN_DEPENDS_IPS+="library/python-2/typing-27"
 
 init
-download_source $PROG $PROG $VER
+download_source pymodules/${PROG,,} $PROG $VER
 patch_source
 prep_build
 python_build
