@@ -7,9 +7,7 @@ if [ -z "$DEPVER" ]; then
     DEPVER=5.24.1
 fi
 
-AUTHORID=TODDR
 PROG=XML-Parser
-MODNAME=XML::Parser
 VER=2.44
 VERHUMAN=$VER
 PKG=library/perl-5/xml-parser
@@ -25,7 +23,7 @@ BUILD_DEPENDS_IPS="runtime/perl runtime/perl-64"
 DEPENDS_IPS="library/expat runtime/perl runtime/perl-64"
 
 init
-download_source CPAN/authors/id/${AUTHORID:0:1}/${AUTHORID:0:2}/${AUTHORID} $PROG $VER
+download_source perlmodules/$PROG $PROG $VER
 patch_source
 prep_build
 buildperl

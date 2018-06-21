@@ -53,7 +53,7 @@ XFORM_ARGS="-D PYTHONVER=$PYTHONVER"
 PKG=library/python-2/numpy-27
 RUN_DEPENDS_IPS="runtime/python-27"
 init
-download_source $PROG $PROG $VER
+download_source pymodules/$PROG $PROG $VER
 patch_source
 prep_build
 python_build

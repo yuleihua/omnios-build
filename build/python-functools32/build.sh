@@ -33,14 +33,14 @@ VERHUMAN=$VER
 SUMMARY="Backport of the functools module from Python 3.2.3 for use on 2.7"
 DESC="$SUMMARY"
 
-# In the future when we upgrade python again, be sure to wrap the following     
-# around with set_python_version and reassign PKG and RUN_DEPENDS_IPS.          
+# In the future when we upgrade python again, be sure to wrap the following
+# around with set_python_version and reassign PKG and RUN_DEPENDS_IPS.
 # The only way buildctl detects packages is by grepping for PKG assignment.
 XFORM_ARGS="-D PYTHONVER=$PYTHONVER"
 PKG=library/python-2/functools32-27
 RUN_DEPENDS_IPS="runtime/python-27"
 init
-download_source $PROG $PROG $VER
+download_source pymodules/$PROG $PROG $VER
 patch_source
 prep_build
 #NOTE: Uncomment these IFF we have a version w/o -X on it...
