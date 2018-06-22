@@ -39,7 +39,7 @@ XFORM_ARGS="-D PYTHONPKGVER=$PYTHONPKGVER"
 PKG=library/python-2/pycurl-27
 RUN_DEPENDS_IPS="runtime/python-27 library/security/openssl@1.0.2 web/curl"
 init
-download_source $PROG $PROG $VER
+download_source pymodules/$PROG $PROG $VER
 patch_source
 prep_build
 python_build
