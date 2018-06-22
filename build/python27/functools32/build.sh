@@ -38,7 +38,7 @@ DESC="$SUMMARY"
 . $SRCDIR/../common.sh
 
 init
-download_source $PROG $PROG $VER
+download_source pymodules/$PROG $PROG $VER
 patch_source
 prep_build
 #NOTE: Uncomment these IFF we have a version w/o -X on it...

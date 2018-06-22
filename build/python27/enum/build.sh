@@ -38,7 +38,7 @@ DESC="$SUMMARY"
 BUILDDIR="${PROG}34-$VER"
 
 init
-download_source $PROG $PROG $VER
+download_source pymodules/$PROG $PROG $VER
 patch_source
 prep_build
 python_build
