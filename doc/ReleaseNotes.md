@@ -4,6 +4,29 @@
 
 # Release Notes for OmniOSce v11 r151026
 
+## r151026i (2018-07-02)
+Weekly release for w/c 2nd of July 2018.
+> This update requires a reboot.
+
+### Security fixes
+
+* Kernel update to protect against the Lazy FPU vulnerability
+  * [CVE-2018-3665](https://cve.mitre.org/cgi-bin/cvename.cgi?name=2018-3665)
+* Mozilla NSS updated to version 3.38
+  * [CVE-2018-0495](https://cve.mitre.org/cgi-bin/cvename.cgi?name=2018-0495)
+
+### Other Changes
+
+* New `::sec` mdb command to summarise protection against CPU vulnerabilities
+* Fix problem when using native grep with context arguments (-A, -B, -C)
+* Linked-ipkg zones could end up with packages newer than those in the global
+  zone; this is now resolved.
+* Add support for recursive `pkg set-publisher` operations
+
+<br>
+
+----
+
 ## r151026g (2018-06-18)
 Weekly release for w/c 18th of June 2018.
 > This is a non-reboot update.
