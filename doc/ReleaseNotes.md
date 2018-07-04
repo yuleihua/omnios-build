@@ -4,6 +4,23 @@
 
 # Release Notes for OmniOSce v11 r151024
 
+## r151024ai (2018-07-02)
+Weekly release for w/c 2nd of July 2018.
+> This is a non-reboot update.
+
+### Security fixes
+
+* Mozilla NSS updated to version 3.38
+  * [CVE-2018-0495](https://cve.mitre.org/cgi-bin/cvename.cgi?name=2018-0495)
+
+### Other Changes
+
+* Add support for recursive `pkg set-publisher` operations
+
+<br>
+
+----
+
 ## r151024ae (2018-06-04)
 Weekly release for w/c 4th of June 2018.
 > This is a non-reboot update.
