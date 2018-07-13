@@ -4,6 +4,22 @@
 
 # Release Notes for OmniOSce v11 r151024
 
+## r151024ak (2018-07-16)
+Weekly release for w/c 16th of July 2018.
+> This is a non-reboot update.
+
+### Security fixes
+
+* Mercurial updated to fix
+  [CVE-2018-13348](https://cve.mitre.org/cgi-bin/cvename.cgi?name=2018-13348)
+* Curl updated to 7.61.0
+  * [CVE-2018-0500](https://cve.mitre.org/cgi-bin/cvename.cgi?name=2018-0500)
+* Bind updated to 9.10.8
+  * [CVE-2018-5738](https://cve.mitre.org/cgi-bin/cvename.cgi?name=2018-5738)
+
+<br>
+
+----
 ## r151024ai (2018-07-02)
 Weekly release for w/c 2nd of July 2018.
 > This is a non-reboot update.
