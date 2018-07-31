@@ -4,6 +4,27 @@
 
 # Release Notes for OmniOSce v11 r151024
 
+## r151024am (2018-07-30)
+Weekly release for w/c 30th of July 2018.
+> This update requires a reboot.
+
+### Bug Fixes
+
+* Newer versions of the iproute2 utilities fail in an lx zone
+  with `('DONE truncated', 'Dump terminated')`
+* [illumos Issue 8969](https://www.illumos.org/issues/8969)
+  Cannot boot from RAIDZ with parity > 1
+* [illumos Issue 8653](https://www.illumos.org/issues/8653)
+  Use after free in UDP socket close.
+* [illumos Issue 8806](https://www.illumos.org/issues/8806)
+  xattr_dir_inactive() releases used vnode with kernel panic
+* [illumos Issue 9317](https://www.illumos.org/issues/9317)
+  FMD crashes with zero-length allocation
+
+<br>
+
+----
+
 ## r151024ak (2018-07-16)
 Weekly release for w/c 16th of July 2018.
 > This is a non-reboot update.
@@ -20,6 +41,7 @@ Weekly release for w/c 16th of July 2018.
 <br>
 
 ----
+
 ## r151024ai (2018-07-02)
 Weekly release for w/c 2nd of July 2018.
 > This is a non-reboot update.
