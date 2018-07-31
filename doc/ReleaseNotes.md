@@ -4,6 +4,37 @@
 
 # Release Notes for OmniOSce v11 r151026
 
+## r151026m (2018-07-30)
+Weekly release for w/c 30th of July 2018.
+> This update requires a reboot.
+
+### Bug Fixes
+
+* [illumos Issue 7941](https://www.illumos.org/issues/7941)
+  cannot use crypto lofi on a block/character device
+* Newer versions of the iproute2 utilities fail in an lx zone
+  with `('DONE truncated', 'Dump terminated')`
+
+### Other Changes
+
+* Automatic naming is now supported for boot environments created during
+  package operations. This is configured via the new `auto-be-name` image
+  property which specifies a template for the new name; see the man page for
+  the `pkg` command for more information and examples. A suggested property
+  value is `omnios-r%r` which results in BE names such as `omnios-r151026m`:
+
+  ```
+  # pkg set-property auto-be-name omnios-r%r
+  # pkg update
+  ...
+  A clone of r151026 exists and has been updated and activated.
+  On the next boot the Boot Environment omnios-r151026m will be
+  mounted on '/'.  Reboot when ready to switch to this updated BE.
+  ```
+
+<br>
+
+----
 ## r151026k (2018-07-16)
 Weekly release for w/c 16th of July 2018.
 > This is a non-reboot update.
