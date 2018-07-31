@@ -4,6 +4,37 @@
 
 # Release Notes for OmniOSce v11 r151022
 
+## r151022bk (2018-07-30)
+Weekly release for w/c 30th of July 2018.
+> This update requires a reboot.
+
+### Security fixes
+
+* Kernel Page Table Isolation (KPTI) feature from Joyent. This adds protection
+  against the [Meltdown](http://meltdownattack.com) Intel CPU vulnerability
+  announced early in 2018. See
+  [https://omniosce.org/info/kpti](https://omniosce.org/info/kpti)
+  for details.
+* Kernel update to protect against the Lazy FPU vulnerability
+  * [CVE-2018-3665](https://cve.mitre.org/cgi-bin/cvename.cgi?name=2018-3665)
+
+### Bug Fixes
+
+* Newer versions of the iproute2 utilities fail in an lx zone
+  with `('DONE truncated', 'Dump terminated')`
+* [illumos Issue 8806](https://www.illumos.org/issues/8806)
+  xattr_dir_inactive() releases used vnode with kernel panic
+* [illumos Issue 9317](https://www.illumos.org/issues/9317)
+  FMD crashes with zero-length allocation
+
+### Other Changes
+
+* New `::sec` mdb command to summarise protection against CPU vulnerabilities
+
+<br>
+
+----
+
 ## r151022bi (2018-07-16)
 Weekly release for w/c 16th of July 2018.
 > This is a non-reboot update.
