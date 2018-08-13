@@ -1,6 +1,6 @@
 #!/usr/bin/bash
 #
-# CDDL HEADER START
+# {{{ CDDL HEADER START
 #
 # The contents of this file are subject to the terms of the
 # Common Development and Distribution License, Version 1.0 only
@@ -18,18 +18,17 @@
 # fields enclosed by brackets "[]" replaced with your own identifying
 # information: Portions Copyright [yyyy] [name of copyright owner]
 #
-# CDDL HEADER END
-#
+# CDDL HEADER END }}}
 #
 # Copyright 2011-2012 OmniTI Computer Consulting, Inc.  All rights reserved.
+# Copyright 2018 OmniOS Community Edition (OmniOSce) Association.
 # Use is subject to license terms.
 #
-# Load support functions
 . ../../lib/functions.sh
 
 # Unless building with HEAD from joyent/illumos-kvm[-cmd], specify the
 # revision to use.
-KVM_ROLLBACK=6d6a2a62a21b2f301ba4c493beeebc860d618a7d
+KVM_ROLLBACK=657e3ab2d1aefe7cab92349b884c616b517bf200
 KVM_CMD_ROLLBACK=70a3b9ac0fffc05cbe541164c097f51040addc8c
 
 # First we build the kernel module
@@ -61,7 +60,7 @@ BUILD_DEPENDS_IPS="archiver/gnu-tar developer/gcc44 developer/versioning/git fil
 BUILDARCH=64
 
 # Unset the prefix because we actually DO want things in kernel etc
-PREFIX="" 
+PREFIX=""
 
 download_source() {
     logmsg "Obtaining source files"
@@ -167,4 +166,4 @@ make_package kvm-cmd.mog
 clean_up
 
 # Vim hints
-# vim:ts=4:sw=4:et:
+# vim:ts=4:sw=4:et:fdm=marker
