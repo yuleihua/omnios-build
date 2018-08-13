@@ -37,7 +37,7 @@ DESC="$SUMMARY"
 
 # Unless building with HEAD from joyent/illumos-kvm[-cmd], specify the
 # revision to use.
-KVM_ROLLBACK=6d6a2a62a21b2f301ba4c493beeebc860d618a7d
+KVM_ROLLBACK=657e3ab2d1aefe7cab92349b884c616b517bf200
 KVM_CMD_ROLLBACK=70a3b9ac0fffc05cbe541164c097f51040addc8c
 
 # These are the dependencies for both the module and the cmds
