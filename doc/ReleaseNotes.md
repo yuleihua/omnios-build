@@ -4,6 +4,30 @@
 
 # Release Notes for OmniOSce v11 r151022
 
+## r151022bm (2018-08-15)
+Weekly release for w/c 13th of August 2018.
+> This update requires a reboot.
+
+### Security fixes
+
+* OpenSSL updated to 1.0.2p
+  [CVE-2018-0732](https://cve.mitre.org/cgi-bin/cvename.cgi?name=2018-0732)
+  [CVE-2018-0737](https://cve.mitre.org/cgi-bin/cvename.cgi?name=2018-0737)
+
+* NTP Daemon updated to 4.2.8p12
+  [Network Time Foundation Security Notice](http://support.ntp.org/bin/view/Main/SecurityNotice)
+
+### Bug Fixes
+
+* [SmartOS Issue OS-7064](https://smartos.org/bugview/OS-7064)
+  Fix KPTI-related kernel panic.
+* [SmartOS Issue OS-7090](https://smartos.org/bugview/OS-7090)
+  Fix for virtual machine memory management.
+
+<br>
+
+----
+
 ## r151022bk (2018-07-30)
 Weekly release for w/c 30th of July 2018.
 > This update requires a reboot.
