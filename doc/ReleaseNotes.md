@@ -4,6 +4,23 @@
 
 # Release Notes for OmniOSce v11 r151024
 
+## r151024ao (2018-08-15)
+Weekly release for w/c 13th of August 2018.
+> This is a non-reboot update.
+
+### Security fixes
+
+* OpenSSL updated to 1.1.0i and 1.0.2p
+  [CVE-2018-0732](https://cve.mitre.org/cgi-bin/cvename.cgi?name=2018-0732)
+  [CVE-2018-0737](https://cve.mitre.org/cgi-bin/cvename.cgi?name=2018-0737)
+
+* NTP Daemon updated to 4.2.8p12
+  [Network Time Foundation Security Notice](http://support.ntp.org/bin/view/Main/SecurityNotice)
+
+<br>
+
+----
+
 ## r151024am (2018-07-30)
 Weekly release for w/c 30th of July 2018.
 > This update requires a reboot.
