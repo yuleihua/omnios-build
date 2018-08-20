@@ -32,3 +32,4 @@ sshd_config.patch
 0032-Let-us-put-a-fallback-copy-of-DH-moduli-in-a-system-.patch
 1001-dtrace32.patch
 2001-sftp-readonly.patch
+CVE-2018-15473.patch
