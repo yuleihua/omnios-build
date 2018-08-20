@@ -4,6 +4,19 @@
 
 # Release Notes for OmniOSce v11 r151024
 
+## r151024ap (2018-08-20)
+Weekly release for w/c 20th of August 2018.
+> This is a non-reboot update.
+
+### Security fixes
+
+* OpenSSH updated to patch user-enumeration flaw
+  [CVE-2018-15473](https://cve.mitre.org/cgi-bin/cvename.cgi?name=2018-15473)
+
+<br>
+
+----
+
 ## r151024ao (2018-08-15)
 Weekly release for w/c 13th of August 2018.
 > This is a non-reboot update.
