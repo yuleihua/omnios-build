@@ -35,11 +35,6 @@ PROTO_AREA=$KERNEL_SOURCE/proto/root_i386
 SUMMARY="placeholder; reset below"
 DESC="$SUMMARY"
 
-# Unless building with HEAD from joyent/illumos-kvm[-cmd], specify the
-# revision to use.
-KVM_ROLLBACK=657e3ab2d1aefe7cab92349b884c616b517bf200
-KVM_CMD_ROLLBACK=70a3b9ac0fffc05cbe541164c097f51040addc8c
-
 # These are the dependencies for both the module and the cmds
 BUILD_DEPENDS_IPS="
     archiver/gnu-tar
@@ -48,31 +43,37 @@ BUILD_DEPENDS_IPS="
     file/gnu-coreutils
 "
 
-# Only 64-bit matters
 BUILDARCH=64
 
 # Unset the prefix because we actually DO want things in kernel etc
-PREFIX=""
+PREFIX=
 
-download_source() {
-    logmsg "Obtaining source files"
-    if [ -d $TMPDIR/$BUILDDIR ]; then
-        logmsg "--- Removing existing directory for a fresh start"
-        logcmd rm -rf $TMPDIR/$BUILDDIR
-    fi
-    logcmd /bin/git clone $SRC_REPO $TMPDIR/$BUILDDIR || \
-        logerr "--- Failed to clone from $SRC_REPO"
-    if [ -n "$COMMIT" ]; then
-        logmsg "--- Setting revision to $COMMIT"
-        logcmd git -C $TMPDIR/$BUILDDIR checkout $COMMIT
-    else
-        COMMIT=$(git -C $TMPDIR/$BUILDDIR log -1 --format=format:%H)
-    fi
+# Respect environmental overrides for these to ease development.
+: ${KVM_SOURCE_REPO:=$GITHUB/illumos-kvm}
+: ${KVM_SOURCE_BRANCH:=r$RELVER}
+: ${KVM_CMD_SOURCE_REPO:=$GITHUB/illumos-kvm-cmd}
+: ${KVM_CMD_SOURCE_BRANCH:=r$RELVER}
+
+clone_source() {
+    clone_github_source illumos-kvm \
+        "$KVM_SOURCE_REPO" "$KVM_SOURCE_BRANCH" "$KVM_CLONE"
+    KVM_COMMIT="`git -C $TMPDIR/$BUILDDIR/illumos-kvm \
+        log -1 --format=format:%H`"
+    clone_github_source illumos-kvm-cmd \
+        "$KVM_CMD_SOURCE_REPO" "$KVM_CMD_SOURCE_BRANCH" "$KVM_CMD_CLONE"
+    KVM_CMD_COMMIT="`git -C $TMPDIR/$BUILDDIR/illumos-kvm-cmd \
+        log -1 --format=format:%H`"
 }
 
-configure64() {
-    true
-}
+# Check this once at the start
+check_for_prebuilt
+# Fetch the source
+clone_source
+
+###########################################################################
+# Kernel module build
+
+configure64() { :; }
 
 make_prog() {
     logmsg "--- make"
@@ -86,60 +87,49 @@ make_prog() {
         || logerr "--- failed to copy CDDL from kernel sources"
 }
 
+save_function clean_up _clean_up
+clean_up() {
+    _clean_up
+    [ -f $SRCDIR/OPENSOLARIS.LICENSE ] \
+        && logcmd rm -f $SRCDIR/OPENSOLARIS.LICENSE
+}
+
 fix_drivers() {
     logcmd mv $DESTDIR/usr/kernel $DESTDIR/ || \
         logerr "--- couldn't move kernel bits into /"
 }
 
-# Check this once at the start
-check_for_prebuilt
-
-###########################################################################
-# First we build the kernel module
-
 PROG=illumos-kvm
-COMMIT=$KVM_ROLLBACK
-SRC_REPO=https://github.com/joyent/illumos-kvm.git
-PATCHDIR=patches.$PROG
 PKG=driver/virtualization/kvm
+BUILDDIR=$PROG
 
 init
-download_source
-patch_source
 prep_build
 build
 fix_drivers
-SUMMARY="Illumos KVM kernel driver ($PROG ${COMMIT:0:10})"
-DESC="KVM is the kernel virtual machine, a framework for the in-kernel acceleration of QEMU."
+SUMMARY="illumos KVM kernel driver ($PROG ${KVM_COMMIT:0:10})"
+DESC="KVM is the kernel virtual machine, a framework for the in-kernel "
+DESC+="acceleration of QEMU."
 make_package kvm.mog
 clean_up
 
 ###########################################################################
-# Next, the utilities (they follow the kernel module version)
+# KVM utilities
 
-PROG=illumos-kvm-cmd
-COMMIT=$KVM_CMD_ROLLBACK
-SRC_REPO=https://github.com/joyent/illumos-kvm-cmd.git
-KVM_DIR=$TMPDIR/illumos-kvm-$VER
-PATCHDIR=patches.$PROG
-PKG=system/kvm
+configure64() {
+    PREFIX=/usr
+    CC=/opt/gcc-4.4.4/bin/gcc
+    KVM_DIR=$TMPDIR/illumos-kvm
+    export KERNEL_SOURCE KVM_DIR PREFIX CC
 
-# Reset a couple of important things
-BUILDDIR=$PROG-$VER  # This must be explicitly reset from the run above
-PREFIX=/usr
-
-# Only 64-bit matters
-BUILDARCH=64
-
-# Borrowed from Joyent's build.sh within the source
-# so we can find ctfconvert during 'make install'
-CTFBINDIR="$KERNEL_SOURCE/usr/src/tools/proto/root_i386-nd/opt/onbld/bin/i386"
-export CTFBINDIR
-export PATH="$PATH:$CTFBINDIR"
+    # Borrowed from Joyent's build.sh within the source
+    # so we can find ctfconvert during 'make install'
+    CTFBINDIR="${PROTO_AREA}-nd/opt/onbld/bin/i386"
+    PATH+=":$CTFBINDIR"
+    export CTFBINDIR PATH
+}
 
 make_prog() {
-    CC=/opt/gcc-4.4.4/bin/gcc
-    export KERNEL_SOURCE KVM_DIR PREFIX CC
     logmsg "--- build.sh"
     logcmd ./build.sh || logerr "--- build.sh failed"
 }
@@ -150,12 +140,13 @@ make_install() {
         logerr "--- Make install failed"
 }
 
-download_source
-patch_source
+PROG=illumos-kvm-cmd
+PKG=system/kvm
+BUILDDIR=$PROG
+
 prep_build
 build
-SUMMARY="Illumos KVM utilities ($PROG ${COMMIT:0:10})"
-DESC="KVM is the kernel virtual machine, a framework for the in-kernel acceleration of QEMU."
+SUMMARY="illumos KVM utilities ($PROG ${KVM_CMD_COMMIT:0:10})"
 make_package kvm-cmd.mog
 clean_up
 
