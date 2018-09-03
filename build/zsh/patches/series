@@ -1,2 +1,3 @@
 no-posix.patch
 CVE-2018-1100.patch
+CVE-2018-0502,13259.patch
