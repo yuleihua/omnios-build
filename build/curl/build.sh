@@ -28,7 +28,7 @@
 . ../../lib/functions.sh
 
 PROG=curl
-VER=7.61.0
+VER=7.61.1
 PKG=web/curl
 SUMMARY="$PROG - command line tool for transferring data with URL syntax"
 DESC="$SUMMARY"
@@ -41,6 +41,8 @@ CONFIGURE_OPTS="--enable-thread --with-ca-bundle=/etc/ssl/cacert.pem"
 CONFIGURE_OPTS_64="$CONFIGURE_OPTS_64 --includedir=$PREFIX/include/amd64"
 
 LIBTOOL_NOSTDLIB=libtool
+
+export MAKE
 
 init
 download_source $PROG $PROG $VER
