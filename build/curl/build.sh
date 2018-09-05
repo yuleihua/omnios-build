@@ -28,7 +28,7 @@
 . ../../lib/functions.sh
 
 PROG=curl
-VER=7.61.0
+VER=7.61.1
 PKG=web/curl
 SUMMARY="$PROG - command line tool for transferring data with URL syntax"
 DESC="$SUMMARY"
@@ -44,6 +44,8 @@ TESTSUITE_FILTER="^TEST[A-Z]"
 
 # Skip tests when in batch mode as they take a long time
 [ -n "$BATCH" ] && SKIP_TESTSUITE=1
+
+export MAKE
 
 init
 download_source $PROG $PROG $VER
