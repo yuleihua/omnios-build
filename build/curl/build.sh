@@ -27,7 +27,7 @@
 . ../../lib/functions.sh
 
 PROG=curl
-VER=7.61.0
+VER=7.61.1
 PKG=web/curl
 SUMMARY="$PROG - command line tool for transferring data with URL syntax"
 DESC="$SUMMARY"
@@ -52,6 +52,8 @@ build() {
 
 LIBTOOL_NOSTDLIB=libtool
 TESTSUITE_FILTER="^TEST[A-Z]"
+
+export MAKE
 
 init
 download_source $PROG $PROG $VER
