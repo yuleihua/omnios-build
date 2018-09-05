@@ -4,6 +4,29 @@
 
 # Release Notes for OmniOSce v11 r151024
 
+## r151024ar (2018-09-05)
+Weekly release for w/c 3rd of September 2018.
+> This is a non-reboot update.
+
+### Security fixes
+
+* Curl updated to 7.61.1
+  [CVE-2018-14618](https://cve.mitre.org/cgi-bin/cvename.cgi?name=2018-14618)
+
+* Zsh updated to fix 
+  [CVE-2018-0502](https://cve.mitre.org/cgi-bin/cvename.cgi?name=2018-0502)
+  and
+  [CVE-2018-13259](https://cve.mitre.org/cgi-bin/cvename.cgi?name=2018-13259)
+
+### Other changes
+
+* system/cpuid updated to introduce detection of features listed in the
+  May 2018 Intel ISA extensions manual.
+
+<br>
+
+----
+
 ## r151024ap (2018-08-20)
 Weekly release for w/c 20th of August 2018.
 > This is a non-reboot update.
