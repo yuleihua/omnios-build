@@ -4,6 +4,35 @@
 
 # Release Notes for OmniOSce v11 r151022
 
+## r151022bt (2018-10-01)
+Weekly release for w/c 1st of October 2018.
+> This update requires a reboot
+
+### Security fixes
+
+* Mitigation for Foreshadow/L1TF -
+  [CVE-2018-3646](https://cve.mitre.org/cgi-bin/cvename.cgi?name=2018-3646),
+  with thanks to Joyent. This includes a CPU microcode update.
+
+  For full protection from this problem, ensure that sensitive services,
+  including KVM instances, are separated into different non-global zones.
+
+  Protection status for this and other vulnerabilities can be viewed with
+  `mdb -ke ::sec`.
+
+### Bug fixes
+
+* Kernel panic in RPC gss module -
+  [illumos issue 3354](https://illumos.org/issues/3354)
+
+* Kernel panic with Smartmontools 6.6 on ESXi 6.7 when trying to enable smart
+  on rpool -
+  [omnios-build issue 960](https://github.com/omniosorg/omnios-build/issues/960)
+
+<br>
+
+----
+
 ## r151022bp (2018-09-05)
 Weekly release for w/c 3rd of September 2018.
 > This is a non-reboot update.
