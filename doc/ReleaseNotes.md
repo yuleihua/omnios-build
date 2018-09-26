@@ -4,6 +4,48 @@
 
 # Release Notes for OmniOSce v11 r151026
 
+## r151026u (2018-09-26)
+Weekly release for w/c 24th of September 2018.
+> This update requires a reboot
+
+### Security fixes
+
+* Mitigation for Foreshadow/L1TF -
+  [CVE-2018-3646](https://cve.mitre.org/cgi-bin/cvename.cgi?name=2018-3646),
+  with thanks to Joyent. This includes a CPU microcode update.
+
+  For full protection from this problem, ensure that sensitive services,
+  including KVM instances, are separated into different non-global zones.
+
+  Protection status for this and other vulnerabilities can be viewed with
+  `mdb -ke ::sec`.
+
+### Bug fixes
+
+* Kernel panic in RPC gss module -
+  [illumos issue 3354](https://illumos.org/issues/3354)
+
+* Kernel panic with Smartmontools 6.6 on ESXi 6.7 when trying to enable smart
+  on rpool -
+  [omnios-build issue 960](https://github.com/omniosorg/omnios-build/issues/960)
+
+* Windows 10 could not access CIFS share by name with i18n username -
+  [illumos-omnios issue 254](https://github.com/omniosorg/illumos-omnios/issues/254), with thanks to Nexenta.
+
+### Other changes
+
+* The installer is now able to force 4k or 8k alignment on the root pool
+  regardless of the underlying storage. Previously this did not work for
+  NVMe or virtual disks -
+  [Kayak issue 72](https://github.com/omniosorg/kayak/issues/72)
+
+  New installation media have been prepared for this release and can be
+  found at https://omniosce.org/download
+
+<br>
+
+----
+
 ## r151026r (2018-09-05)
 Weekly release for w/c 3rd of September 2018.
 > This is a non-reboot update.
@@ -13,7 +55,7 @@ Weekly release for w/c 3rd of September 2018.
 * Curl updated to 7.61.1
   [CVE-2018-14618](https://cve.mitre.org/cgi-bin/cvename.cgi?name=2018-14618)
 
-* Zsh updated to fix 
+* Zsh updated to fix
   [CVE-2018-0502](https://cve.mitre.org/cgi-bin/cvename.cgi?name=2018-0502)
   and
   [CVE-2018-13259](https://cve.mitre.org/cgi-bin/cvename.cgi?name=2018-13259)
@@ -374,7 +416,7 @@ r151026 release repository: https://pkg.omniosce.org/r151026/core
 
 	GZ# dladm show-linkprop deb0
 	LINK         PROPERTY        PERM VALUE          DEFAULT        POSSIBLE
-	deb0         protection      rw   ip-nospoof     --             
+	deb0         protection      rw   ip-nospoof     --
 	deb0         allowed-ips     rw   172.30.1.129/32 --            --
     ```
 
