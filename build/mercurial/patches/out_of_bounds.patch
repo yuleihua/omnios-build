@@ -1,0 +1,42 @@
+
+# HG changeset patch
+# User Yuya Nishihara <yuya@tcha.org>
+# Date 1536150209 -32400
+# Node ID 5405cb1a79010ac50c58cd84e6f50c4556bf2a4c
+# Parent  e85462d48cb3a59f67a595510fc7977cba6ed358
+manifest: fix out-of-bounds read of corrupted manifest entry
+
+Spotted by ASAN.
+
+diff -pruN '--exclude=*.orig' mercurial-4.5.3~/mercurial/cext/manifest.c mercurial-4.5.3/mercurial/cext/manifest.c
+--- mercurial-4.5.3~/mercurial/cext/manifest.c	2018-10-02 20:24:25.406988429 +0000
++++ mercurial-4.5.3/mercurial/cext/manifest.c	2018-10-02 20:24:25.816449537 +0000
+@@ -51,7 +51,12 @@ static PyObject *nodeof(line *l)
+ {
+ 	char *s = l->start;
+ 	ssize_t llen = pathlen(l);
+-	PyObject *hash = unhexlify(s + llen + 1, 40);
++	PyObject *hash;
++	if (llen + 1 + 40 + 1 > l->len) { /* path '\0' hash '\n' */
++		PyErr_SetString(PyExc_ValueError, "manifest line too short");
++		return NULL;
++	}
++	hash = unhexlify(s + llen + 1, 40);
+ 	if (!hash) {
+ 		return NULL;
+ 	}
+@@ -241,10 +246,13 @@ static PyObject *lmiter_iterentriesnext(
+ 	pl = pathlen(l);
+ 	path = PyBytes_FromStringAndSize(l->start, pl);
+ 	hash = nodeof(l);
++	if (!path || !hash) {
++		goto done;
++	}
+ 	consumed = pl + 41;
+ 	flags = PyBytes_FromStringAndSize(l->start + consumed,
+ 					   l->len - consumed - 1);
+-	if (!path || !hash || !flags) {
++	if (!flags) {
+ 		goto done;
+ 	}
+ 	ret = PyTuple_Pack(3, path, hash, flags);
