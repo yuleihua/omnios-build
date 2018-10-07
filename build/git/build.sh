@@ -24,12 +24,13 @@
 # Copyright 2017 OmniTI Computer Consulting, Inc.  All rights reserved.
 # Use is subject to license terms.
 # Copyright (c) 2014 by Delphix. All rights reserved.
+# Copyright 2018 OmniOS Community Edition (OmniOSce) Association.
 #
 # Load support functions
 . ../../lib/functions.sh
 
 PROG=git
-VER=2.13.7
+VER=2.14.5
 PKG=developer/versioning/git
 SUMMARY="$PROG - a free and open source, distributed version control system"
 DESC="$SUMMARY"
