@@ -4,6 +4,21 @@
 
 # Release Notes for OmniOSce v11 r151026
 
+## r151026w (2018-10-08)
+Weekly release for w/c 8th of October 2018.
+> This is a non-reboot update.
+
+### Security fixes
+
+* Git updated to 2.17.2
+  [CVE-2018-17456](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-17456)
+
+* Mercurial updated to fix a potential out-of-bounds read in manifest parsing C code.
+
+<br>
+
+----
+
 ## r151026u (2018-09-26)
 Weekly release for w/c 24th of September 2018.
 > This update requires a reboot
