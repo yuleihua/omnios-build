@@ -312,6 +312,17 @@ process_opts $@
 shift $((OPTIND - 1))
 
 #############################################################################
+# Running as root is not safe
+#############################################################################
+if [ "$UID" = "0" ]; then
+    if [ -n "$ROOT_OK" ]; then
+        logmsg "--- Running as root, but ROOT_OK is set; continuing"
+    else
+        logerr "--- You should not run this as root"
+    fi
+fi
+
+#############################################################################
 # Set up tools area
 #############################################################################
 
@@ -429,17 +440,6 @@ BasicRequirements() {
     fi
 }
 BasicRequirements
-
-#############################################################################
-# Running as root is not safe
-#############################################################################
-if [ "$UID" = "0" ]; then
-    if [ -n "$ROOT_OK" ]; then
-        logmsg "--- Running as root, but ROOT_OK is set; continuing"
-    else
-        logerr "--- You should not run this as root"
-    fi
-fi
 
 #############################################################################
 # Check the OpenSSL mediator
