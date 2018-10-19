@@ -168,20 +168,21 @@ logcmd() {
 
 c_highlight="`tput setaf 2`"
 c_error="`tput setaf 1`"
+c_note="`tput setaf 6`"
 c_reset="`tput sgr0`"
 logmsg() {
     typeset highlight=0
     [ "$1" = "-h" ] && shift && highlight=1
     [ "$1" = "-e" ] && shift && highlight=2
+    [ "$1" = "-n" ] && shift && highlight=3
 
     echo "$logprefix$@" >> $LOGFILE
-    if [ $highlight -eq 1 ]; then
-        echo "$c_highlight$logprefix$@$c_reset"
-    elif [ $highlight -eq 2 ]; then
-        echo "$c_error$logprefix$@$c_reset"
-    else
-        echo "$logprefix$@"
-    fi
+    case $highlight in
+        1) echo "$c_highlight$logprefix$@$c_reset" ;;
+        2) echo "$c_error$logprefix$@$c_reset" ;;
+        3) echo "$c_note$logprefix$@$c_reset" ;;
+        *) echo "$logprefix$@" ;;
+    esac
 }
 
 logerr() {
@@ -311,6 +312,17 @@ process_opts $@
 shift $((OPTIND - 1))
 
 #############################################################################
+# Running as root is not safe
+#############################################################################
+if [ "$UID" = "0" ]; then
+    if [ -n "$ROOT_OK" ]; then
+        logmsg "--- Running as root, but ROOT_OK is set; continuing"
+    else
+        logerr "--- You should not run this as root"
+    fi
+fi
+
+#############################################################################
 # Set up tools area
 #############################################################################
 
@@ -428,17 +440,6 @@ BasicRequirements() {
     fi
 }
 BasicRequirements
-
-#############################################################################
-# Running as root is not safe
-#############################################################################
-if [ "$UID" = "0" ]; then
-    if [ -n "$ROOT_OK" ]; then
-        logmsg "--- Running as root, but ROOT_OK is set; continuing"
-    else
-        logerr "--- You should not run this as root"
-    fi
-fi
 
 #############################################################################
 # Check the OpenSSL mediator
