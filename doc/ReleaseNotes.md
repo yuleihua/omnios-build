@@ -4,6 +4,20 @@
 
 # Release Notes for OmniOSce v11 r151026
 
+## r151026y (2018-10-25)
+Weekly release for w/c 22nd of October 2018.
+> This is a non-reboot update.
+
+### Bug Fixes
+
+* The sparse zone brand has been updated to resolve a problem found during
+  upgrading to the r151028 release candidate. After installing this update,
+  please reboot any sparse-branded zones.
+
+<br>
+
+----
+
 ## r151026w (2018-10-08)
 Weekly release for w/c 8th of October 2018.
 > This is a non-reboot update.
