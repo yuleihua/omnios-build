@@ -152,6 +152,11 @@ r151028 release repository: https://pkg.omniosce.org/r151028/core
 
 ### Hardware Support
 
+* Support for Emulex 31000/32000-based Fibrechannel cards.
+
+* Support for ATTO Celerity FC-162E Gen 5 and Celerity FC-162P Gen 6
+  Fibrechannel cards.
+
 * Support for QLogic QL41000/45000 series devices.
 
 * Support for NVMe 1.3 devices.
@@ -189,7 +194,7 @@ r151028 release repository: https://pkg.omniosce.org/r151028/core
 
 * Python version 3 has been added to the core system; it is not installed
   by default in this release. All python components will be moved over to
-  python 3 in the next release in preparation for the python 2 end-of-lif.
+  python 3 in the next release in preparation for the python 2 end-of-life.
 
 * Perl has been upgraded to 5.28.
 
