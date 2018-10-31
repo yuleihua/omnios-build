@@ -157,6 +157,8 @@ r151028 release repository: https://pkg.omniosce.org/r151028/core
 * Support for ATTO Celerity FC-162E Gen 5 and Celerity FC-162P Gen 6
   Fibrechannel cards.
 
+* Support for QLogic 16Gb/s Gen5/6 fibrechannel cards.
+
 * Support for QLogic QL41000/45000 series devices.
 
 * Support for NVMe 1.3 devices.
