@@ -4,6 +4,19 @@
 
 # Release Notes for OmniOSce v11 r151022
 
+## r151022by (2018-11-05)
+Weekly release for w/c 5th of November 2018.
+> This is a non-reboot update.
+
+### Security fixes
+
+* Curl updated to 7.62.0
+  [CVE-2018-16842](https://cve.mitre.org/cgi-bin/cvename.cgi?name=2018-16842)
+
+<br>
+
+----
+
 ## r151022bu (2018-10-08)
 Weekly release for w/c 8th of October 2018.
 > This is a non-reboot update.
