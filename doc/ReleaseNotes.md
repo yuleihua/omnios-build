@@ -4,6 +4,19 @@
 
 # Release Notes for OmniOSce v11 r151026
 
+## r151026aa (2018-11-05)
+Weekly release for w/c 5th of November 2018.
+> This is a non-reboot update.
+
+### Security fixes
+
+* Curl updated to 7.62.0
+  [CVE-2018-16842](https://cve.mitre.org/cgi-bin/cvename.cgi?name=2018-16842)
+
+<br>
+
+----
+
 ## r151026y (2018-10-25)
 Weekly release for w/c 22nd of October 2018.
 > This is a non-reboot update.
