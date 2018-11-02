@@ -3,11 +3,10 @@
 </a>
 
 # Release Notes for OmniOSce v11 r151028
-![#f03c15](https://placehold.it/15/f03c15/000000?text=+) ** These are DRAFT release notes ** ![#f03c15](https://placehold.it/15/f03c15/000000?text=+)
 
-Stable Release, TBC of November 2018
+Stable Release, 5th of November 2018
 
-`uname -a` shows `omnios-r151028-XXX`
+`uname -a` shows `omnios-r151028-d3d0427bff`
 
 r151028 release repository: https://pkg.omniosce.org/r151028/core
 
@@ -65,6 +64,10 @@ r151028 release repository: https://pkg.omniosce.org/r151028/core
   that were deprecated in release r151026 have been removed;
   see *Deprecated features* below.
 
+* `beadm list` is now significantly faster on systems with many snapshots.
+  This change has also improved the speed of zone boot and `pkg` operations on
+  such systems.
+
 * ZFS support for mounting filesystems in parallel. This significantly
   improves boot time for systems with many filesystems.
 
@@ -80,9 +83,6 @@ r151028 release repository: https://pkg.omniosce.org/r151028/core
 
 ### Commands and Command Options
 
-* New `pptadm` command for managing PCI device pass-through to bhyve virtual
-  machines.
-
 * `smbios` can now display more information including that relating to
    power-supply-units (PSUs), cooling devices and voltage and temperature
    probes.
@@ -93,6 +93,9 @@ r151028 release repository: https://pkg.omniosce.org/r151028/core
 
 * `getent` can now list attribute databases such as *auth_attr*. See the
   getent(1m) manpage for more details.
+
+* New `pptadm` command for managing PCI device pass-through to bhyve virtual
+  machines.
 
 ### LX zones
 
@@ -243,7 +246,116 @@ r151028 release repository: https://pkg.omniosce.org/r151028/core
   # aws --version
   ```
 
-### Package changes ([+] Added, [-] Removed, [\*] Changed)
+### Package changes
 
-XXX
-
+| Package | Old Version | New Version |
+| :------ | :---------- | :---------- |
+| compress/xz | 5.2.3 | 5.2.4
+| data/iso-codes | 3.77 | 4.1
+| database/sqlite-3 | 3.23.1 | 3.25.2
+| developer/acpi/compiler | 20180313 | 20180810
+| developer/bmake | 20180222 | 20180512
+| ~~developer/gcc6~~ | 6.4.0 | _Removed_
+| ~~developer/gcc6/libgmp-gcc6~~ | 6.1.2 | _Removed_
+| ~~developer/gcc6/libmpc-gcc6~~ | 1.0.3 | _Removed_
+| ~~developer/gcc6/libmpfr-gcc6~~ | 3.1.5 | _Removed_
+| **developer/gcc8** | _New_ | 8.2.0
+| developer/gnu-binutils | 2.30 | 2.31.1
+| developer/java/jdk | 1.7.0.171.2 | 1.7.0.191.2
+| developer/parser/bison | 3.0.4 | 3.1
+| developer/versioning/git | 2.17.2 | 2.19.1
+| developer/versioning/mercurial | 4.5.3 | 4.7.2
+| **driver/network/qede** | _New_ | 0.5.11
+| editor/vim | 8.0.586 | 8.1
+| file/gnu-coreutils | 8.29 | 8.30
+| library/c++/sigcpp | 2.99.10 | 2.99.11
+| library/expat | 2.2.5 | 2.2.6
+| library/glib2 | 2.56.0 | 2.58.1
+| library/libidn | 1.34 | 1.35
+| library/ncurses | 6.1.20180428 | 6.1.20180923
+| library/nghttp2 | 1.31.1 | 1.33.0
+| library/nspr | 4.19 | 4.20
+| library/nspr/header-nspr | 4.19 | 4.20
+| library/python-2/cheroot-27 | 6.0.0 | 6.5.2
+| library/python-2/cherrypy-27 | 14.0.1 | 17.3.0
+| **library/python-2/contextlib2-27** | _New_ | 0.5.5
+| library/python-2/cryptography-27 | 2.2.2 | 2.3.1
+| **library/python-2/functools_lru_cache-27** | _New_ | 1.5
+| library/python-2/idna-27 | 2.6 | 2.7
+| library/python-2/ipaddress-27 | 1.0.19 | 1.0.22
+| library/python-2/jaraco.classes-27 | 1.4.3 | 1.5
+| **library/python-2/jaraco.functools-27** | _New_ | 1.20
+| library/python-2/more-itertools-27 | 4.1.0 | 4.3.0
+| library/python-2/portend-27 | 2.2 | 2.3
+| **library/python-2/prettytable-27** | _New_ | 0.7.2
+| **library/python-2/pycparser-27** | _New_ | 2.18
+| library/python-2/pycurl-27 | 7.43.0.1 | 7.43.0.2
+| library/python-2/pyopenssl-27 | 17.5.0 | 18.0.0
+| library/python-2/pytz-27 | 2018.3 | 2018.5
+| library/python-2/setuptools-27 | 39.0.1 | 40.2.0
+| library/python-2/simplejson-27 | 3.13.2 | 3.16.0
+| library/python-2/tempora-27 | 1.11 | 1.13
+| **library/python-2/zc.lockfile-27** | _New_ | 1.3.0
+| **library/python-3/asn1crypto-35** | _New_ | 0.24.0
+| **library/python-3/cffi-35** | _New_ | 1.11.5
+| **library/python-3/cheroot-35** | _New_ | 6.5.2
+| **library/python-3/cherrypy-35** | _New_ | 18.0.1
+| **library/python-3/contextlib2-35** | _New_ | 0.5.5
+| **library/python-3/coverage-35** | _New_ | 4.5.1
+| **library/python-3/cryptography-35** | _New_ | 2.3.1
+| **library/python-3/functools_lru_cache-35** | _New_ | 1.5
+| **library/python-3/idna-35** | _New_ | 2.7
+| **library/python-3/jaraco.functools-35** | _New_ | 1.20
+| **library/python-3/jsonrpclib-35** | _New_ | 0.3.1
+| **library/python-3/jsonschema-35** | _New_ | 2.6.0
+| **library/python-3/mako-35** | _New_ | 1.0.7
+| **library/python-3/more-itertools-35** | _New_ | 4.3.0
+| **library/python-3/pep8-35** | _New_ | 1.7.1
+| **library/python-3/ply-35** | _New_ | 3.11
+| **library/python-3/portend-35** | _New_ | 2.3
+| **library/python-3/prettytable-35** | _New_ | 0.7.2
+| **library/python-3/pybonjour-35** | _New_ | 1.1.1
+| **library/python-3/pycparser-35** | _New_ | 2.18
+| **library/python-3/pycurl-35** | _New_ | 7.43.0.2
+| **library/python-3/pyopenssl-35** | _New_ | 18.0.0
+| **library/python-3/pytz-35** | _New_ | 2018.5
+| **library/python-3/setuptools-35** | _New_ | 40.2.0
+| **library/python-3/simplejson-35** | _New_ | 3.16.0
+| **library/python-3/six-35** | _New_ | 1.11.0
+| **library/python-3/tempora-35** | _New_ | 1.13
+| **library/python-3/zc.lockfile-35** | _New_ | 1.3.0
+| library/security/openssl | 1.0.2.16 | 1.1.0.9
+| library/unixodbc | 2.3.6 | 2.3.7
+| network/dns/bind | 9.11.4 | 9.11.4.2
+| network/openssh | 7.6.1 | 7.8.1
+| network/openssh-server | 7.6.1 | 7.8.1
+| **package/pkg-35** | _New_ | 0.5.11
+| runtime/java | 1.7.0.171.2 | 1.7.0.191.2
+| runtime/perl | 5.26.2 | 5.28.0
+| runtime/perl-64 | 5.26.2 | 5.28.0
+| runtime/perl/manual | 5.26.2 | 5.28.0
+| **runtime/python-35** | _New_ | 3.5.6
+| security/sudo | 1.8.22 | 1.8.25.1
+| service/network/ntpsec | 1.1.0 | 1.1.2
+| shell/bash | 4.4.19 | 4.4.23
+| shell/zsh | 5.5.1 | 5.6.2
+| ~~storage/avs~~ | 0.5.11 | _Removed_
+| system/cpuid | 1.6.5 | 1.7.2
+| system/data/zoneinfo | 2018.3 | 2018.7
+| system/library/dbus | 1.12.6 | 1.12.10
+| system/library/g++-runtime | 7 | 8
+| system/library/gcc-runtime | 7 | 8
+| system/library/gfortran-runtime | 7 | 8
+| system/library/libdbus | 1.12.6 | 1.12.10
+| system/library/mozilla-nss | 3.38 | 3.39
+| system/library/mozilla-nss/header-nss | 3.38 | 3.39
+| system/library/pcap | 1.8.1 | 1.9.0
+| ~~system/management/ec2-api-tools~~ | 1.7.5.1 | _Removed_
+| system/management/snmp/net-snmp | 5.7.3 | 5.8
+| system/pciutils | 3.5.6 | 3.6.2
+| system/pciutils/pci.ids | 2.2.20180208 | 2.2.20181025
+| system/test/fio | 3.5 | 3.10
+| system/virtualization/open-vm-tools | 10.2.5 | 10.3.0
+| **system/zones/brand/bhyve** | _New_ | 0.5.11
+| **system/zones/brand/kvm** | _New_ | 0.5.11
+| terminal/tmux | 2.6 | 2.7
