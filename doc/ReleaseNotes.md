@@ -266,6 +266,7 @@ r151028 release repository: https://pkg.omniosce.org/r151028/core
 | developer/versioning/git | 2.17.2 | 2.19.1
 | developer/versioning/mercurial | 4.5.3 | 4.7.2
 | **driver/network/qede** | _New_ | 0.5.11
+| ~~driver/storage/sv~~ | 0.5.11 | _Removed_
 | editor/vim | 8.0.586 | 8.1
 | file/gnu-coreutils | 8.29 | 8.30
 | library/c++/sigcpp | 2.99.10 | 2.99.11
@@ -337,9 +338,12 @@ r151028 release repository: https://pkg.omniosce.org/r151028/core
 | **runtime/python-35** | _New_ | 3.5.6
 | security/sudo | 1.8.22 | 1.8.25.1
 | service/network/ntpsec | 1.1.0 | 1.1.2
+| ~~service/storage/avs/cache-management~~ | 0.5.11 | _Removed_
 | shell/bash | 4.4.19 | 4.4.23
 | shell/zsh | 5.5.1 | 5.6.2
 | ~~storage/avs~~ | 0.5.11 | _Removed_
+| ~~storage/avs/point-in-time-copy~~ | 0.5.11 | _Removed_
+| ~~storage/avs/remote-mirror~~ | 0.5.11 | _Removed_
 | system/cpuid | 1.6.5 | 1.7.2
 | system/data/zoneinfo | 2018.3 | 2018.7
 | system/library/dbus | 1.12.6 | 1.12.10
