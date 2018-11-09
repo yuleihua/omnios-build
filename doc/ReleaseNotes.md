@@ -4,6 +4,22 @@
 
 # Release Notes for OmniOSce v11 r151028
 
+## r151028b (2018-11-12)
+Weekly release for w/c 12th of November 2018.
+> This is a non-reboot update.
+
+### Updates
+
+* `ipmitool` updated to fix crash when doing AES encryption with lanplus;
+* Updated illumos-gate build templates in `developer/build/onbld`;
+* `developer/illumos-tools` updated to include `python-35` and `gcc7`;
+* Installer updated to set default route without requiring an additional
+  reboot.
+
+<br>
+
+----
+
 Stable Release, 5th of November 2018
 
 `uname -a` shows `omnios-r151028-d3d0427bff`
