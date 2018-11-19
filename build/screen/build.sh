@@ -22,6 +22,7 @@
 #
 #
 # Copyright 2017 OmniTI Computer Consulting, Inc.  All rights reserved.
+# Copyright 2018 OmniOS Community Edition (OmniOSce) Association.
 # Use is subject to license terms.
 #
 # Load support functions
@@ -37,13 +38,12 @@ DESC="$SUMMARY"
 TAR=gtar
 
 BUILDARCH=32
-CONFIGURE_OPTS_32="$CONFIGURE_OPTS_32 --bindir=/usr/bin --with-sys-screenrc=/etc/screenrc --enable-colors256 LDFLAGS=-lxnet"
-gnu_cleanup() {
-    logcmd rm $DESTDIR/usr/bin/screen
-    logcmd mv $DESTDIR/usr/bin/screen-${VER} $DESTDIR/usr/bin/screen
-    logcmd mv $DESTDIR/usr/man $DESTDIR/usr/share/
-    logcmd mv $DESTDIR/usr/info $DESTDIR/usr/share/
-}
+CONFIGURE_OPTS+="
+	--bindir=/usr/bin
+	--with-sys-screenrc=/etc/screenrc
+	--enable-colors256
+	LDFLAGS=-lxnet
+"
 
 save_function make_install make_install_orig
 make_install() {
@@ -60,8 +60,6 @@ download_source $PROG $PROG $VER
 patch_source
 prep_build
 build
-gnu_cleanup
 strip_install
-make_isa_stub
 make_package
 clean_up
