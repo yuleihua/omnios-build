@@ -4,6 +4,25 @@
 
 # Release Notes for OmniOSce v11 r151026
 
+## r151026ac (2018-11-22)
+Weekly release for w/c 19th of November 2018.
+> This is a non-reboot update.
+
+### Security fixes
+
+* openssl updated to 1.1.0j/1.0.2q
+  [CVE-2018-0734](https://cve.mitre.org/cgi-bin/cvename.cgi?name=2018-0734)
+  [CVE-2018-5407](https://cve.mitre.org/cgi-bin/cvename.cgi?name=2018-5407)
+* openjdk updated to 1.7.0_201-b00
+
+### Other Changes
+
+* `pkg` updated to fix a problem that could occur when removing some packages.
+
+<br>
+
+----
+
 ## r151026aa (2018-11-05)
 Weekly release for w/c 5th of November 2018.
 > This is a non-reboot update.
