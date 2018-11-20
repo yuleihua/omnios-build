@@ -22,14 +22,14 @@
 #
 #
 # Copyright 2017 OmniTI Computer Consulting, Inc.  All rights reserved.
-# Copyright 2017 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2018 OmniOS Community Edition (OmniOSce) Association.
 # Use is subject to license terms.
 #
 # Load support functions
 . ../../lib/functions.sh
 
 PROG=openssl
-VER=1.0.2p
+VER=1.0.2q
 VERHUMAN=$VER
 PKG=library/security/openssl # Package name (without prefix)
 SUMMARY="$PROG - A toolkit for Secure Sockets Layer (SSL v2/v3) and Transport Layer (TLS v1) protocols and general purpose cryptographic library"
@@ -144,7 +144,6 @@ patch_source
 install_pkcs11
 prep_build
 build
-run_testsuite
 move_libs
 
 make_lintlibs crypto /lib /usr/include "openssl/!(ssl*|*tls*).h"
