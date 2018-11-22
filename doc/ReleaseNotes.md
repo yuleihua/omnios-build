@@ -4,6 +4,26 @@
 
 # Release Notes for OmniOSce v11 r151022
 
+## r151022ca (2018-11-22)
+Weekly release for w/c 19th of November 2018.
+> This is a non-reboot update.
+
+### Security fixes
+
+* openssl updated to 1.0.2q
+  [CVE-2018-0734](https://cve.mitre.org/cgi-bin/cvename.cgi?name=2018-0734)
+  [CVE-2018-5407](https://cve.mitre.org/cgi-bin/cvename.cgi?name=2018-5407)
+* openjdk updated to 1.7.0_201-b00
+
+### Other Changes
+
+* `screen` updated to use the ncurses library providing access to definitions
+  for more terminal types.
+
+<br>
+
+----
+
 ## r151022by (2018-11-05)
 Weekly release for w/c 5th of November 2018.
 > This is a non-reboot update.
