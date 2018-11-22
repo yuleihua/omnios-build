@@ -4,6 +4,28 @@
 
 # Release Notes for OmniOSce v11 r151028
 
+## r151028c (2018-11-22)
+Weekly release for w/c 19th of November 2018.
+> This is a non-reboot update.
+
+### Security fixes
+
+* openssl updated to 1.1.0j/1.0.2q
+  [CVE-2018-0734](https://cve.mitre.org/cgi-bin/cvename.cgi?name=2018-0734)
+  [CVE-2018-5407](https://cve.mitre.org/cgi-bin/cvename.cgi?name=2018-5407)
+* openjdk updated to 1.7.0_201-b00
+
+### Other Changes
+
+* `pkg` updated to fix a problem that could occur when removing some packages.
+* `system/header` updated to add missing header file
+* `openssh` updated to work around a VMware bug in handling packets with
+  certain QoS options set - see <https://communities.vmware.com/thread/590825>
+
+<br>
+
+----
+
 ## r151028b (2018-11-12)
 Weekly release for w/c 12th of November 2018.
 > This is a non-reboot update.
