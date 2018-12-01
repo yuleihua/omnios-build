@@ -85,7 +85,7 @@ NOSCRIPTSTUB=
 #############################################################################
 
 # Perl versions we currently build against
-PERLVER=5.26.2
+PERLVER=5.26.3
 SPERLVER=${PERLVER%.*}
 
 # Full paths to bins
