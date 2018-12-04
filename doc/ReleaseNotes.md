@@ -4,6 +4,23 @@
 
 # Release Notes for OmniOSce v11 r151028
 
+## r151028e (2018-12-03)
+Weekly release for w/c 3rd of December 2018.
+> This is a non-reboot update.
+
+### Security fixes
+
+* `perl` updated to 5.28.1 -
+  [CVE-2018-18311](https://cve.mitre.org/cgi-bin/cvename.cgi?name=2018-18311)
+  [CVE-2018-18312](https://cve.mitre.org/cgi-bin/cvename.cgi?name=2018-18312)
+
+* `nss` updated to 3.40.1 -
+  [CVE-2018-12404](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-12404)
+
+<br>
+
+----
+
 ## r151028d (2018-11-26)
 Weekly release for w/c 26th of November 2018.
 > This is a non-reboot update.
