@@ -4,6 +4,23 @@
 
 # Release Notes for OmniOSce v11 r151022
 
+## r151022cd (2018-12-10)
+Weekly release for w/c 10th of December 2018.
+> This is a non-reboot update.
+
+### Security fixes
+
+* `nss` updated to fix -
+  [CVE-2018-12404](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-12404)
+
+### Other Changes
+
+* `web/ca-bundle` updated
+
+<br>
+
+----
+
 ## r151022cc (2018-12-03)
 Weekly release for w/c 3rd of December 2018.
 > This is a non-reboot update.
