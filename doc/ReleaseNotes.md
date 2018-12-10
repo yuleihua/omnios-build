@@ -4,6 +4,26 @@
 
 # Release Notes for OmniOSce v11 r151026
 
+## r151026af (2018-12-10)
+Weekly release for w/c 10th of December 2018.
+> This update requires a reboot (if `system/bhyve` is installed).
+
+### Security fixes
+
+* `bhyve` updated to fix -
+  [CVE-2018-17160](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-17160)
+
+* `nss` updated to fix -
+  [CVE-2018-12404](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-12404)
+
+### Other Changes
+
+* `web/ca-bundle` updated
+
+<br>
+
+----
+
 ## r151026ae (2018-12-03)
 Weekly release for w/c 3rd of December 2018.
 > This is a non-reboot update.
