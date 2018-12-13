@@ -461,6 +461,12 @@ if [ -n "$opensslver" -a "$opensslver" != "1.1" ]; then
         logerr "--- OpenSSL version $opensslver should not be used for build"
     fi
 fi
+if openssl version | egrep -s '1\.1\.1'; then
+    logmsg -e "--- OpenSSL version 1.1.1 should not be used for build"
+    logmsg -e "--- hint: uninstall library/security/openssl/preview"
+    logmsg -e "---       and pkg revert --tagged openssl-preview"
+    logerr "..."
+fi
 
 #############################################################################
 # Print startup message
