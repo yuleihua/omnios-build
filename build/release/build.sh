@@ -22,7 +22,7 @@ VERHUMAN=$VER
 PKG=release/name
 SUMMARY="OmniOS release information"
 DESC="OmniOS /etc/release and /etc/os-release files"
-RELEASE=151026af
+RELEASE=151026aj
 RELDATE="`date +%Y.%m.%d`"
 RELNUM="`echo $RELEASE | sed 's/[a-z]//g'`"
 RELREV=0
@@ -51,7 +51,7 @@ build() {
     cat <<- EOM > etc/release
   OmniOS v11 r$RELEASE
   Copyright 2017 OmniTI Computer Consulting, Inc. All rights reserved.
-  Copyright 2018 OmniOS Community Edition (OmniOSce) Association.
+  Copyright 2019 OmniOS Community Edition (OmniOSce) Association.
   All rights reserved. Use is subject to licence terms.
 	EOM
 
