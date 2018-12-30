@@ -4,6 +4,23 @@
 
 # Release Notes for OmniOSce v11 r151022
 
+## r151022ch (2019-01-07)
+Weekly release for w/c 7th of January 2019.
+> This is a non-reboot update
+
+### Security fixes
+
+* Update GNU tar to 1.31, fixing
+  [CVE-2018-20482](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-20482)
+* libxml2 updated to fix -
+  [CVE-2018-9251](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-9251),
+  [CVE-2018-14404](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-14404),
+  [CVE-2018-14567](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-14567)
+
+<br>
+
+----
+
 ## r151022cd (2018-12-10)
 Weekly release for w/c 10th of December 2018.
 > This is a non-reboot update.
