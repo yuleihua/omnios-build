@@ -50,6 +50,9 @@ CONFIGURE_OPTS="
 init
 download_source $PROG $PROG $VER
 patch_source
+# TODO: need to run autoreconf to build sucessfully with patch CVE-2018-20482
+# can be removed once it got integrated into a new release
+run_autoreconf
 prep_build
 build
 run_testsuite check
