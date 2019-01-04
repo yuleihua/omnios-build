@@ -27,7 +27,7 @@
 . ../../lib/functions.sh
 
 PROG=tar
-VER=1.30
+VER=1.31
 PKG=archiver/gnu-tar
 SUMMARY="gtar - GNU tar"
 DESC="GNU tar - A utility used to store, backup, and transport files (gtar)"
@@ -48,9 +48,6 @@ CONFIGURE_OPTS_32+=" --bindir=/usr/bin"
 init
 download_source $PROG $PROG $VER
 patch_source
-# TODO: need to run autoreconf to build sucessfully with patch CVE-2018-20482
-# can be removed once it got integrated into a new release
-run_autoreconf
 prep_build
 build
 run_testsuite check
