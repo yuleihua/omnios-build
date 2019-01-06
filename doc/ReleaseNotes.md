@@ -4,6 +4,50 @@
 
 # Release Notes for OmniOSce v11 r151028
 
+## r151028j (2019-01-07)
+Weekly release for w/c 7th of January 2019.
+> This update requires a reboot
+
+### Security fixes
+
+* Update GNU tar to 1.31, fixing
+  [CVE-2018-20482](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-20482)
+* libxml2 updated to 2.9.9 -
+  [CVE-2018-9251](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-9251),
+  [CVE-2018-14404](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-14404),
+  [CVE-2018-14567](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-14567)
+
+### Updates
+
+* Fix for ZFS performance degredation with some pools due frequent metaslab
+  unload and re-load - [OS-7151](https://smartos.org/bugview/OS-7151)
+
+* bhyve updates including disk performance improvements.
+
+* Performance improvement in zone resource tracking on machines with
+  many CPUs - [illumos 9936](https://illumos.org/issues/9936)
+
+### Fixes
+
+* Workarounds for some hard disks and SSDs with buggy firmware relating to
+  power conditions.
+
+* LX: fix to openat() in order to support newer _systemd_.
+  - [see #331](https://github.com/omniosorg/illumos-omnios/issues/331)
+
+* bhyve/kvm brands did not support more than one disk when configured via
+  `zonecfg`
+
+### Features
+
+* Added `library/security/openssl/preview` to allow installation and testing
+  of OpenSSL 1.1.1 -
+  see [blog post](https://omniosce.org/article/openssl-preview)
+
+<br>
+
+----
+
 ## r151028f (2018-12-10)
 Weekly release for w/c 10th of December 2018.
 > This update requires a reboot (if `system/bhyve` is installed).
