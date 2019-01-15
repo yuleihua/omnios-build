@@ -336,10 +336,9 @@ TEST(hackrestrict, DeletedRestrictionIsNotMatched) PASS
 TEST(hackrestrict, RestrictUnflagWorks) PASS
 TEST(recvbuff, Initialization) PASS
 TEST(recvbuff, GetAndFree) PASS
-TEST(recvbuff, GetAndFill) PASS
 
 -----------------------
-38 Tests 0 Failures 0 Ignored 
+37 Tests 0 Failures 0 Ignored 
 OK
 
 *** stderr ***
@@ -354,7 +353,7 @@ RETURN VALUE: 0
 *** stderr ***
 ..........................................................
 ----------------------------------------------------------------------
-Ran 58 tests in 0.012s
+Ran 58 tests in 0.017s
 
 OK
 
@@ -368,7 +367,7 @@ RETURN VALUE: 0
 *** stderr ***
 ..............
 ----------------------------------------------------------------------
-Ran 14 tests in 0.004s
+Ran 14 tests in 0.006s
 
 OK
 
@@ -378,14 +377,11 @@ BINARY      : test_util.py
 RETURN VALUE: 0
 
 *** stdout ***
-'"'
-'n'
-'\\'
 
 *** stderr ***
 ..........................................
 ----------------------------------------------------------------------
-Ran 42 tests in 0.008s
+Ran 42 tests in 0.007s
 
 OK
 
