@@ -33,3 +33,4 @@ sshd_config.patch
 1001-dtrace32.patch
 2001-sftp-readonly.patch
 CVE-2018-15473.patch
+scp-name-validator.patch
