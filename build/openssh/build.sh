@@ -28,17 +28,16 @@
 
 PROG=openssh
 VER=7.8p1
+DASHREV=1
 VERHUMAN=$VER
 PKG=network/openssh
 SUMMARY="OpenSSH Client and utilities"
 DESC="OpenSSH Secure Shell protocol Client and associated Utilities"
 
 set_arch 64
-# OpenSSH enables spectre mitigations during build if the compiler
-# supports them. Our gcc 7 does, but they don't work and produce crashing
-# binaries. Since we want the mitigations in something like openssh, we
-# use gcc 8.
-set_gccver 8
+# Building OpenSSH with a newer GCC version causes terminal hangs; the cause
+# is not yet known.
+set_gccver 5
 
 CONFIGURE_OPTS_64+="
     --sysconfdir=/etc/ssh
