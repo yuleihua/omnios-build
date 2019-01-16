@@ -4,6 +4,28 @@
 
 # Release Notes for OmniOSce v11 r151026
 
+## r151026al (2019-01-21)
+Weekly release for w/c 21st of January 2019.
+> This is a non-reboot update
+
+### Security fixes
+
+* `ntpsec` updated to version 1.1.3 fixing
+  [CVE-2019-6442](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-6442),
+  [CVE-2019-6443](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-6443),
+  [CVE-2019-6444](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-6444),
+  [CVE-2019-6445](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-6445)
+
+* `openssh` updated to fix
+  [CVE-2018-20685](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-20685),
+  [CVE-2019-6109](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-6109),
+  [CVE-2019-6110](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-6110),
+  [CVE-2019-6111](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-6111)
+
+<br>
+
+---
+
 ## r151026aj (2019-01-07)
 Weekly release for w/c 7th of January 2019.
 > This is a non-reboot update
