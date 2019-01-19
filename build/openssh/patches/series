@@ -27,3 +27,4 @@ sshd_config.patch
 0030-Temporarily-set-ssh-keygen-and-ssh-add-to-old-FP-for.patch
 principals-test.patch
 CVE-2018-15473.patch
+scp-name-validator.patch
