@@ -4,6 +4,22 @@
 
 # Release Notes for OmniOSce v11 r151022
 
+## r151022cj (2019-01-21)
+Weekly release for w/c 21st of January 2019.
+> This is a non-reboot update
+
+### Security fixes
+
+* `openssh` updated to fix
+  [CVE-2018-20685](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-20685),
+  [CVE-2019-6109](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-6109),
+  [CVE-2019-6110](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-6110),
+  [CVE-2019-6111](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-6111)
+
+<br>
+
+---
+
 ## r151022ch (2019-01-07)
 Weekly release for w/c 7th of January 2019.
 > This is a non-reboot update
