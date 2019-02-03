@@ -28,6 +28,7 @@
 
 PROG=mercurial
 VER=4.7.2
+DASHREV=1
 PKG=developer/versioning/mercurial
 SUMMARY="Distributed version control system"
 DESC="$SUMMARY"
