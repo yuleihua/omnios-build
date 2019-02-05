@@ -21,13 +21,13 @@
 # CDDL HEADER END }}}
 #
 # Copyright 2017 OmniTI Computer Consulting, Inc.  All rights reserved.
-# Copyright 2018 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2019 OmniOS Community Edition (OmniOSce) Association.
 # Use is subject to license terms.
 #
 . ../../lib/functions.sh
 
 PROG=mercurial
-VER=4.5.3
+VER=4.9
 PKG=developer/versioning/mercurial
 SUMMARY="$PROG - a free and open source, distributed version control system"
 DESC="$SUMMARY"
