@@ -22,20 +22,21 @@
 #
 #
 # Copyright 2017 OmniTI Computer Consulting, Inc.  All rights reserved.
+# Copyright 2019 OmniOS Community Edition (OmniOSce) Association.
 # Use is subject to license terms.
 #
 # Load support functions
 . ../../lib/functions.sh
 
 PROG=mercurial
-VER=4.2.3
+VER=4.9
 PKG=developer/versioning/mercurial
 SUMMARY="$PROG - a free and open source, distributed version control system"
 DESC="$SUMMARY"
 
 DEPENDS_IPS="runtime/python-27 \
              web/curl \
-             library/security/openssl@1.0.2
+             library/security/openssl
              library/zlib"
 
 # For inet_ntop which isn't detected properly in the configure script
