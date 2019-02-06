@@ -40,7 +40,7 @@ DESC="$SUMMARY"
 BUILD_DEPENDS_IPS="developer/build/autoconf"
 DEPENDS_IPS="system/library/gcc-5-runtime library/zlib library/libffi@$FFIVERS
 	library/readline database/sqlite-3 compress/bzip2 library/libxml2
-	library/ncurses library/security/openssl"
+	library/ncurses library/security/openssl developer/object-file"
 
 export CCSHARED="-fPIC"
 CFLAGS="$CFLAGS -std=c99"
