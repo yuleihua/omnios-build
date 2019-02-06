@@ -4,6 +4,29 @@
 
 # Release Notes for OmniOSce v11 r151022
 
+## r151022cm (2019-02-11)
+Weekly release for w/c 11th of February 2019.
+> This is a non-reboot update
+
+### Security fixes
+
+* `curl` update to 7.64.0 fixing
+  [CVE-2018-16890](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-16890),
+  [CVE-2019-3822](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-3822),
+  [CVE-2019-3823](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-3823).
+
+* `mercurial` updated to 4.9 addressing a security issue regarding symlinks and
+  subrepository checkout.
+
+### Other fixes
+
+* Fix problem where `pkg` could take a long time to generate a uuid by
+  installing the `developer/object-file` package by default.
+
+<br>
+
+---
+
 ## r151022cj (2019-01-21)
 Weekly release for w/c 21st of January 2019.
 > This is a non-reboot update
