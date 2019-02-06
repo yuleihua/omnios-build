@@ -25,6 +25,7 @@ compress/zip					3.0	require
 database/sqlite-3				3	require
 developer/debug/mdb				0.5.11	require
 developer/linker				0.5.11	require
+developer/object-file				0.5.11	require
 diagnostic/cpu-counters				0.5.11	require
 diagnostic/diskinfo				0.5.11	require
 diagnostic/latencytop				0.5.11	require
