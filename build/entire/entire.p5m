@@ -19,6 +19,7 @@ depend fmri=web/ca-bundle@5.11,5.11-@PVER@ type=require
 depend fmri=database/sqlite-3@3.18,5.11-@PVER@ type=require
 depend fmri=developer/debug/mdb@0.5.11,5.11-@PVER@ type=require
 depend fmri=developer/linker@0.5.11,5.11-@PVER@ type=require
+depend fmri=developer/object-file@0.5.11,5.11-@PVER@ type=require
 depend fmri=diagnostic/cpu-counters@0.5.11,5.11-@PVER@ type=require
 depend fmri=diagnostic/diskinfo@0.5.11,5.11-@PVER@ type=require
 depend fmri=diagnostic/latencytop@0.5.11,5.11-@PVER@ type=require
