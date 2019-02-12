@@ -12,7 +12,7 @@
 # http://www.illumos.org/license/CDDL.
 # }}}
 
-# Copyright 2018 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2019 OmniOS Community Edition (OmniOSce) Association.
 #
 . ../../lib/functions.sh
 
@@ -23,7 +23,7 @@ SUMMARY="OmniOS release information"
 DESC="OmniOS /etc/release and /etc/os-release files"
 
 # Update the following line with the current release suffix
-RELSUFFIX=l
+RELSUFFIX=o
 
 RELEASE=${RELVER}${RELSUFFIX}
 RELDATE="`date +%Y.%m.%d`"
