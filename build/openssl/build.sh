@@ -28,7 +28,7 @@
 
 PROG=openssl
 VER=1.1.0j
-LVER=1.0.2q
+LVER=1.0.2r
 VERHUMAN=$VER
 PKG=library/security/openssl
 SUMMARY="Cryptography and SSL/TLS Toolkit"
