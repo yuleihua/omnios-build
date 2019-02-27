@@ -4,6 +4,19 @@
 
 # Release Notes for OmniOSce v11 r151026
 
+## r151026aq (2019-02-27)
+Weekly release for w/c 25th of February 2019.
+> This is a non-reboot update
+
+# Security fixes
+
+* `openssl` updated to 1.0.2r/1.1.1b fixing
+  [CVE-2019-1559](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-1559)
+
+<br>
+
+---
+
 ## r151026ao (2019-02-11)
 Weekly release for w/c 11th of February 2019.
 > This is a non-reboot update
