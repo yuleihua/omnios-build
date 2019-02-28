@@ -23,6 +23,7 @@
 #
 # Copyright 2011-2012 OmniTI Computer Consulting, Inc.  All rights reserved.
 # Use is subject to license terms.
+# Copyright 2019 OmniOS Community Edition (OmniOSce) Association.
 #
 
 SHELL=/usr/bin/bash
@@ -196,6 +197,11 @@ push_pkgs() {
 	logerr "Could not set publisher on staging repo"
 
     logmsg "Staging illumos packages to $STAGE_REPO"
+    [ "$FLAVOR" = ctf ] && \
+        FLAVOR="SUNWcs `pkg search -H -o pkg.name \
+            dir:path:/kernel OR dir:path:/platform \
+            | egrep -v 'driver/virtualization/kvm'`"
+
     logcmd pkgmerge -d $STAGE_REPO \
 	-s debug.illumos=false,packages/i386/nightly-nd/repo.redist/ \
 	-s debug.illumos=true,packages/i386/nightly/repo.redist/ \
