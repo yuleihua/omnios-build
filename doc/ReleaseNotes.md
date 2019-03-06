@@ -4,6 +4,25 @@
 
 # Release Notes for OmniOSce v11 r151026
 
+## r151026ar (2019-03-06)
+Weekly release for w/c 4th of March 2019.
+> This update requires a reboot.
+
+# Security fixes
+
+* A system crash can occur if a corrupt/malicious ELF object is executed;
+  [illumos issue 10505](https://illumos.org/issues/10505).
+* Fix for denial of service (requires access to a non-global zone in order
+  to exploit); [illumos issue 10472](https://illumos.org/issues/10472).
+* `python2` updated to 2.7.16 fixing
+  [CVE-2019-5010](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-5010),
+  [CVE-2013-1752](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2013-1752),
+  [CVE-2018-14647](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-14647)
+
+<br>
+
+---
+
 ## r151026aq (2019-02-27)
 Weekly release for w/c 25th of February 2019.
 > This is a non-reboot update
