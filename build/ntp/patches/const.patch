@@ -1,0 +1,17 @@
+
+When compiling without optimisation, the following error is seen:
+
+ntp_control.c:1919:3: error: initializer element is not constant
+   to_ms_usec;
+
+--- ntp-4.2.8p13/ntpd/ntp_control.c~	2019-03-15 11:31:31.782170538 +0000
++++ ntp-4.2.8p13/ntpd/ntp_control.c	2019-03-15 11:31:56.090368871 +0000
+@@ -1916,7 +1916,7 @@
+ # ifdef STA_NANO
+ 		1.0e-6; /* nsec to msec */
+ # else
+-		to_ms_usec;
++		1.0e-3;
+ # endif
+ 
+ 	/*
