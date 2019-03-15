@@ -4,6 +4,19 @@
 
 # Release Notes for OmniOSce v11 r151022
 
+## r151022cr (2019-03-19)
+Weekly release for w/c 18th of March 2019.
+> This is a non-reboot update.
+
+# Security fixes
+
+* The `network/ntp` package has been updated to version 4.2.8p13 addressing
+  [one security vulnerability](http://support.ntp.org/bin/view/Main/SecurityNotice#Recent_Vulnerabilities).
+
+<br>
+
+---
+
 ## r151022cp (2019-03-06)
 Weekly release for w/c 4th of March 2019.
 > This update requires a reboot.
