@@ -4,6 +4,27 @@
 
 # Release Notes for OmniOSce v11 r151028
 
+## r151028t (2019-03-19)
+Weekly release for w/c 18th of March 2019.
+> This is a non-reboot update.
+
+# Security fixes
+
+* The `network/ntp` package has been updated to version 4.2.8p13 addressing
+  [one security vulnerability](http://support.ntp.org/bin/view/Main/SecurityNotice#Recent_Vulnerabilities).
+
+# Other changes
+
+* A new `system/network/cdp` package is available that provides a service
+  that uses Cisco Discovery Protocol to advertise the local host to
+  neighbouring switches, and to maintain a table of neighbours that can
+  be viewed via `cdpadm show nei`. This new service was contributed by
+  [Prominic.NET](https://prominic.net).
+
+<br>
+
+---
+
 ## r151028r (2019-03-06)
 Weekly release for w/c 4th of March 2019.
 > This update requires a reboot.
@@ -25,7 +46,7 @@ Weekly release for w/c 4th of March 2019.
 
 ## r151028q (2019-02-27)
 Weekly release for w/c 25th of February 2019.
-> This is a non-reboot update
+> This is a non-reboot update.
 
 # Security fixes
 
@@ -41,7 +62,7 @@ Weekly release for w/c 25th of February 2019.
 
 ## r151028o (2019-02-11)
 Weekly release for w/c 11th of February 2019.
-> This is a non-reboot update
+> This is a non-reboot update.
 
 ### Security fixes
 
@@ -64,7 +85,7 @@ Weekly release for w/c 11th of February 2019.
 
 ## r151028l (2019-01-21)
 Weekly release for w/c 21st of January 2019.
-> This is a non-reboot update
+> This is a non-reboot update.
 
 ### Security fixes
 
@@ -91,7 +112,7 @@ Weekly release for w/c 21st of January 2019.
 
 ## r151028j (2019-01-07)
 Weekly release for w/c 7th of January 2019.
-> This update requires a reboot
+> This update requires a reboot.
 
 ### Security fixes
 
