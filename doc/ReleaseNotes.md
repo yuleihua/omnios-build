@@ -4,6 +4,19 @@
 
 # Release Notes for OmniOSce v11 r151028
 
+## r151028u (2019-03-27)
+Weekly release for w/c 25th of March 2019.
+> This is a non-reboot update.
+
+# Changes
+
+* Update the `lipkg` and `sparse` brands to fix a problem where openssh was
+  not being installed in new zones.
+
+<br>
+
+---
+
 ## r151028t (2019-03-19)
 Weekly release for w/c 18th of March 2019.
 > This is a non-reboot update.
