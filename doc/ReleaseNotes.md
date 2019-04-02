@@ -4,6 +4,22 @@
 
 # Release Notes for OmniOSce v11 r151028
 
+## r151028v (2019-04-01)
+Weekly release for w/c 1st of April 2019.
+> This update requires a reboot.
+
+# Security fixes
+
+* Access problem with SMB server -
+  [illumos issue 10506](https://illumos.org/issues/10506) -
+  [CVE-2019-9579](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-9579)
+* dls\_unbind() needs better checking -
+  [illumos issue 10543](https://illumos.org/issues/10543)
+
+<br>
+
+---
+
 ## r151028u (2019-03-27)
 Weekly release for w/c 25th of March 2019.
 > This is a non-reboot update.
