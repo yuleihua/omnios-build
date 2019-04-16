@@ -13,6 +13,14 @@ r151030 release repository: https://pkg.omniosce.org/r151030/core
 
 ## Upgrade Notes
 
+* As the _developer/library/lint_ and _developer/sunstudio12.1_ packages have
+  been removed in this release, any old packages which depend on them must
+  be uninstalled before upgrading. These packages can be found using:
+  ```
+  pkg search -l ':depend:require:*lint'
+  pkg search -l ':depend:require:*studio*'
+  ```
+
 * Several legacy SunSSH compatibility options for OpenSSH were deprecated
   with release r151026 and were removed in r151028. **Please ensure that the
   old directives are removed from your configuration files prior to upgrading
@@ -41,8 +49,6 @@ r151030 release repository: https://pkg.omniosce.org/r151030/core
 * The console now has full framebuffer support with variable resolution,
   more colours and unicode fonts. This is also visible in the boot loader.
 
-* Support for UEFI boot.
-
 * Several 32-bit only packages have been moved to 64-bit only.
 
 * OmniOS userland is now built with gcc version 8.
@@ -59,7 +65,7 @@ r151030 release repository: https://pkg.omniosce.org/r151030/core
 * The `ipadm` and `dladm` commands now show IP and link information if invoked
   without arguments.
 
-* `dladm show-vnic` now shows the zone which which each VNIC is assigned.
+* `dladm show-vnic` now shows the zone to which each VNIC is assigned.
 
 * The default behaviour of recursive `chown` and `chgrp` has changed and these
   commands are now safer with respect to following symbolic links. If only
@@ -81,16 +87,24 @@ r151030 release repository: https://pkg.omniosce.org/r151030/core
 * `pkgsrc` branded zones are now available; these are sparse zones with pkgsrc
   pre-installed.
 
+* `illumos` branded zones are now available; these run an independant illumos
+  distribution under the shared OmniOS kernel. Subject to the constraints
+  imposed by the shared kernel, it can be used to run a different version of
+  OmniOS userland or even a different illumos distribution.
+
 * Zone VNICs and networking information can now be dynamically managed as part
   of the zone configuration. Refer to <https://omniosce.org/setup/zones>
   for more details.
 
+* A firewall policy can now be enforced on a non-global zone by creating
+  ipf configuration files under `<zoneroot>/etc/`. Rules defined in these
+  files cannot be viewed nor overridden from inside the zone. Additional
+  rules can be defined within the zone. This works for all zone types apart
+  from kvm zones; it is even possible to define a global firewall policy
+  for a bhyve zone.
+
 * The memory footprint of zones has been reduced by disabling unecessary
   services.
-
-### LX zones
-
-* Many other fixes and compatibility updates from Joyent.
 
 ### ZFS
 
@@ -159,8 +173,6 @@ r151030 release repository: https://pkg.omniosce.org/r151030/core
   `mercurial` package which does not yet support Python 3.
   Most python 2.7 modules have been removed.
   Python bindings for libxml2 and libxslt have been removed.
-
-* Perl has been upgraded to 5.30.
 
 * OpenJDK has been upgraded to 1.8.
 
