@@ -21,7 +21,7 @@
 # CDDL HEADER END }}}
 #
 # Copyright 2011-2017 OmniTI Computer Consulting, Inc.  All rights reserved.
-# Copyright 2018 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2019 OmniOS Community Edition (OmniOSce) Association.
 # Use is subject to license terms.
 #
 
@@ -29,7 +29,7 @@
 
 case $DEPVER in
     "")
-        DEPVER=5.28.1
+        DEPVER=5.28.2
         logmsg "no version specified, using $DEPVER"
         ;;
 esac
