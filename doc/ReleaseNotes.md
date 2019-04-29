@@ -4,6 +4,25 @@
 
 # Release Notes for OmniOSce v11 r151028
 
+## r151028z (2019-04-29)
+Weekly release for w/c 29th of April 2019.
+> This is a non-reboot update.
+
+# Security fixes
+
+* Update to `pkg`, fixing
+  [CVE-2019-2704](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-2704)
+*  `wget` updated to 1.20.3, fixing
+  [CVE-2019-5953](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-5953)
+
+# Other changes
+
+* `perl` updated to 5.28.2
+
+<br>
+
+---
+
 ## r151028v (2019-04-01)
 Weekly release for w/c 1st of April 2019.
 > This update requires a reboot.
