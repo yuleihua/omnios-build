@@ -2,12 +2,11 @@
 <img src="https://omniosce.org/OmniOSce_logo.svg" height="128">
 </a>
 
-# Release Notes for OmniOSce v11 r151030
-![#f03c15](https://placehold.it/15/f03c15/000000?text=+) ** These are DRAFT release notes ** ![#f03c15](https://placehold.it/15/f03c15/000000?text=+)
+# Release Notes for OmniOSce v11 r151030 (LTS)
 
-Stable and LTS Release, TBC of May 2019
+Stable and LTS Release, 6th of May 2019
 
-`uname -a` shows `omnios-r151030-XXX`
+`uname -a` shows `omnios-r151030-f1189fc02c`
 
 r151030 release repository: https://pkg.omniosce.org/r151030/core
 
@@ -150,7 +149,8 @@ r151030 release repository: https://pkg.omniosce.org/r151030/core
 * Support for modern AMD and Intel systems.
 
 * New para-virtualisation drivers for running OmniOS under Microsoft
-  Hyper-V/Azure. These are delivered by the new `driver/hyperv/pv` package.
+  Hyper-V/Azure (beta).
+  These are delivered by the new `driver/hyperv/pv` package.
 
 * New `bnx` (Broadcom NetXtreme) network driver.
 
@@ -221,5 +221,136 @@ r151030 release repository: https://pkg.omniosce.org/r151030/core
 
 ### Package changes ([+] Added, [-] Removed, [\*] Changed)
 
-XXX
-
+| Package | Old Version | New Version |
+| :------ | :---------- | :---------- |
+| archiver/gnu-tar | 1.31 | 1.32
+| compress/gzip | 1.9 | 1.10
+| **consolidation/l10n/l10n-incorporation** | _New_ | 0.5.11
+| data/iso-codes | 4.1 | 4.2
+| database/sqlite-3 | 3.25.2 | 3.28.0
+| ~~developer/acpi/compiler~~ | 20180810 | _Removed_
+| ~~developer/bmake~~ | 20180512 | _Removed_
+| **developer/debug/ctf** | _New_ | 0.5.11
+| developer/gcc7 | 7.3.0 | 7.4.0
+| developer/gcc8 | 8.2.0 | 8.3.0
+| developer/gnu-binutils | 2.31.1 | 2.32
+| ~~developer/java/jdk~~ | 1.7.0.201.0 | _Removed_
+| ~~developer/java/jdk8~~ | 1.8.0.202.20190219 | _Removed_
+| **developer/java/openjdk8** | _New_ | 1.8.0.202.20190219
+| ~~developer/library/lint~~ | 0.5.11 | _Removed_
+| developer/nasm | 2.13.3 | 2.14.2
+| developer/parser/bison | 3.1 | 3.3.2
+| ~~developer/sunstudio12.1~~ | 12.1 | _Removed_
+| developer/versioning/git | 2.19.2 | 2.21.0
+| developer/versioning/mercurial | 4.9 | 4.9.1
+| developer/versioning/sccs | 0.5.11 | 5.9
+| **driver/hyperv/pv** | _New_ | 0.5.11
+| **driver/inotify** | _New_ | 0.5.11
+| editor/vim | 8.1.978 | 8.1.1057
+| file/gnu-coreutils | 8.30 | 8.31
+| library/c++/sigcpp | 2.99.11 | 2.99.12
+| library/glib2 | 2.58.1 | 2.60.0
+| library/mpfr | 4.0.1 | 4.0.2
+| library/ncurses | 6.1.20180923 | 6.1.20190323
+| library/nghttp2 | 1.33.0 | 1.37.0
+| library/nspr | 4.20 | 4.21
+| library/nspr/header-nspr | 4.20 | 4.21
+| library/pcre | 8.42 | 8.43
+| **library/pcre2** | _New_ | 10.33
+| ~~library/python-2/asn1crypto-27~~ | 0.24.0 | _Removed_
+| ~~library/python-2/cffi-27~~ | 1.11.5 | _Removed_
+| ~~library/python-2/cheroot-27~~ | 6.5.2 | _Removed_
+| ~~library/python-2/cherrypy-27~~ | 17.3.0 | _Removed_
+| ~~library/python-2/contextlib2-27~~ | 0.5.5 | _Removed_
+| ~~library/python-2/coverage-27~~ | 4.5.1 | _Removed_
+| ~~library/python-2/cryptography-27~~ | 2.3.1 | _Removed_
+| ~~library/python-2/enum-27~~ | 1.1.6 | _Removed_
+| ~~library/python-2/functools32-27~~ | 3.2.3.2 | _Removed_
+| ~~library/python-2/functools_lru_cache-27~~ | 1.5 | _Removed_
+| ~~library/python-2/idna-27~~ | 2.7 | _Removed_
+| ~~library/python-2/ipaddress-27~~ | 1.0.22 | _Removed_
+| ~~library/python-2/jaraco.classes-27~~ | 1.5 | _Removed_
+| ~~library/python-2/jaraco.functools-27~~ | 1.20 | _Removed_
+| ~~library/python-2/jsonrpclib-27~~ | 0.1.7 | _Removed_
+| ~~library/python-2/jsonschema-27~~ | 2.6.0 | _Removed_
+| ~~library/python-2/mako-27~~ | 1.0.7 | _Removed_
+| ~~library/python-2/more-itertools-27~~ | 4.3.0 | _Removed_
+| ~~library/python-2/ply-27~~ | 3.11 | _Removed_
+| ~~library/python-2/portend-27~~ | 2.3 | _Removed_
+| ~~library/python-2/prettytable-27~~ | 0.7.2 | _Removed_
+| ~~library/python-2/pybonjour-27~~ | 1.1.1 | _Removed_
+| ~~library/python-2/pycparser-27~~ | 2.18 | _Removed_
+| ~~library/python-2/pycurl-27~~ | 7.43.0.2 | _Removed_
+| ~~library/python-2/pyopenssl-27~~ | 18.0.0 | _Removed_
+| ~~library/python-2/pytz-27~~ | 2018.5 | _Removed_
+| library/python-2/setuptools-27 | 40.2.0 | 40.8.0
+| ~~library/python-2/simplejson-27~~ | 3.16.0 | _Removed_
+| ~~library/python-2/six-27~~ | 1.11.0 | _Removed_
+| ~~library/python-2/tempora-27~~ | 1.13 | _Removed_
+| ~~library/python-2/zc.lockfile-27~~ | 1.3.0 | _Removed_
+| **library/python-3/attrs-35** | _New_ | 19.1.0
+| library/python-3/cffi-35 | 1.11.5 | 1.12.2
+| library/python-3/cheroot-35 | 6.5.2 | 6.5.4
+| library/python-3/cherrypy-35 | 18.0.1 | 18.1.1
+| library/python-3/coverage-35 | 4.5.1 | 4.5.3
+| library/python-3/cryptography-35 | 2.3.1 | 2.6.1
+| library/python-3/idna-35 | 2.7 | 2.8
+| library/python-3/jsonrpclib-35 | 0.3.1 | 0.4.0
+| library/python-3/jsonschema-35 | 2.6.0 | 3.0.1
+| library/python-3/mako-35 | 1.0.7 | 1.0.8
+| **library/python-3/meson-35** | _New_ | 0.50.1
+| library/python-3/more-itertools-35 | 4.3.0 | 7.0.0
+| library/python-3/pycparser-35 | 2.18 | 2.19
+| library/python-3/pyopenssl-35 | 18.0.0 | 19.0.0
+| **library/python-3/pyrsistent-35** | _New_ | 0.14.11
+| library/python-3/pytz-35 | 2018.5 | 2019.1
+| library/python-3/setuptools-35 | 40.2.0 | 40.8.0
+| library/python-3/six-35 | 1.11.0 | 1.12.0
+| library/python-3/tempora-35 | 1.13 | 1.14
+| library/python-3/zc.lockfile-35 | 1.3.0 | 1.4
+| library/readline | 7.0 | 8.0
+| library/security/openssl | 1.1.0.10 | 1.1.1.2
+| ~~library/security/openssl/preview~~ | 1.1.1.2 | _Removed_
+| network/dns/bind | 9.11.4.2 | 9.11.6
+| network/openssh | 7.8.1 | 7.9.1
+| network/openssh-server | 7.8.1 | 7.9.1
+| ~~package/pkg-35~~ | 0.5.11 | _Removed_
+| ~~runtime/java~~ | 1.7.0.201.0 | _Removed_
+| **runtime/java/openjdk8** | _New_ | 1.8.0.202.20190219
+| ~~runtime/java8~~ | 1.8.0.202.20190219 | _Removed_
+| runtime/python-35 | 3.5.6 | 3.5.7
+| security/sudo | 1.8.25.1 | 1.8.27
+| shell/bash | 4.4.23 | 5.0
+| shell/zsh | 5.6.2 | 5.7.1
+| system/data/zoneinfo | 2018.7 | 2019.1
+| **system/defaults** | _New_ | 0.5.11
+| **system/hyperv/tools** | _New_ | 0.5.11
+| **system/library/bhyve** | _New_ | 0.5.11
+| system/library/dbus | 1.12.10 | 1.12.12
+| **system/library/demangle** | _New_ | 0.5.11
+| **system/library/iconv/extra** | _New_ | 0.5.11
+| ~~system/library/iconv/utf-8/manual~~ | 0.5.11 | _Removed_
+| system/library/libdbus | 1.12.10 | 1.12.12
+| ~~system/library/liblayout~~ | 0.5.11 | _Removed_
+| system/library/mozilla-nss | 3.41 | 3.43
+| system/library/mozilla-nss/header-nss | 3.41 | 3.43
+| **system/library/python/libbe-35** | _New_ | 0.5.11
+| **system/library/python/solaris-35** | _New_ | 0.5.11
+| **system/library/python/zfs-35** | _New_ | 0.5.11
+| system/management/mdata-client | 20170105 | 20190228
+| **system/network/lldp** | _New_ | 0.4.0
+| system/pciutils/pci.ids | 2.2.20181025 | 2.2.20190312
+| **system/test/elftest** | _New_ | 0.5.11
+| system/test/fio | 3.10 | 3.13
+| **system/test/smbclient** | _New_ | 0.5.11
+| system/virtualization/open-vm-tools | 10.3.0 | 10.3.10
+| **system/zones/brand/illumos** | _New_ | 0.5.11
+| **system/zones/brand/pkgsrc** | _New_ | 0.5.11
+| terminal/tmux | 2.7 | 2.8
+| ~~text/auto_ef~~ | 0.5.11 | _Removed_
+| text/gawk | 4.2.1 | 5.0.0
+| text/gnu-diffutils | 3.6 | 3.7
+| text/gnu-grep | 3.1 | 3.3
+| text/gnu-sed | 4.5 | 4.7
+| text/groff | 1.22.3 | 1.22.4
+| web/curl | 7.64.0 | 7.64.1
