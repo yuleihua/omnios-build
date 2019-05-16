@@ -151,6 +151,9 @@ r151030 release repository: https://pkg.omniosce.org/r151030/core
 * New para-virtualisation drivers for running OmniOS under Microsoft
   Hyper-V/Azure (beta).
   These are delivered by the new `driver/hyperv/pv` package.
+  > NB: At present, only Gen1 machines are supported and at least two
+  > vCPUs must be configured. These limitations will be addressed in a future
+  > release.
 
 * New `bnx` (Broadcom NetXtreme) network driver.
 
