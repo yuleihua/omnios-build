@@ -4,6 +4,46 @@
 
 # Release Notes for OmniOSce v11 r151022
 
+## r151022da (2019-05-22)
+Weekly release for w/c 20th of May 2019.
+> This update requires a reboot.
+
+# Security Fixes
+
+* Mitigations for a series of CPU side channel vulnerabilities that affect
+  Intel CPUs. These are collectively known as multi-architectural data
+  sampling (MDS) vulnerabilities and cover the following CVEs:
+  * [CVE-2018-12126](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-12126)
+  * [CVE-2018-12127](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-12127)
+  * [CVE-2018-12130](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-12130)
+  * [CVE-2019-11091](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-11091)
+
+  For more information, refer to the [Intel security advisory](https://www.intel.com/content/www/us/en/security-center/advisory/intel-sa-00233.html)
+
+* Intel CPU microcode has been updated to the 20190514 release.
+
+# Other Changes
+
+* New feature allowing hyperthreading to be disabled on a running system or
+  at boot time. To disable on an active system use `psradm -aS` and to disable
+  at every boot `echo smt_enabled=false > /boot/conf.d/smt`
+  [illumos 11048](https://www.illumos.org/issues/11048)
+
+* The `mdb -ke ::sec` command has been updated to cover the new MDS
+  vulnerabilities.
+
+* It is now possible to configure the desired behaviour in response to receipt
+  of an NMI via a boot option in place of `/etc/system`. For example, to
+  cause a panic, `echo nmi=panic > /boot/conf.d/nmi`. Other options are
+  _kmdb_ and _ignore_ (the default).
+
+* The `cpuid` utility has been updated to show whether the processor supports
+  the new *MD\_CLEAR* feature (delivered via microcode update).
+
+<br>
+
+---
+
 ## r151022cx (2019-04-29)
 Weekly release for w/c 29th of April 2019.
 > This is a non-reboot update.
