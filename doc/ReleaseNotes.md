@@ -4,6 +4,19 @@
 
 # Release Notes for OmniOSce v11 r151022
 
+## r151022dc (2019-06-03)
+Weekly release for w/c 3rd of June 2019.
+> This is a non-reboot update.
+
+# Security Fixes
+
+* OpenSSL update to 1.0.2s, fixing
+  * [CVE-2019-1559](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-1559)
+
+<br>
+
+---
+
 ## r151022da (2019-05-22)
 Weekly release for w/c 20th of May 2019.
 > This update requires a reboot.
