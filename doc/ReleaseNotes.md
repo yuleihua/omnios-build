@@ -4,6 +4,20 @@
 
 # Release Notes for OmniOSce v11 r151030 (LTS)
 
+## r151030e (2019-06-03)
+Weekly release for w/c 3rd of June 2019.
+> This is a non-reboot update.
+
+# Security Fixes
+
+* OpenSSL updates to 1.1.1c/1.0.2s, fixing
+  * [CVE-2019-1559](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-1559)
+  * [CVE-2019-1543](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-1543)
+
+<br>
+
+---
+
 ## r151030c (2019-05-22)
 Weekly release for w/c 20th of May 2019.
 > This update requires a reboot.
