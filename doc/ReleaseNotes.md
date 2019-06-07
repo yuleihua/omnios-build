@@ -4,6 +4,20 @@
 
 # Release Notes for OmniOSce v11 r151022
 
+## r151022dd (2019-06-11)
+Weekly release for w/c 10th of June 2019.
+> This is a non-reboot update.
+
+# Security Fixes
+
+* Curl upgraded to 7.65.1
+  * [CVE-2019-5435](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-5435): Integer overflows in curl_url_set
+  * [CVE-2019-5436](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-5436): tftp: use the current blksize for recvfrom()
+
+* Vim patched against [CVE-2019-12735](https://github.com/numirias/security/blob/master/doc/2019-06-04_ace-vim-neovim.md)
+
+<br>
+
 ## r151022dc (2019-06-03)
 Weekly release for w/c 3rd of June 2019.
 > This is a non-reboot update.
