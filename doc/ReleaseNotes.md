@@ -4,6 +4,36 @@
 
 # Release Notes for OmniOSce v11 r151030 (LTS)
 
+## r151030h (2019-06-24)
+Weekly release for w/c 24th of June 2019.
+> This update requires a reboot.
+
+# Security Fixes
+
+* Expat upgraded to 2.2.7 to fix denial-of-service vulnerability.
+
+# Other changes
+
+* Performance improvements and fixes for occasional VM lockups -
+  [SmartOS OS-7753](https://smartos.org/bugview/OS-7753)
+
+* Improvements to support for running under Hyper-V, including fixes for
+  running with a single virtual CPU, under lower memory conditions and on
+  newer versions of the hypervisor.
+
+* Addition of the `system/virtualization/azure-agent` package to provide the
+  agent service required for running under Microsoft Azure.
+
+* Update of the gcc-7 package to include the latest fixes from the upstream
+  illumos gcc branch.
+
+* Update to the template environment files that can be used for building
+  illumos-gate - `/opt/onbld/env/`
+
+<br>
+
+---
+
 ## r151030f (2019-06-11)
 Weekly release for w/c 10th of June 2019.
 > This is a non-reboot update.
