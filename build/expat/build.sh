@@ -21,13 +21,12 @@
 # CDDL HEADER END }}}
 #
 # Copyright 2011-2012 OmniTI Computer Consulting, Inc.  All rights reserved.
-# Copyright 2018 OmniOS Community Edition (OmniOSce) Association.
-# Use is subject to license terms.
+# Copyright 2019 OmniOS Community Edition (OmniOSce) Association.
 #
 . ../../lib/functions.sh
 
 PROG=expat
-VER=2.2.6
+VER=2.2.7
 PKG=library/expat
 SUMMARY="XML parser library"
 DESC="Fast streaming XML parser written in C"
@@ -47,12 +46,9 @@ make_clean() {
 init
 download_source $PROG $PROG $VER
 patch_source
-run_autoreconf
 prep_build
 build
 run_testsuite check
-make_isa_stub
-sync
 make_package
 clean_up
 
