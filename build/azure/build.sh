@@ -26,14 +26,14 @@ RUN_DEPENDS_IPS="
 
 PROG=WAGuestAgent
 PKG=system/virtualization/azure-agent
-VER=2.2.40
+VER=2.2.41
 SUMMARY="Microsoft Azure Guest Agent"
 DESC="The $SUMMARY (waagent) manages provisioning and VM interaction "
 DESC+="with the Azure Fabric Controller."
 
 # Respect environmental overrides for these to ease development.
 : ${WAAGENT_SOURCE_REPO:=$GITHUB/$PROG}
-: ${WAAGENT_SOURCE_BRANCH:=master}
+: ${WAAGENT_SOURCE_BRANCH:=r$RELVER}
 
 # Extend VER so that the temporary build directory is branch specific.
 # Branch names can include '/' so remove them.
