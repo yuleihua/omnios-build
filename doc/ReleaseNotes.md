@@ -4,6 +4,18 @@
 
 # Release Notes for OmniOSce v11 r151028
 
+## r151028ah (2019-06-24)
+Weekly release for w/c 24th of June 2019.
+> This is a non-reboot update.
+
+# Security Fixes
+
+* Expat upgraded to 2.2.7 to fix denial-of-service vulnerability.
+
+<br>
+
+---
+
 ## r151028af (2019-06-11)
 Weekly release for w/c 10th of June 2019.
 > This is a non-reboot update.
@@ -21,6 +33,8 @@ Weekly release for w/c 10th of June 2019.
 * Fix for package signing incompatibility with r151030 servers
 
 <br>
+
+---
 
 ## r151028ae (2019-06-03)
 Weekly release for w/c 3rd of June 2019.
