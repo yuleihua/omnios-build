@@ -4,6 +4,18 @@
 
 # Release Notes for OmniOSce v11 r151022
 
+## r151022df (2019-06-24)
+Weekly release for w/c 24th of June 2019.
+> This is a non-reboot update.
+
+# Security Fixes
+
+* Update to `expat` to fix denial-of-service bug.
+
+<br>
+
+---
+
 ## r151022dd (2019-06-11)
 Weekly release for w/c 10th of June 2019.
 > This is a non-reboot update.
@@ -17,6 +29,8 @@ Weekly release for w/c 10th of June 2019.
 * Vim patched against [CVE-2019-12735](https://github.com/numirias/security/blob/master/doc/2019-06-04_ace-vim-neovim.md)
 
 <br>
+
+---
 
 ## r151022dc (2019-06-03)
 Weekly release for w/c 3rd of June 2019.
