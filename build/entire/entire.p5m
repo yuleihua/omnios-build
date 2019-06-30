@@ -9,7 +9,7 @@ depend fmri=incorporation/jeos/omnios-userland type=require
 depend fmri=SUNWcs@0.5.11,5.11-@PVER@ type=require
 depend fmri=SUNWcsd@0.5.11,5.11-@PVER@ type=require
 depend fmri=compatibility/ucb@0.5.11,5.11-@PVER@ type=require
-depend fmri=compress/bzip2@1.0.6,5.11-@PVER@ type=require
+depend fmri=compress/bzip2@1.0.7,5.11-@PVER@ type=require
 depend fmri=compress/gzip@1.8,5.11-@PVER@ type=require
 depend fmri=compress/p7zip@16,5.11-@PVER@ type=require
 depend fmri=compress/unzip@6.0,5.11-@PVER@ type=require

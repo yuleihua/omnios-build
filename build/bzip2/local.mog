@@ -1,1 +1,8 @@
 license LICENSE license=bzip2
+
+link path=usr/lib/libbz2.so.1 target=libbz2.so.1.0
+link path=usr/lib/libbz2.so target=libbz2.so.1
+
+link path=usr/lib/amd64/libbz2.so.1 target=libbz2.so.1.0
+link path=usr/lib/amd64/libbz2.so target=libbz2.so.1
+
