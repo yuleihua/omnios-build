@@ -4,6 +4,18 @@
 
 # Release Notes for OmniOSce v11 r151028
 
+## r151028aj (2019-07-08)
+
+# Security Fixes
+
+* bzip2 upgraded to 1.0.7, fixing
+  [CVE-2019-12900](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-12900)
+  and several other bugs.
+
+<br>
+
+---
+
 ## r151028ah (2019-06-24)
 Weekly release for w/c 24th of June 2019.
 > This is a non-reboot update.
