@@ -4,6 +4,20 @@
 
 # Release Notes for OmniOSce v11 r151030 (LTS)
 
+## r151030j (2019-07-08)
+Weekly release for w/c 8th of July 2019.
+> This is a non-reboot update
+
+# Security Fixes
+
+* bzip2 upgraded to 1.0.7, fixing
+  [CVE-2019-12900](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-12900)
+  and several other bugs.
+
+<br>
+
+---
+
 ## r151030h (2019-06-24)
 Weekly release for w/c 24th of June 2019.
 > This update requires a reboot.
