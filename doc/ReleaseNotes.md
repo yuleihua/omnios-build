@@ -4,6 +4,31 @@
 
 # Release Notes for OmniOSce v11 r151030 (LTS)
 
+## r151030l (2019-07-22)
+Weekly release for w/c 22nd of July 2019.
+> This is a non-reboot update
+
+# Security Fixes
+
+* nss upgraded to 3.45, fixing
+  [CVE-2019-11719](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-11719),
+  [CVE-2019-11729](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-11729),
+  [CVE-2019-11727](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-11727)
+  and several other bugs.
+
+# Other Changes
+
+* The `gcc-ar` utility has been fixed for both gcc7 and gcc8.
+
+* Updates to retpoline external thunk generation for both gcc7 and gcc8.
+  See [illumos gcc issue 25](https://github.com/illumos/gcc/issues/25) for
+  further details.
+
+
+<br>
+
+---
+
 ## r151030j (2019-07-08)
 Weekly release for w/c 8th of July 2019.
 > This is a non-reboot update
