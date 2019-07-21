@@ -4,6 +4,26 @@
 
 # Release Notes for OmniOSce v11 r151022
 
+## r151022dj (2019-07-22)
+Weekly release for w/c 22nd of July 2019.
+> This is a non-reboot update
+
+# Security Fixes
+
+* nss upgraded to 3.45, fixing
+  [CVE-2019-11719](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-11719),
+  [CVE-2019-11729](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-11729),
+  [CVE-2019-11727](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-11727)
+  and several other bugs.
+
+# Other changes
+
+* nspr upgraded to 4.21
+
+<br>
+
+---
+
 ## r151022dh (2019-07-08)
 
 # Security Fixes
