@@ -3,3 +3,5 @@ man-sections.patch
 mountlist.c.patch
 who.c.patch
 Makefile.in.patch
+ln-s-catch-EINVAL.patch
+ln-port-to-platforms-lacking-O_DIRECTORY.patch
