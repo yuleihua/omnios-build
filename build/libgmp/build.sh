@@ -58,14 +58,14 @@ CONFIGURE_OPTS="
 save_function configure32 _configure32
 configure32() {
     export ABI=32
-    export MPNPATH="$MPN32"
+    export MPN_PATH="$MPN32"
     _configure32
 }
 
 save_function configure64 _configure64
 configure64() {
     export ABI=64
-    export MPNPATH="$MPN64"
+    export MPN_PATH="$MPN64"
     _configure64
 }
 
