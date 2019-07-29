@@ -4,6 +4,18 @@
 
 # Release Notes for OmniOSce v11 r151030 (LTS)
 
+## r151030m (2019-07-29)
+Weekly release for w/c 29th of July 2019.
+> This is a non-reboot update
+
+# Changes
+
+* Updated `gnu-coreutils` package to fix bugs in the GNU `ln` command.
+
+<br>
+
+---
+
 ## r151030l (2019-07-22)
 Weekly release for w/c 22nd of July 2019.
 > This is a non-reboot update
@@ -23,7 +35,6 @@ Weekly release for w/c 22nd of July 2019.
 * Updates to retpoline external thunk generation for both gcc7 and gcc8.
   See [illumos gcc issue 25](https://github.com/illumos/gcc/issues/25) for
   further details.
-
 
 <br>
 
