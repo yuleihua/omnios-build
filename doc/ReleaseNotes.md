@@ -4,6 +4,18 @@
 
 # Release Notes for OmniOSce v11 r151030 (LTS)
 
+## r151030q (2019-08-27)
+Weekly release for w/c 26th of August 2019.
+> This is a non-reboot update
+
+# Changes
+
+* Updated `shell/bash` package to version 5.0.9
+
+<br>
+
+---
+
 ## r151030m (2019-07-29)
 Weekly release for w/c 29th of July 2019.
 > This is a non-reboot update
