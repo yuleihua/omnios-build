@@ -4,6 +4,37 @@
 
 # Release Notes for OmniOSce v11 r151030 (LTS)
 
+## r151030s (2019-09-12)
+Weekly release for w/c 9th of September 2019.
+> This is a non-reboot update
+
+# Security Fixes
+
+* `openssl` updated to 1.1.1d/1.0.2t, fixing
+  [CVE-2019-1547](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-1547),
+  [CVE-2019-1549](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-1549),
+  [CVE-2019-1563](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-1563)
+
+* `curl` updated to 7.66.0, fixing
+  [CVE-2019-5481](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-5481),
+  [CVE-2019-5482](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-5482)
+
+* `ca-bundle` updated, removing four expired root certificates.
+
+* Terminal information is now provided for the `rxvt-unicode` terminal type.
+  This is via the new `system/data/urxvt-terminfo` package which will be
+  automatically installed when upgrading to this release.
+
+# Other Changes
+
+* `pkg` updated to fix some boundary check issues when updating sparse zones.
+
+* Updated Mozilla NSS/NSPR to version 3.46/4.22
+
+<br>
+
+---
+
 ## r151030q (2019-08-27)
 Weekly release for w/c 26th of August 2019.
 > This is a non-reboot update
