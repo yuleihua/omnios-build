@@ -4,6 +4,30 @@
 
 # Release Notes for OmniOSce v11 r151022
 
+## r151022dq (2019-09-12)
+Weekly release for w/c 9th of September 2019.
+> This is a non-reboot update
+
+# Security Fixes
+
+* `openssl` updated to 1.0.2t, fixing
+  [CVE-2019-1547](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-1547),
+  [CVE-2019-1563](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-1563)
+
+* `curl` updated to 7.66.0, fixing
+  [CVE-2019-5481](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-5481),
+  [CVE-2019-5482](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-5482)
+
+* `ca-bundle` updated, removing four expired root certificates.
+
+# Other Changes
+
+* Updated Mozilla NSS/NSPR to version 3.46/4.22
+
+<br>
+
+---
+
 ## r151022dj (2019-07-22)
 Weekly release for w/c 22nd of July 2019.
 > This is a non-reboot update
