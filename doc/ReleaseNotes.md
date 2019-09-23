@@ -4,6 +4,19 @@
 
 # Release Notes for OmniOSce v11 r151030 (LTS)
 
+## r151030u (2019-09-23)
+Weekly release for w/c 23rd of September 2019.
+> This is a non-reboot update
+
+# Security Fixes
+
+* `expat` updated to 2.2.8, fixing
+  [CVE-2019-15903](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-15903),
+
+<br>
+
+---
+
 ## r151030s (2019-09-12)
 Weekly release for w/c 9th of September 2019.
 > This is a non-reboot update
