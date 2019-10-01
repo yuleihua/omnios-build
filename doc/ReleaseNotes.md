@@ -4,6 +4,20 @@
 
 # Release Notes for OmniOSce v11 r151028
 
+## r151028av (2019-10-01)
+Weekly release for w/c 30th of September 2019.
+> This is a non-reboot update
+
+# Changes
+
+* Deliver new template `.env` file for building illumos-gate on OmniOS
+  following the integration of
+  [illumos 7661](https://www.illumos.org/issues/7661)
+
+<br>
+
+---
+
 ## r151028au (2019-09-23)
 Weekly release for w/c 23rd of September 2019.
 > This is a non-reboot update
