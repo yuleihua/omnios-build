@@ -3,3 +3,4 @@ printflike.patch
 gettext.patch
 sudo_edit.c.patch
 Makefile.in.patch
+CVE-2019-14287.patch
