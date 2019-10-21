@@ -4,6 +4,37 @@
 
 # Release Notes for OmniOSce v11 r151030 (LTS)
 
+## r151030y (2019-10-21)
+Weekly release for w/c 21st of October 2019.
+> This update requires a reboot
+
+# Security Fixes
+
+* Upgrade `sudo` package to 1.8.28p1, fixing
+  [CVE-2019-14287](https://www.sudo.ws/alerts/minus_1_uid.html)
+
+* Update Intel Microcode to 20190918
+
+# Other Changes
+
+* Update timezone and hardware databases
+
+* CIFS: Windows usernames are now treated case-insensitively
+
+* Improvements to AMD processor topology detection
+
+* Improved compatibility with Linux getsockopt() in lx zones
+
+* Fix for bad ARP behaviour after long uptimes -
+  [illumos 11378](https://www.illumos.org/issues/11378)
+
+* Fix (rare) kernel crash problem exposed by Go testsuite
+  [illumos 11556](https://www.illumos.org/issues/11556)
+
+<br>
+
+---
+
 ## r151030v (2019-10-01)
 Weekly release for w/c 30th of September 2019.
 > This is a non-reboot update
