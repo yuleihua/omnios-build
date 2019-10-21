@@ -4,6 +4,19 @@
 
 # Release Notes for OmniOSce v11 r151028
 
+## r151028ay (2019-10-21)
+Weekly release for w/c 21st of October 2019.
+> This is a non-reboot update
+
+# Security Fixes
+
+* Upgrade `sudo` package to 1.8.28p1, fixing
+  [CVE-2019-14287](https://www.sudo.ws/alerts/minus_1_uid.html)
+
+<br>
+
+---
+
 ## r151028av (2019-10-01)
 Weekly release for w/c 30th of September 2019.
 > This is a non-reboot update
