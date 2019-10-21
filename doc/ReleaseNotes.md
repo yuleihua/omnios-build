@@ -4,6 +4,19 @@
 
 # Release Notes for OmniOSce v11 r151022
 
+## r151022dw (2019-10-21)
+Weekly release for w/c 21st of October 2019.
+> This is a non-reboot update
+
+# Security Fixes
+
+* Update `sudo` package, fixing
+  [CVE-2019-14287](https://www.sudo.ws/alerts/minus_1_uid.html)
+
+<br>
+
+---
+
 ## r151022ds (2019-09-23)
 Weekly release for w/c 23rd of September 2019.
 > This is a non-reboot update
