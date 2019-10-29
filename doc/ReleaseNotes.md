@@ -13,7 +13,8 @@ r151032 release repository: https://pkg.omniosce.org/r151032/core
 
 ## Upgrade Notes
 
-XXX
+When first rebooting to this new release, the system will automatically restart
+once in order to upgrade the boot archive.
 
 ## New features since r151030
 
@@ -55,12 +56,21 @@ XXX
   CPU side-channel attacks.
 
 * The default resolution for the framebuffer console after boot is now
-  1024x768. This can be overriden by creating a file under `/boot/conf.d/`
-  assigning the desired resolution to the `boot_resolution` variable:
+  1024x768 with a font size of 10x18. This can be overridden by creating a file
+  under `/boot/conf.d/` assigning the desired values to the
+  `boot_resolution` and `boot_font` variables. Available fonts can be seen
+  in the `/boot/fonts/` directory.
   ```terminal
   omnios# cat /boot/conf.d/bootres
   boot_resolution=1280x1024
+  boot_font=12x24
   ```
+  To disable the framebuffer console and boot in VGA mode, set
+  `boot_resolution` to `off`.
+
+* Time specifications within crontab files can now include step values. For
+  example, `*/2` in the minutes field means every two minutes. More complex
+  expressions are possible, see the crontab(1) man page for more examples.
 
 ### Commands and Command Options
 
@@ -113,10 +123,6 @@ XXX
 * `ptree` supports the new `-s` option to filter the output to processes
   started by an SMF service.
 
-### Zones
-
-XXX
-
 ### LX zones
 
 * Improved support for newer Linux distributions.
@@ -154,10 +160,6 @@ XXX
   device attach or replacement to override pool requirements at the expense
   of performance, which can be useful if it is necessary to add a 4K-sector
   drive to an existing pool with ashift=9.
-
-### Package Management
-
-XXX
 
 ### Hardware Support
 
@@ -226,5 +228,65 @@ XXX
 
 ### Package changes ([+] Added, [-] Removed, [\*] Changed)
 
-XXX
+| Package | Old Version | New Version |
+| :------ | :---------- | :---------- |
+| compress/bzip2 | 1.0.7 | 1.0.8
+| data/iso-codes | 4.2 | 4.3
+| database/sqlite-3 | 3.28.0 | 3.29.0
+| ~~developer/gcc5~~ | 5.5.0 | _Removed_
+| developer/parser/bison | 3.3.2 | 3.4.2
+| developer/swig | 3.0.12 | 4.0.1
+| developer/versioning/git | 2.21.0 | 2.23.0
+| developer/versioning/mercurial | 4.9.1 | 5.1.1
+| **driver/cpu/sensor** | _New_ | 0.5.11
+| editor/vim | 8.1.1413 | 8.1.1909
+| file/gnu-findutils | 4.6.0 | 4.7.0
+| library/c++/sigcpp | 2.99.12 | 3.0.0
+| library/glib2 | 2.60.0 | 2.62.0
+| library/ncurses | 6.1.20190323 | 6.1.20190921
+| library/nghttp2 | 1.37.0 | 1.39.2
+| library/python-2/setuptools-27 | 40.8.0 | 41.2.0
+| library/python-3/cffi-35 | 1.12.2 | 1.12.3
+| library/python-3/cheroot-35 | 6.5.4 | 6.5.8
+| library/python-3/cherrypy-35 | 18.1.1 | 18.2.0
+| library/python-3/contextlib2-35 | 0.5.5 | 0.6.0
+| library/python-3/coverage-35 | 4.5.3 | 4.5.4
+| library/python-3/cryptography-35 | 2.6.1 | 2.7
+| library/python-3/jsonschema-35 | 3.0.1 | 3.0.2
+| library/python-3/mako-35 | 1.0.8 | 1.1.0
+| library/python-3/meson-35 | 0.50.1 | 0.51.2
+| library/python-3/more-itertools-35 | 7.0.0 | 7.2.0
+| library/python-3/portend-35 | 2.3 | 2.5
+| library/python-3/pycurl-35 | 7.43.0.2 | 7.43.0.3
+| library/python-3/pyrsistent-35 | 0.14.11 | 0.15.4
+| library/python-3/pytz-35 | 2019.1 | 2019.2
+| library/python-3/setuptools-35 | 40.8.0 | 41.2.0
+| **library/python-3/setuptools-37** | _New_ | 41.2.0
+| library/python-3/tempora-35 | 1.14 | 1.14.1
+| library/python-3/zc.lockfile-35 | 1.4 | 2.0
+| network/dns/bind | 9.11.6 | 9.11.11
+| network/openssh | 7.9.1 | 8.0.1
+| network/openssh-server | 7.9.1 | 8.0.1
+| **network/socat** | _New_ | 1.7.3.3
+| runtime/perl | 5.28.2 | 5.30.0
+| runtime/perl-64 | 5.28.2 | 5.30.0
+| runtime/perl/manual | 5.28.2 | 5.30.0
+| **runtime/python-37** | _New_ | 3.7.4
+| service/network/ntpsec | 1.1.3 | 1.1.7
+| service/network/smtp/dma | 0.11 | 0.12
+| shell/bash | 5.0.9 | 5.0.11
+| shell/tcsh | 6.20.0 | 6.21.0
+| system/bhyve/firmware | 20180309 | 20190904
+| system/cpuid | 1.7.2 | 1.7.3
+| **system/header/header-drm** | _New_ | 0.5.11
+| system/library/dbus | 1.12.12 | 1.12.16
+| system/library/libdbus | 1.12.12 | 1.12.16
+| **system/network/tests** | _New_ | 0.5.11
+| system/pciutils/pci.ids | 2.2.20190312 | 2.2.20190911
+| system/test/fio | 3.13 | 3.16
+| system/virtualization/azure-agent | 2.2.41 | 2.2.42
+| terminal/tmux | 2.8 | 2.9.1
+| text/gawk | 5.0.0 | 5.0.1
+| text/gnu-gettext | 0.19.8.1 | 0.20.1
+| text/less | 530 | 551
 
