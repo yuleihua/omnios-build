@@ -4,6 +4,18 @@
 
 # Release Notes for OmniOSce v11 r151022
 
+## r151022dx (2019-10-31)
+Weekly release for w/c 28th of October 2019.
+> This is a non-reboot update
+
+# Changes
+
+* Python updated to version 2.7.17
+
+<br>
+
+---
+
 ## r151022dw (2019-10-21)
 Weekly release for w/c 21st of October 2019.
 > This is a non-reboot update
