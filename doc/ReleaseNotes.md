@@ -4,6 +4,26 @@
 
 # Release Notes for OmniOSce v11 r151030 (LTS)
 
+## r151030z (2019-10-31)
+Weekly release for w/c 28th of October 2019.
+> This is a non-reboot update
+
+# Changes
+
+* Python3 - upgrade to python 3.5.8
+
+* Python2 - upgrade to python 2.7.17
+
+* Migrate terminfo for urxvt terminals to `system/data/terminfo`. This
+  fixes an issue with building illumos-gate following the integration of
+  [illumos 11669](https://www.illumos.org/issues/11669)
+
+* Fix for the handling of mediators under /usr within sparse zones.
+
+<br>
+
+---
+
 ## r151030y (2019-10-21)
 Weekly release for w/c 21st of October 2019.
 > This update requires a reboot
