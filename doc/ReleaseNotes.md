@@ -3,11 +3,10 @@
 </a>
 
 # Release Notes for OmniOSce v11 r151032
-![#f03c15](https://placehold.it/15/f03c15/000000?text=+) ** These are DRAFT release notes ** ![#f03c15](https://placehold.it/15/f03c15/000000?text=+)
 
-Stable Release, TBC of November 2019
+Stable Release, 4th of November 2019
 
-`uname -a` shows `omnios-r151032-XXX`
+`uname -v` shows `omnios-r151032-702376803e`
 
 r151032 release repository: https://pkg.omniosce.org/r151032/core
 
@@ -15,6 +14,10 @@ r151032 release repository: https://pkg.omniosce.org/r151032/core
 
 When first rebooting to this new release, the system will automatically restart
 once in order to upgrade the boot archive.
+
+It is only possible to upgrade to this release from `r151030`. If starting from
+an earlier release, upgrade in stages following the guide at
+<https://omniosce.org/upgrade>
 
 ## New features since r151030
 
@@ -213,6 +216,8 @@ once in order to upgrade the boot archive.
 
 * Extensions the Device Driver Interface (DDI) so that drivers have a standard
   mechanism for reporting firmware information.
+
+* The `reallocf(3C)` function is now available.
 
 ### Deprecated features
 
