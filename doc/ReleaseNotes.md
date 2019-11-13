@@ -4,6 +4,29 @@
 
 # Release Notes for OmniOSce v11 r151032
 
+## r151032b (2019-11-13)
+Weekly release for w/c 11th of November 2019.
+> This update requires a reboot
+
+# Bug fixes
+
+* Fix ZFS bug that could prevent pool import following an unclean export
+  in certain circumstances -
+  [illumos 11942](https://www.illumos.org/issues/11942)
+
+* Changing the encryption key on dataset with unencrypted children caused
+  a panic -
+  [illumos 11880](https://www.illumos.org/issues/11880)
+
+* Fix incremental recursive encrypted receive -
+  [illumos 11872](https://www.illumos.org/issues/11872)
+
+* Correct errors in timezone data
+
+<br>
+
+---
+
 Stable Release, 4th of November 2019
 
 `uname -v` shows `omnios-r151032-702376803e`
