@@ -4,6 +4,22 @@
 
 # Release Notes for OmniOSce v11 r151030 (LTS)
 
+## r151030ab (2019-11-13)
+Weekly release for w/c 11th of November 2019.
+> This update requires a reboot
+
+# Bug fixes
+
+* Fix ZFS bug that could prevent pool import following an unclean export
+  in certain circumstances -
+  [illumos 11942](https://www.illumos.org/issues/11942)
+
+* Correct errors in timezone data
+
+<br>
+
+---
+
 ## r151030z (2019-10-31)
 Weekly release for w/c 28th of October 2019.
 > This is a non-reboot update
