@@ -4,6 +4,39 @@
 
 # Release Notes for OmniOSce v11 r151032
 
+## r151032e (2019-12-03)
+Weekly release for w/c 2nd of December 2019.
+> This update requires a reboot.
+
+# Security Fixes
+
+* Update Intel CPU Microcode to 20191115.
+
+# Other Changes
+
+* KVM zones could lose network connectivity to other zones on the same
+  machine.
+
+* Improvements to support for recent Linux distributions in lx zones.
+
+* Fixes to support for large (> 2TB) USB hard disks.
+
+* Fixes for zfs diff between encrypted datasets.
+
+* 8-bit colour modes did not work properly after boot.
+
+* Several updates and bug fixes for SMB.
+
+* make -C could cache wrong directory contents.
+
+* Fix (rare) crash if zone root cannot be mounted during boot.
+
+* OpenJDK updated to 1.8.0\_232-09.
+
+<br>
+
+---
+
 ## r151032b (2019-11-13)
 Weekly release for w/c 11th of November 2019.
 > This update requires a reboot
