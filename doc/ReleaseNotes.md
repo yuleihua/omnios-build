@@ -4,6 +4,26 @@
 
 # Release Notes for OmniOSce v11 r151030 (LTS)
 
+## r151030ae (2019-12-03)
+Weekly release for w/c 2nd of December 2019.
+> This update requires a reboot
+
+# Security Fixes
+
+* Update Intel CPU Microcode to 20191115.
+
+# Other Changes
+
+* Fixes to support for large (> 2TB) USB hard disks.
+
+* mpt\_sas driver could hang after config header request timeout.
+
+* OpenJDK updated to 1.8.0\_232-09.
+
+<br>
+
+---
+
 ## r151030ab (2019-11-13)
 Weekly release for w/c 11th of November 2019.
 > This update requires a reboot
