@@ -4,6 +4,28 @@
 
 # Release Notes for OmniOSce v11 r151032
 
+## r151032h (2019-12-23)
+Weekly release for w/c 23rd of December 2019.
+> This is a non-reboot update
+
+# Security Fixes
+
+* OpenSSL 1.0 updated to 1.0.2u, fixing
+  [CVE-2019-1551](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-1551)
+
+# Other Changes
+
+* Installation media updated to fix an installer bug which caused the system
+  domain name to be truncated to 20 characters.
+
+* The beta UEFI 2.7 firmware for bhyve has been updated and should now work
+  with more systems. This firmware can be selected by setting the *bootrom*
+  zone attribute to *BHYVE_RELEASE-beta*
+
+<br>
+
+---
+
 ## r151032e (2019-12-03)
 Weekly release for w/c 2nd of December 2019.
 > This update requires a reboot.
