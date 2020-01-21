@@ -4,6 +4,19 @@
 
 # Release Notes for OmniOSce v11 r151030 (LTS)
 
+## r151030al (2020-01-21)
+Weekly release for w/c 20th of January 2020.
+> This is a non-reboot update
+
+# Changes
+
+* It was not always possible to create a new boot environment from within a
+  sparse-branded zone.
+
+<br>
+
+---
+
 ## r151030ah (2019-12-23)
 Weekly release for w/c 23rd of December 2019.
 > This is a non-reboot update
