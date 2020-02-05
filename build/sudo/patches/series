@@ -4,3 +4,4 @@ gettext.patch
 sudo_edit.c.patch
 Makefile.in.patch
 CVE-2019-14287.patch
+CVE-2019-18634.patch
