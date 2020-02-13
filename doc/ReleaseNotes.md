@@ -4,6 +4,19 @@
 
 # Release Notes for OmniOSce v11 r151022
 
+## r151022en (2020-02-17)
+Weekly release for w/c 17th of February 2020.
+> This is a non-reboot update
+
+# Security Fixes
+
+* sudo updated to fix
+  [CVE-2019-18634](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-18634)
+
+<br>
+
+---
+
 ## r151022ef (2019-12-23)
 Weekly release for w/c 23rd of December 2019.
 > This is a non-reboot update
