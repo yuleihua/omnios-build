@@ -4,6 +4,32 @@
 
 # Release Notes for OmniOSce v11 r151032
 
+## r151032p (2020-02-17)
+Weekly release for w/c 17th of February 2020.
+> This update requires a reboot
+
+# Security Fixes
+
+* sudo updated to fix
+  [CVE-2019-18634](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-18634)
+
+# Other Changes
+
+* PKCS#11 CKM\_AES\_CBC\_PAD decryption could fail
+  [illumos 11825](https://www.illumos.org/issues/11825)
+
+* Fix for divide-by-zero bug in the i40e network driver
+  [illumos 9601](https://www.illumos.org/issues/9601)
+
+* Fix problem with the `hal-storage-mount` service where it would fail to
+  mount things like Virtualbox guest additions
+
+* Update `pkg` to better handle packages with broken metadata
+
+<br>
+
+---
+
 ## r151032l (2020-01-21)
 Weekly release for w/c 20th of January 2020.
 > This is a non-reboot update
