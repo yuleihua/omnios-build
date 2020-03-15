@@ -12,7 +12,7 @@
 # http://www.illumos.org/license/CDDL.
 # }}}
 
-# Copyright 2019 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2020 OmniOS Community Edition (OmniOSce) Association.
 
 . ../../lib/functions.sh
 
@@ -30,7 +30,7 @@ DESC="$SUMMARY"
 # Respect environmental overrides for these to ease development.
 : ${EDK2_SOURCE_REPO:=$GITHUB/$PROG}
 : ${EDK2_SOURCE_BRANCH:=master}
-: ${EDK2_BETA_BRANCH:=edk2-stable201903}
+: ${EDK2_BETA_BRANCH:=edk2-stable201903r32}
 
 setup_env() {
 
