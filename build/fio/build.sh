@@ -38,7 +38,11 @@ DESC="Flexible IO Tester"
 set_builddir "$PROG-$PROG-$VER"
 set_arch 64
 
-CONFIGURE_OPTS_64="--prefix=$PREFIX --extra-cflags=-m64"
+CONFIGURE_OPTS_64="
+    --prefix=$PREFIX
+    --extra-cflags=-m64
+    --disable-native
+"
 SKIP_LICENCES=fio
 
 init
