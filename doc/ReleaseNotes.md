@@ -4,6 +4,20 @@
 
 # Release Notes for OmniOSce v11 r151030 (LTS)
 
+## r151030av (2020-03-28)
+Weekly release for w/c 30th of March 2020.
+> This is a non-reboot update
+
+# Changes
+
+* `openssl` updated to 1.1.1e
+
+* `fio` would crash on pre-haswell systems
+
+<br>
+
+---
+
 ## r151030ap (2020-02-17)
 Weekly release for w/c 17th of February 2020.
 > This update requires a reboot
