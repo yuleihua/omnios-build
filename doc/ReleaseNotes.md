@@ -83,6 +83,9 @@ https://omniosce.org/upgrade
 
 * `find -path` now operates correctly for paths starting with a "." character.
 
+* A new `demangle` command has been added which can be used to decode a C++ or
+  Rust encoded symbol name.
+
 ### Zones
 
 ### LX zones
