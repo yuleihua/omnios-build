@@ -4,6 +4,18 @@
 
 # Release Notes for OmniOSce v11 r151032
 
+## r151032w (2020-04-03)
+Weekly release for w/c 06th of April 2020.
+> This is a non-reboot update
+
+# Changes
+
+* `openssl` updated to 1.1.1f
+
+<br>
+
+---
+
 ## r151032v (2020-03-28)
 Weekly release for w/c 30th of March 2020.
 > This is a non-reboot update
