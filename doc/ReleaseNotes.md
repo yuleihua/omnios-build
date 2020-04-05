@@ -93,6 +93,10 @@ https://omniosce.org/upgrade
 * Prior to this release, executing a shared library in an LX zone could cause
   it to crash; this has been resolved.
 
+* `MemAvailable` has been added to `/proc/meminfo`. In OmniOS this is always
+  the same as `MemFree` and is provided for applications that expect to see
+  it there.
+
 ### Bhyve
 
 * Additional bhyve firmware based on a newer version of the reference UEFI
