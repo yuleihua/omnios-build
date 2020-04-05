@@ -84,6 +84,7 @@ omnios driver/audio/audiop16x
 omnios driver/audio/audiosolo
 omnios driver/audio/audiovia823x
 omnios driver/audio/audiovia97 o
+omnios driver/cpu/mc
 omnios driver/cpu/sensor
 omnios driver/crypto/dca
 omnios driver/crypto/dprov
