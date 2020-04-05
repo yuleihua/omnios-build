@@ -93,6 +93,12 @@ https://omniosce.org/upgrade
 * Prior to this release, executing a shared library in an LX zone could cause
   it to crash; this has been resolved.
 
+* It is now possible to disable IPv6 within an LX zone by setting the
+  `ipv6` attribute to the string `false`.
+
+* The _lx(5)_ manual page has been updated to include details on the additional
+  zone configuration settings available for LX zones.
+
 * `MemAvailable` has been added to `/proc/meminfo`. In OmniOS this is always
   the same as `MemFree` and is provided for applications that expect to see
   it there.
