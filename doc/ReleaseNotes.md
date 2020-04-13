@@ -86,23 +86,6 @@ https://omniosce.org/upgrade
 * A new `demangle` command has been added which can be used to decode a C++ or
   Rust encoded symbol name.
 
-### Zones
-
-### LX zones
-
-* Prior to this release, executing a shared library in an LX zone could cause
-  it to crash; this has been resolved.
-
-* It is now possible to disable IPv6 within an LX zone by setting the
-  `ipv6` attribute to the string `false`.
-
-* The _lx(5)_ manual page has been updated to include details on the additional
-  zone configuration settings available for LX zones.
-
-* `MemAvailable` has been added to `/proc/meminfo`. In OmniOS this is always
-  the same as `MemFree` and is provided for applications that expect to see
-  it there.
-
 ### Bhyve
 
 * Additional bhyve firmware based on a newer version of the reference UEFI
@@ -121,6 +104,25 @@ https://omniosce.org/upgrade
 * In this release, bhyve has acquired multiple additional updates and fixes
   from upstream Joyent and FreeBSD.
 
+### LX zones
+
+* Prior to this release, executing a shared library in an LX zone could cause
+  it to crash; this has been resolved.
+
+* It is now possible to disable IPv6 within an LX zone by setting the
+  `ipv6` attribute to the string `false`.
+
+* Improved networking support within Ubuntu 18.04 LX zones.
+
+* Support for running Void Linux images.
+
+* The _lx(5)_ manual page has been updated to include details on the additional
+  zone configuration settings available for LX zones.
+
+* `MemAvailable` has been added to `/proc/meminfo`. In OmniOS this is always
+  the same as `MemFree` and is provided for applications that expect to see
+  it there.
+
 ### ZFS
 
 * Support for ZFS trim - see the output of `zpool status -t` for details on
@@ -134,7 +136,9 @@ https://omniosce.org/upgrade
 
 ### Package Management
 
-rapidjson?
+* The packaging tools have been updated to run using Python 3.7 and the JSON
+  parsing backend has been replaced by `rapidjson`. As a result the tools are
+  faster and use significantly less memory.
 
 ### Hardware Support
 
@@ -150,7 +154,8 @@ rapidjson?
 
 ### Loader
 
-* New menu option to toggle the framebuffer state before boot.
+* New menu option to toggle the graphical console state before boot
+ (only for non-UEFI boot).
 
 * Improved menu option for selecting the desired KMDB behaviour before boot.
 
