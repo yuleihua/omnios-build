@@ -125,6 +125,9 @@ https://omniosce.org/upgrade
 
 ### ZFS
 
+* ZFS can now automatically recover from more situations when the root pool
+  devices have moved.
+
 * Support for ZFS trim - see the output of `zpool status -t` for details on
   whether it is supported for a particular pool.
 
