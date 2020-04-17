@@ -104,6 +104,12 @@ https://omniosce.org/upgrade
 * In this release, bhyve has acquired multiple additional updates and fixes
   from upstream Joyent and FreeBSD.
 
+### Zones
+
+* On-demand VNICs are now supported for all zone brands via the `global-nic`
+  zone configuration attribute. Previously `lx`, `kvm` and `bhyve` zones would 
+  ignore this even if set.
+
 ### LX zones
 
 * Prior to this release, executing a shared library in an LX zone could cause
@@ -154,6 +160,8 @@ https://omniosce.org/upgrade
 * Support for Mellanox ConnectX-4/5/6 NICs.
 
 * Support for Intel I219 v10-v15.
+
+* Support for additional Emulex fibre-channel cards.
 
 ### Loader
 
