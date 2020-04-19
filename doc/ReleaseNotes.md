@@ -71,7 +71,10 @@ https://omniosce.org/upgrade
 * A new `resize` command is available to set environment and terminal settings
   to the current window size (for supported terminals).
 
-* The `ssh-copy-id` command is provided to easily transfer a publish ssh key
+* The `watch` command is now available to monitor the output of a command
+  over time.
+
+* The `ssh-copy-id` command is provided to easily transfer a public ssh key
   to a remote system.
 
 * `rdmsr` allows reading of a value from x86 model-specific registers.
