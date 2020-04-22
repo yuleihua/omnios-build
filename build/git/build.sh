@@ -22,13 +22,12 @@
 #
 # Copyright (c) 2014 by Delphix. All rights reserved.
 # Copyright 2017 OmniTI Computer Consulting, Inc.  All rights reserved.
-# Copyright 2019 OmniOS Community Edition (OmniOSce) Association.
-# Use is subject to license terms.
+# Copyright 2020 OmniOS Community Edition (OmniOSce) Association.
 #
 . ../../lib/functions.sh
 
 PROG=git
-VER=2.21.0
+VER=2.21.3
 PKG=developer/versioning/git
 SUMMARY="$PROG - distributed version control system"
 DESC="$SUMMARY"
