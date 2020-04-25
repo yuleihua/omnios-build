@@ -4,6 +4,39 @@
 
 # Release Notes for OmniOSce v11 r151032
 
+## r151032z (2020-04-25)
+Weekly release for w/c 27th of April 2020.
+> This update requires a reboot
+
+# Security Fixes
+
+* `openssl` updated to 1.1.1g
+
+* `git` update to 2.23.3 fixing
+  [CVE-2020-5260](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-5260)
+  and
+  [CVE-2020-11008](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-11008).
+
+* [12523](https://www.illumos.org/issues/12523)
+  Buffer overflow in `w` and `whodo`
+
+# Other Changes
+
+* `python` 2.7 updated to 2.7.18, the last python 2.7 release
+
+* [11825](https://www.illumos.org/issues/11825)
+   PKCS#11 CKM\_AES\_CBC\_PAD decryption can fail
+
+* [12336](https://www.illumos.org/issues/12336)
+  Boot hang caused by x2apic probe using incorrect local apic id
+
+* [OS-8141](https://smartos.org/bugview/OS-8141)
+  lx futex called with NULL timeout causes panic
+
+<br>
+
+---
+
 ## r151032w (2020-04-03)
 Weekly release for w/c 06th of April 2020.
 > This is a non-reboot update
