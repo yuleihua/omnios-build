@@ -4,6 +4,21 @@
 
 # Release Notes for OmniOSce v11 r151022
 
+## r151022ey (2020-04-27)
+Weekly release for w/c 4th of May 2020.
+> This is a non-reboot update
+
+# Security Fixes
+
+* `git` update to 2.17.5 fixing
+  [CVE-2020-5260](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-5260)
+  and
+  [CVE-2020-11008](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-11008).
+
+<br>
+
+---
+
 ## r151022en (2020-02-17)
 Weekly release for w/c 17th of February 2020.
 > This is a non-reboot update
