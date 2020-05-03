@@ -6,7 +6,7 @@
 
 Stable Release, 4th of May 2020
 
-`uname -a` shows `omnios-r151034-88e034cc20`
+`uname -a` shows `omnios-r151034-f57f507df0`
 
 r151034 release repository: https://pkg.omniosce.org/r151034/core
 
