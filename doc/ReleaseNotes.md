@@ -4,6 +4,26 @@
 
 # Release Notes for OmniOSce v11 r151030 (LTS)
 
+## r151030bb (2020-05-11)
+Weekly release for w/c 11th of May 2020.
+> This update requires a reboot
+
+# Security Fixes
+
+* Fix for a kernel panic when running an NFS client within an lx-branded zone
+
+# Other Changes
+
+* `w` and `whodo` produced error messages about processes in non-global zones
+
+* `onu` to illumos-gate now works with installed zones
+
+* `pkglint` now detects duplicated pkg attributes in legacy actions
+
+<br>
+
+---
+
 ## r151030az (2020-04-25)
 Weekly release for w/c 27th of April 2020.
 > This update requires a reboot
