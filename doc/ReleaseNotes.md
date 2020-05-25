@@ -4,6 +4,46 @@
 
 # Release Notes for OmniOSce v11 r151034
 
+## r151034d (2020-05-25)
+Weekly release for w/c 25th of May 2020.
+> This update requires a reboot
+
+# Changes
+
+* Update Intel CPU microcode to 20200520
+
+* Update timezone data to 2020a
+
+* The bhyve zone brand now supports `vnc=wait` to pause VM execution until
+  a VNC client has connected
+
+* KVM zone shutdown did not work reliably
+
+* The bhyve and kvm zone brands now support multiple cdrom entries. These
+  should be configured as properties named `cdrom0`, `cdrom1`, etc.
+
+* The `default-recurse` pkg property was erroneously affecting the
+  `pkg install` command; this has been fixed
+
+* `pkg update` with a new boot environment could occasionally report
+  _pkg: Unable to clone the current boot environment_
+
+* `onu` to illumos-gate now works with installed zones
+
+* Fix for a kernel panic when running an NFS client within an lx-branded zone
+
+* Fix for regression in ftello64() behaviour
+
+* Fix for (rare) crash in bhyve with some Linux guests
+
+* Fix for potential lz4 compression failure in `vtfontcvt`
+
+* Improve TSO support in vioif driver
+
+<br>
+
+---
+
 Stable Release, 4th of May 2020
 
 `uname -a` shows `omnios-r151034-f57f507df0`
