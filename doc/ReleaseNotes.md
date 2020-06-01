@@ -4,6 +4,19 @@
 
 # Release Notes for OmniOSce v11 r151030 (LTS)
 
+## r151030be (2020-06-01)
+Weekly release for w/c 01st of June 2020.
+> This is a non-reboot update
+
+# Changes
+
+* Fix bug in the `pkgdepend` package dependency generator.
+  (Required to consistently build gate after 12708 is integrated)
+
+<br>
+
+---
+
 ## r151030bb (2020-05-11)
 Weekly release for w/c 11th of May 2020.
 > This update requires a reboot
