@@ -4,6 +4,21 @@
 
 # Release Notes for OmniOSce v11 r151034
 
+## r151034e (2020-06-01)
+Weekly release for w/c 01st of June 2020.
+> This is a non-reboot update
+
+# Changes
+
+* Fix bug in the `pkgdepend` package dependency generator.
+  (Required to consistently build gate after 12708 is integrated)
+
+* It was not always possible to specify cdrom device for KVM-branded zones.
+
+<br>
+
+---
+
 ## r151034d (2020-05-25)
 Weekly release for w/c 25th of May 2020.
 > This update requires a reboot
