@@ -4,6 +4,29 @@
 
 # Release Notes for OmniOSce v11 r151030 (LTS)
 
+## r151030bf (2020-06-08)
+Weekly release for w/c 8th of June 2020.
+> This is a non-reboot update
+
+# Security Fixes
+
+* `perl` updated to 5.28.3 fixing
+  [CVE-2020-10543](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-10543),
+  [CVE-2020-10878](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-10878)
+  and
+  [CVE-2020-12723](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-12723).
+
+* `nghttp2` updated to 1.41.0 fixing
+  [CVE-2020-11080](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-11080).
+
+# Other Changes
+
+* `open-vm-tools` updated to 11.1.0.
+
+<br>
+
+---
+
 ## r151030be (2020-06-01)
 Weekly release for w/c 01st of June 2020.
 > This is a non-reboot update
