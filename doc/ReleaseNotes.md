@@ -4,6 +4,25 @@
 
 # Release Notes for OmniOSce v11 r151032
 
+## r151032af (2020-06-08)
+Weekly release for w/c 8th of June 2020.
+> This is a non-reboot update
+
+# Security Fixes
+
+* `perl` updated to 5.30.3 fixing
+  [CVE-2020-10543](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-10543),
+  [CVE-2020-10878](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-10878)
+  and
+  [CVE-2020-12723](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-12723).
+
+* `nghttp2` patched fixing
+  [CVE-2020-11080](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-11080).
+
+<br>
+
+---
+
 ## r151032ae (2020-06-01)
 Weekly release for w/c 01st of June 2020.
 > This is a non-reboot update
