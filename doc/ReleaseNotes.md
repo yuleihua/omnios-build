@@ -4,6 +4,23 @@
 
 # Release Notes for OmniOSce v11 r151034
 
+## r151034h (2020-06-22)
+Weekly release for w/c 22nd of June 2020.
+> This update requires a reboot
+
+# Security Fixes
+
+* Intel microcode updated to 20200616.
+
+# Other changes
+
+* [12444 - Intel v1 chip topo needs rank information](https://www.illumos.org/issues/12444)
+* LX: isatty() should return ENOTTY if not a TTY.
+
+<br>
+
+---
+
 ## r151034f (2020-06-08)
 Weekly release for w/c 8th of June 2020.
 > This is a non-reboot update
