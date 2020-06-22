@@ -4,6 +4,18 @@
 
 # Release Notes for OmniOSce v11 r151030 (LTS)
 
+## r151030bh (2020-06-22)
+Weekly release for w/c 22nd of June 2020.
+> This update requires a reboot
+
+# Security Fixes
+
+* Intel microcode updated to 20200616.
+
+<br>
+
+---
+
 ## r151030bf (2020-06-08)
 Weekly release for w/c 8th of June 2020.
 > This is a non-reboot update
