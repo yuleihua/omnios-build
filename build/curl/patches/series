@@ -1,1 +1,3 @@
 tests.patch
+CVE-2020-8169.patch
+CVE-2020-8177.patch
