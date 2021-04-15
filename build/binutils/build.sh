@@ -13,18 +13,19 @@
 # }}}
 #
 # Copyright 2011-2012 OmniTI Computer Consulting, Inc.  All rights reserved.
-# Copyright 2020 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2021 OmniOS Community Edition (OmniOSce) Association.
 
 . ../../lib/functions.sh
 
 PROG=binutils
-VER=2.34
+VER=2.36.1
 PKG=developer/gnu-binutils
 SUMMARY="GNU binary utilities"
 DESC="A set of programming tools for creating and managing binary programs, "
 DESC+="object files, libraries, etc."
 
 set_arch 64
+CTF_FLAGS+=" -s"
 
 HARDLINK_TARGETS="
     usr/bin/gar
@@ -47,12 +48,10 @@ CONFIGURE_OPTS="
     --with-system-zlib
 "
 
-# Without specifying the shell as bash here, the generated linker
-# emulation files get truncated scripts.
-# We already export SHELL=bash in config.sh but that doesn't seem
-# to be enough.
+XFORM_ARGS="-D GNU_ARCH=$TRIPLET64"
+
 # stop binutils 2.34 from building info files
-MAKE_ARGS="SHELL=/bin/bash MAKEINFO=/usr/bin/true"
+MAKE_ARGS="MAKEINFO=/usr/bin/true"
 MAKE_INSTALL_ARGS="$MAKE_ARGS"
 
 basic_tests() {
@@ -63,7 +62,7 @@ basic_tests() {
     # These targets are required for the ilumos-omnios UEFI build.
     # https://illumos.topicbox.com/groups/developer/T5f37e8c8f0687062-Mcec43129fb017b70a035e5fd
     for target in pei-i386 pei-x86-64; do
-        $DESTDIR/usr/bin/gobjdump -i | grep -qw "$target" \
+        $DESTDIR$USRBIN/gobjdump -i | grep -qw "$target" \
             || logerr "output format $target not supported."
     done
 }

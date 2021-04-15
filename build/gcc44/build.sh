@@ -32,6 +32,7 @@ set_builddir "${PROG}-gcc-4.4.4-${ILLUMOSVER}"
 
 # Build gcc44 with itself...
 set_gccver 4.4.4
+set_ssp none
 set_arch 32
 
 # Although we're building a 32-bit version of the compiler, gcc will take
@@ -120,7 +121,7 @@ tests() {
     fi
 
     export GUILE_AUTO_COMPILE=0
-    export PATH+=:/opt/ooce/bin
+    export PATH+=:$OOCEBIN
     # The tests can be run in parallel - we sort them afterwards for consistent
     # results.
     MAKE_TESTSUITE_ARGS+=" $MAKE_JOBS"
@@ -158,7 +159,7 @@ init
 download_source gcc44 ${PROG}-gcc-4.4.4-${ILLUMOSVER}
 patch_source
 prep_build
-build
+build -noctf
 fix_runpath
 tests
 make_package gcc.mog depends.mog

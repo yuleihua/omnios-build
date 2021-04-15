@@ -19,7 +19,6 @@
 
 PROG=libffi
 VER=3.3
-VERHUMAN=$VER
 PKG=library/libffi
 SUMMARY="A Portable Foreign Function Interface Library"
 DESC="$SUMMARY"
@@ -30,6 +29,8 @@ SKIP_LICENCES=libffi
 # software may depend on it.
 PVERS="3.2.1"
 
+LDFLAGS+=" $SSPFLAGS"
+
 # libffi has historically been linked with libtool's -nostdlib.
 # The exact reason for this unclear but historic commit messages indicate that
 # it may be related to C++ throw/catch across the library interface.
@@ -39,9 +40,14 @@ PVERS="3.2.1"
 save_function make_prog _make_prog
 make_prog() {
     _make_prog
-    logmsg "--- rebuilding libraries with -nostdlib -lc"
+    logmsg "--- rebuilding libraries with -nostdlib"
     pushd $TRIPLET64 >/dev/null || logerr "pushd"
-    libtool_nostdlib libtool -lc
+    if [ "$ISALIST" = "$ISAPART" ]; then
+        # 32-bit
+        libtool_nostdlib libtool "-lc -lssp_ns"
+    else
+        libtool_nostdlib libtool "-lc"
+    fi
     logcmd $MAKE clean all || logerr "Rebuild with -nostdlib failed"
     popd >/dev/null
 }
@@ -57,9 +63,12 @@ prep_build
 # Build previous versions
 for pver in $PVERS; do
     note -n "Building previous version: $pver"
-    BUILDDIR=$PROG-$pver download_source $PROG $PROG $pver
-    BUILDDIR=$PROG-$pver build
-    BUILDDIR=$PROG-$pver tests
+    save_variable BUILDDIR
+    BUILDDIR=$PROG-$pver
+    download_source $PROG $PROG $pver
+    build
+    tests
+    restore_variable BUILDDIR
 done
 
 note -n "Building current version: $VER"

@@ -13,14 +13,14 @@
 # }}}
 #
 # Copyright 2017 OmniTI Computer Consulting, Inc.  All rights reserved.
-# Copyright 2020 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2021 OmniOS Community Edition (OmniOSce) Association.
 
 . ../../lib/functions.sh
 
 PROG=nss
-VER=3.53.1
+VER=3.63
 # Include NSPR version since we're downloading a combined tarball.
-NSPRVER=4.25
+NSPRVER=4.30
 # But set BUILDDIR to just be the NSS version.
 set_builddir "$PROG-$VER"
 PKG=$PROG ##IGNORE##
@@ -33,8 +33,11 @@ DIST64=SunOS5.11_i86pc_gcc_64_OPT.OBJ
 
 BUILD_DEPENDS_IPS="library/nspr/header-nspr"
 
+set_ssp none
 # required for getopt
 set_standard XPG6
+
+CTF_FLAGS+=" -s"
 
 # nspr/nss produces lots of runtime warnings that we cannot easily resolve.
 SKIP_RTIME_CHECK=1
@@ -48,6 +51,7 @@ MAKE_ARGS="
     NSDISTMODE=copy
     NSS_USE_SYSTEM_SQLITE=1
     NSS_ENABLE_WERROR=0
+    NSS_DISABLE_GTESTS=1
     nss_build_all
 "
 MAKE_ARGS_WS_32="

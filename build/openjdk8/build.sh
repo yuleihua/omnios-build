@@ -12,19 +12,16 @@
 # http://www.illumos.org/license/CDDL.
 # }}}
 #
-# Copyright 2020 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2021 OmniOS Community Edition (OmniOSce) Association.
 
 . ../../lib/functions.sh
 
 PROG=openjdk
 VER=1.8
-UPDATE=252
-BUILD=09
+UPDATE=282
+BUILD=08
 PKG=openjdk    ##IGNORE## - filled in later
 SUMMARY="tbc"; DESC="tbc"
-
-# This component does not yet build with gcc 10
-set_gccver 9
 
 BUILD_DEPENDS_IPS="
     system/header/header-audio
@@ -51,13 +48,12 @@ XFORM_ARGS="
 "
 BMI_EXPECTED=1
 
-set_builddir "$PROG-jdk${MVER}u-$VERHUMAN.1"
+set_builddir "$VERHUMAN"
 set_arch 64
-MJOBS=8
 
 # Do these steps early to set up TMPDIR
 init
-download_source $PROG $VERHUMAN.1
+download_source $PROG $VERHUMAN
 patch_source
 
 # The JDK build framework does not use the -j option to make.
@@ -70,7 +66,7 @@ CONFIGURE_OPTS="
     --with-update-version=$UPDATE
     --with-build-number=b$BUILD
     --with-toolchain-type=gcc
-    --with-boot-jdk=/usr/java
+    --with-boot-jdk=/$IFULL
     --disable-headful
     --without-x
     --enable-unlimited-crypto
@@ -78,11 +74,12 @@ CONFIGURE_OPTS="
     --with-zlib=system
     --with-giflib=bundled
     --with-cups-include=$OOCEPREFIX/include
-    --x-includes=$TMPDIR/openwin/X11/include
+    --x-includes=$OOCEPREFIX/include
     --enable-freetype-bundling
     --with-memory-size=768
     --disable-precompiled-headers
     --disable-ccache
+    --with-native-debug-symbols=none
     --with-freetype=$OOCEPREFIX
     --with-freetype-include=$OOCEPREFIX/include/freetype2
     --with-freetype-lib=$OOCEPREFIX/lib/$ISAPART64
@@ -106,7 +103,7 @@ MAKE_ARGS="
     NO_DOCS=1
 "
 
-export PATH=/usr/gnu/bin:$PATH
+export PATH=$GNUBIN:$PATH
 
 # Some files are present in both the j2re and j2sdk images.
 # Generate a list of those files so that we deliver them in j2re only.
@@ -115,7 +112,7 @@ find_dups() {
 
     pushd $TMPDIR/$BUILDDIR/images >/dev/null || logerr "pushd"
     for c in j2re j2sdk; do
-        find $c-image -type f -o -type l | cut -d/ -f2- | sort \
+        $FD . $c-image -tf -tl | cut -d/ -f2- | sort \
             > $TMPDIR/$c.files
     done
     comm -12 $TMPDIR/j2re.files $TMPDIR/j2sdk.files > $TMPDIR/dups.files
@@ -131,7 +128,7 @@ make_install_j2re() {
     # copy in our JRE files
     pushd $TMPDIR/$BUILDDIR/images/j2re-image > /dev/null || logerr "pushd"
     logcmd mkdir -p $J2RE_INSTALLTMP/$IFULL
-    find . | cpio -pmud $J2RE_INSTALLTMP/$IFULL
+    $FD | cpio -pmud $J2RE_INSTALLTMP/$IFULL
     popd > /dev/null
 }
 
@@ -144,7 +141,7 @@ make_install_j2sdk() {
     # copy in our SDK files
     pushd $TMPDIR/$BUILDDIR/images/j2sdk-image > /dev/null || logerr "pushd"
     logcmd mkdir -p $J2SDK_INSTALLTMP/$IFULL
-    find . | cpio -pmud $J2SDK_INSTALLTMP/$IFULL
+    $FD | cpio -pmud $J2SDK_INSTALLTMP/$IFULL
     popd > /dev/null
 
     # Remove files which are also shipped as part of the JRE
@@ -162,9 +159,8 @@ make_install() {
 
 #############################################################################
 
-BUILDDIR=openwin download_source Xstuff openwin
 chmod +x $CONFIGURE_CMD
-build
+build -noctf
 
 #############################################################################
 # Build packages
@@ -191,7 +187,10 @@ PKG=developer/java/openjdk8
 PKGE=`url_encode $PKG`
 SUMMARY="openjdk ${VER#*.} JDK"
 DESC="$_DESC, development kit (JDK)"
-RUN_DEPENDS_IPS=runtime/java/openjdk$MVER
+RUN_DEPENDS_IPS="
+    =runtime/java/openjdk$MVER@$VER
+    runtime/java/openjdk$MVER
+"
 DESTDIR=$J2SDK_INSTALLTMP
 make_package jdk.mog
 

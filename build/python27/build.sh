@@ -23,9 +23,6 @@ PKG=runtime/python-27
 SUMMARY="$PROG ${VER%.*}"
 DESC="$SUMMARY"
 
-# This component does not yet build with gcc 10
-set_gccver 9
-
 set_python_version $PYTHON2VER
 
 BUILD_DEPENDS_IPS="developer/build/autoconf developer/pkg-config"
@@ -50,6 +47,7 @@ CXX=g++
 export CCSHARED="-fPIC"
 LDFLAGS32+=" -L/usr/gnu/lib -R/usr/gnu/lib"
 LDFLAGS64+=" -L/usr/gnu/lib/amd64 -R/usr/gnu/lib/amd64"
+LDFLAGS+=" $SSPFLAGS"
 CPPFLAGS+=" -I/usr/include/ncurses -D_LARGEFILE64_SOURCE"
 CPPFLAGS64="`pkg-config --cflags libffi`"
 CPPFLAGS32="${CPPFLAGS64/amd64?/}"
@@ -149,8 +147,7 @@ prep_build
 build
 generate_archdeps
 make_isa_stub
-strip_install
-make_package
+make_package -legacy
 clean_up
 
 # Vim hints

@@ -36,11 +36,6 @@ set noexec_user_stack_log=1
 set rlim_fd_cur=65536
 
 *
-* Disable c-states.
-*
-set idle_cpu_no_deep_c=1
-
-*
 * Distribute TCP/IP connections across CPUs. This accommodates NICs that are
 * faster than a single CPU.
 *
@@ -64,14 +59,6 @@ set dump_plat_mincpu=0
 set dump_bzip2_level=1
 
 *
-* KVM is unstable on Sandy/Ivy Bridge Hardware with the default timers
-*   https://smartos.org/bugview/OS-1361
-*
-set pcplusmp:apic_timer_preferred_mode=0
-set apix:apic_timer_preferred_mode=0
-
-
-*
 * The traditional (and essentially entirely brain dead) cfgadm(1M)-centric
 * model of hotpluggin' appears to be basically unnecessary.  This tunable
 * enables the system to create device nodes for newly inserted devices
@@ -89,9 +76,4 @@ set sata:sata_auto_online=1
 * not help at all to wait longer.
 *
 set sd:sd_io_time=10
-
-*
-* Use a higher system clock rate to improve scheduling
-*
-set hires_tick=1
 

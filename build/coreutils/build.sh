@@ -27,11 +27,12 @@ BUILD_DEPENDS_IPS="compress/xz library/gmp"
 
 PREFIX=/usr/gnu
 
-# We ship 64-bit binaries under /usr/gnu/bin/ with selected ones linked back
+# We ship 64-bit binaries under $GNUBIN/ with selected ones linked back
 # to /usr/bin/, but we need to continue building dual arch so that the
 # 32-bit libstdbuf.so is available. This enables the stdbuf command to
 # work with 32-bit binaries.
 set_arch both
+forgo_isaexec
 
 # hardlinks are defined in local.mog
 SKIP_HARDLINK=1
@@ -42,13 +43,8 @@ CONFIGURE_OPTS+="
     gl_cv_host_operating_system=illumos
     ac_cv_func_inotify_init=no
 "
-CONFIGURE_OPTS_32+="
-    --bindir=/usr/gnu/bin/__i386
-    --libexecdir=/usr/lib
-"
-CONFIGURE_OPTS_64+="
-    --libexecdir=/usr/lib/$ISAPART64
-"
+CONFIGURE_OPTS_32+=" --libexecdir=/usr/lib"
+CONFIGURE_OPTS_64+=" --libexecdir=/usr/lib/$ISAPART64"
 
 TESTSUITE_FILTER='^[A-Z#][A-Z ]'
 

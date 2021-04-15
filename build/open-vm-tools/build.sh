@@ -13,25 +13,22 @@
 # }}}
 #
 # Copyright (c) 2014 by Delphix. All rights reserved.
-# Copyright 2020 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2021 OmniOS Community Edition (OmniOSce) Association.
 
 . ../../lib/functions.sh
 
 PKG=system/virtualization/open-vm-tools
 PROG=open-vm-tools
-VER=11.1.0
+VER=11.2.5
 # The open-vm-tools have been inconsistent in the past in regard to whether
 # the filenames and extracted directories contain the build number. If they
 # do, set the build number.
-BUILD=16036546
+BUILD=17337674
 SUMMARY="Open Virtual Machine Tools"
 DESC="The Open Virtual Machine Tools project aims to provide a suite of open "
 DESC+="source virtualisation utilities and drivers to improve the "
 DESC+="functionality and user experience of virtualisation. The project "
 DESC+="currently runs in guest operating systems under the VMware hypervisor."
-
-# This component does not yet build with gcc 10
-set_gccver 9
 
 DLVER=$VER
 if [ -n "$BUILD" ]; then
@@ -39,9 +36,10 @@ if [ -n "$BUILD" ]; then
     DLVER+=-$BUILD
 fi
 
-export PATH=/usr/gnu/bin:$PATH
+export PATH=$GNUBIN:$PATH
 
 set_arch 64
+CTF_FLAGS+=" -s"
 
 BUILD_DEPENDS_IPS='developer/pkg-config'
 

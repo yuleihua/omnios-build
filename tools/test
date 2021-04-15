@@ -9,7 +9,7 @@
 # source.  A copy of the CDDL is also available via the Internet at
 # http://www.illumos.org/license/CDDL.
 
-# Copyright 2018 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2021 OmniOS Community Edition (OmniOSce) Association.
 
 __SCRIPTDIR="${0%/*}"
 
@@ -27,6 +27,11 @@ problem()
 
 typeset -A targets
 typeset -A dashrev
+
+pver()
+{
+	grep "^$1=" $build | cut -d= -f2
+}
 
 add_target()
 {
@@ -66,22 +71,20 @@ add_target()
 				    '`"
 				;;
 			*/openjdk8:*)
-				update=`grep '^UPDATE=' $build | cut -d= -f2`
-				bld=`grep '^BUILD=' $build | cut -d= -f2`
+				update=`pver UPDATE`
+				bld=`pver BUILD`
 				ver="$ver.$update-$bld"
+				;;
+			*/openjdk11:*)
+				update=`pver UPDATE`
+				bld=`pver BUILD`
+				ver="$ver.0.$update+$bld"
 				;;
 			system/library/mozilla-nss:*)
 				targets["library/nss"]=$ver
 				;;
 			library/*nspr:*)
-				ver="`grep '^NSPRVER=' $build | cut -d= -f2`"
-				;;
-			library/security/openssl:*)
-				_pkg="library/security/openssl-1.1"
-				targets["$_pkg"]=$ver
-				_pkg="library/security/openssl-1.0"
-				_ver="`grep '^LVER=' $build | cut -d= -f2`"
-				targets["$_pkg"]=$_ver
+				ver=`pver NSPRVER`
 				;;
 			library/*idnkit:*)	ver=${ver//-src/} ;;
 			*idnconv*)		ver=${ver//-src/} ;;
@@ -92,11 +95,17 @@ add_target()
 				pkg=service/network/ssh
 				;;
 			terminal/tmux:*)
-				_ver="`grep '^LIBEVENT_VER=' $build \
-				    | cut -d= -f2`"
-				targets["library/libevent"]=$_ver
+				targets["library/libevent"]=`pver LIBEVENT_VER`
 				# Remove any trailing 'a'
 				ver=${ver/a/}
+				;;
+			system/rsyslog:*)
+				targets["library/fastjson"]=`pver FJSONVER`
+				targets["library/estr"]=`pver ESTRVER`
+				;;
+
+			network/rsync:*)
+				targets["library/xxhash"]=`pver XXHASHVER`
 				;;
 			*/jaraco-??:*)
 				# The jaraco meta package encompasses several
@@ -118,8 +127,6 @@ add_target()
 			# Other packages to skip
 			*illumos-closed:*)	return ;;
 			*kvm:*)			return ;;
-			*illumos-gate*)		return ;;
-			*/omnios-userland:*)	return ;;
 			*/iconv/*)		return ;;
 			text/auto_ef:*)		return ;;
 			*/locale:*)		return ;;
@@ -160,11 +167,14 @@ add_manifests()
 
 extract_pkgs()
 {
-	grep 'PKG=' $1 | grep -v '##IGNORE##' | sed -e '
-		s/^ +//
-		s/ +#.+//
-		s/=/ /g
-	' | nawk '$1 == "PKG" { print $2 }'
+    sed -nE '
+        /##IGNORE##/d
+        /\<PKG=[^[:space:]]+[[:space:]]*(#.*)?$/ {
+            s/.*PKG=/PKG=/
+            s/[[:space:]]+#.+//
+            s/=/ /g
+            p
+    }' $1 | nawk '$1 == "PKG" { print $2 }'
 }
 
 add_buildscripts()
@@ -202,9 +212,11 @@ check_packages_md()
 		# Skip some packages, tweak others
 		case $pkg in
 			*/*-patchlvl)		continue ;;
+			*/bash5-completions)	continue ;;
 			shell/bash)		continue ;;
 			meta/data/*)		continue ;;
 			runtime/python-35)	continue ;;
+			runtime/python-37)	continue ;;
 			*/libedit)		ver=${ver#*-} ;;
 		esac
 
@@ -219,90 +231,9 @@ check_packages_md()
 	done
 }
 
-check_constraints()
-{
-	comp="$1"
-	while read pkg ver dash; do
-		# Skip some packages, tweak others
-		[ -n "${targets[$pkg]}" ] && bver=${targets[$pkg]} || bver=
-		case $pkg in
-			*/kvm)				continue ;;
-			release/*)			continue ;;
-			*gcc-?-runtime)			continue ;;
-			*g++-?-runtime)			continue ;;
-			*/iconv/*)			continue ;;
-			*/auto_ef)			continue ;;
-			*prerequisite/gnu)		continue ;;
-			*/mtsk)				continue ;;
-			*/pci.ids)			continue ;;
-			*/ntp)				bver=${bver/p/.} ;;
-			*/openssh*)			bver=${bver/p/.} ;;
-			*/sqlite-3)
-				bver=`echo $bver | sed -E '
-					s/(.)(..)(..)(.*)/\1.\2.\3.\4/
-				'`
-				;;
-			library/security/openssl)
-				bver=${targets["library/security/openssl-1.1"]}
-				bver=${bver/%[a-z]/}
-				;;
-		esac
-		obver="$bver"
-
-		if [ -n "$bver" ]; then
-			# Dash revision check
-			if [ "$comp" = "omnios-userland" -a \
-			     -n "${dashrev[$pkg]}" -a \
-			     "${dashrev[$pkg]}" != "$dash" ]; then
-				problem "$pkg - $comp= DASH $dash"\
-				    "(build=${dashrev[$pkg]})"
-			fi
-
-			[ "$bver" = "$ver" ] && continue
-			# Try with s/00/0
-			[ "${bver//00/0}" = "$ver" ] && continue
-			# Strip final components in turn and check for
-			# a match.
-			while [[ $bver = *.* ]]; do
-				bver=${bver%.*}
-				[ "$bver" = "$ver" ] && continue 2
-				[ "${bver//00/0}" = "$ver" ] && continue 2
-			done
-			problem "$pkg - $comp=$ver, build=$obver"
-		else
-			[ $comp = entire ] \
-			    || problem "Unknown package $pkg in $comp"
-		fi
-	done
-}
-
-check_userland()
-{
-	echo "Checking jeos/omnios-userland..."
-	nawk < build/jeos/omnios-userland.pkg '
-		/^#/ { next }
-		/\// {
-			print $1, $2, $3
-		}' | check_constraints omnios-userland
-}
-
-check_entire()
-{
-	echo "Checking entire..."
-	nawk '{print $1,$2}' < build/entire/entire.pkg | sed '
-		/^locale/d
-		/^driver/d
-		/ca-bundle/d
-		/^package\/pkg/d
-		/^system.*0.5.11$/d
-	' | check_constraints entire
-}
-
 add_targets
 [ "$1" = "-p" ] && print_targets && exit 0
 check_packages_md
-check_userland
-check_entire
 
 exit $err
 

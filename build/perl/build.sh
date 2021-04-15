@@ -13,18 +13,19 @@
 # }}}
 
 # Copyright 2011-2017 OmniTI Computer Consulting, Inc.  All rights reserved.
-# Copyright 2020 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2021 OmniOS Community Edition (OmniOSce) Association.
 
 . ../../lib/functions.sh
 
 PROG=perl
 PKG=runtime/perl
-VER=5.32.0
+VER=5.32.1
 MAJVER=${VER%.*}
 SUMMARY="Perl $MAJVER Programming Language"
 DESC="A highly capable, feature-rich programming language"
 
 set_arch 64
+CTF_FLAGS+=" -s"
 
 PREFIX=/usr/perl5/$MAJVER
 
@@ -60,10 +61,10 @@ configure64() {
         -Umydomain \
         -Umyuname \
         -Dcf_by=omnios-builder \
-        -Dcf_email=sa@omniosce.org \
+        -Dcf_email=$PUBLISHER_EMAIL \
         -Dcc=gcc \
         -Dld=/usr/ccs/bin/ld \
-        -Doptimize=-O3 \
+        -Doptimize="-O3 $CTF_CFLAGS" \
         -Dprefix=${PREFIX} \
         -Dvendorprefix=${PREFIX} \
         -Dbin=${PREFIX}/bin \
@@ -82,7 +83,6 @@ configure64() {
         || logerr "--- Configure failed"
 
     logcmd sed -i "
-        s/-fstack-protector-strong//g
         s/mydomain=\"\.undef\"/mydomain=\"undef\"/g
         s!^libpth=.*!libpth=\"/lib/$ISAPART64 /usr/lib/$ISAPART64\"!g
     " config.sh
@@ -93,7 +93,6 @@ download_source $PROG $PROG $VER
 patch_source
 prep_build
 build
-strip_install
 run_testsuite
 make_package
 clean_up

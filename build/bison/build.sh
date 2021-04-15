@@ -13,12 +13,12 @@
 # }}}
 #
 # Copyright 2011-2012 OmniTI Computer Consulting, Inc.  All rights reserved.
-# Copyright 2020 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2021 OmniOS Community Edition (OmniOSce) Association.
 
 . ../../lib/functions.sh
 
 PROG=bison
-VER=3.6.4
+VER=3.7.6
 PKG=developer/parser/bison
 SUMMARY="General-purpose parser generator"
 DESC="A general-purpose parser generator that converts an annotated "
@@ -43,8 +43,7 @@ download_source $PROG $PROG $VER
 patch_source
 prep_build
 build
-strip_install
-PATH+=:/opt/ooce/bin run_testsuite check
+PATH=$GNUBIN:$OOCEBIN:$PATH run_testsuite check
 make_package
 clean_up
 

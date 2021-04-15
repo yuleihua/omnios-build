@@ -28,16 +28,16 @@ RUN_DEPENDS_IPS="system/pciutils/pci.ids"
 
 set_arch 64
 
-export PATH=/usr/gnu/bin:$PATH
+export PATH=$GNUBIN:$PATH
 
 configure64() {
     LDFLAGS+=" $LDFLAGS64"
     export LDFLAGS CC PREFIX
+    MAKE_ARGS_WS="
+        PREFIX=$PREFIX
+        OPT=\"$CFLAGS $CFLAGS64 -DBYTE_ORDER=1234 -DLITTLE_ENDIAN=1234\"
+    "
 }
-
-MAKE_ARGS_WS="
-    OPT=\"$CFLAGS64 -DBYTE_ORDER=1234 -DLITTLE_ENDIAN=1234\"
-"
 
 MAKE_INSTALL_ARGS="
     STRIP=
@@ -49,7 +49,6 @@ download_source $PROG $PROG $VER
 patch_source
 prep_build
 build
-strip_install
 make_package
 clean_up
 

@@ -18,7 +18,7 @@
 . ../../lib/functions.sh
 
 PROG=gmp
-VER=6.2.0
+VER=6.2.1
 PKG=library/gmp
 SUMMARY="GNU MP"
 DESC="The GNU Multiple Precision (Bignum) Library"
@@ -37,6 +37,7 @@ TESTSUITE_SED="
 "
 
 CFLAGS+=" -fexceptions"
+LDFLAGS+=" $SSPFLAGS"
 CONFIGURE_OPTS="
     --includedir=$PREFIX/include/gmp
     --localstatedir=/var

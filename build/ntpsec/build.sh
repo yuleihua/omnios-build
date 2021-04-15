@@ -17,7 +17,7 @@
 . ../../lib/functions.sh
 
 PROG=ntpsec
-VER=1.1.9
+VER=1.2.0
 PKG=service/network/ntpsec
 SUMMARY="Network time services"
 DESC="A secure, hardened and improved Network Time Protocol implementation"
@@ -26,54 +26,43 @@ set_arch 64
 
 # Required to generate man pages
 BUILD_DEPENDS_IPS="ooce/text/asciidoc"
-export PATH=$PATH:/opt/ooce/bin
+export PATH=$PATH:$OOCEBIN
 
 SKIP_LICENCES="*"
 
 export XML_CATALOG_FILES=/opt/ooce/docbook-xsl/catalog.xml
 
 # Required to include struct timespec definition and constants.
-CFLAGS+=" -D__EXTENSIONS__"
-export CFLAGS
+export CFLAGS+=" -D__EXTENSIONS__"
+
+CONFIGURE_OPTS="
+    --prefix=$PREFIX
+    --sysconfdir=/etc/inet
+    --define=CONFIG_FILE=/etc/inet/ntp.conf
+    --refclock=all
+    --python=$PYTHON
+    --pyshebang=$PYTHON
+    --pythondir=$PYTHONVENDOR
+    --pythonarchdir=$PYTHONVENDOR
+    --libdir=$PYTHONVENDOR
+    --enable-manpage --disable-doc
+    --nopyc --nopyo --nopycache
+    --enable-debug-gdb
+"
 
 # NTPsec uses the 'waf' build system
 
-fix_shebangs() {
-    # Although NTPSec components are tested with python3 and can run with
-    # either python2 or python3, the default shebang lines just point at
-    # '#!/usr/bin/env python'; we need to fix them up to use python3.
-    # (NB: there was discussion on the ntpsec mailing list about providing
-    #      an option to do this automatically but it has so far been rejected.
-    #      Distributions are rolling their own patches, e.g.
-    #      https://sources.debian.org/src/ntpsec/1.1.2+dfsg1-4/debian/patches/hardcode-python3-path.patch/
-    # Scripting it is more future-proof
-
-    logmsg "--- fix shebangs"
-    sed -i '1s^/usr/bin/env python$^/usr/bin/python3^' \
-        `find $TMPDIR/$BUILDDIR -type f`
-}
-
 make_clean() {
     logcmd ./waf distclean
-    fix_shebangs
 }
 
 configure64() {
     logmsg "--- configure"
-    BIN_ASCIIDOC=/opt/ooce/bin/asciidoc \
-        BIN_A2X=/opt/ooce/bin/a2x \
+    BIN_ASCIIDOC=$OOCEBIN/asciidoc \
+        BIN_A2X=$OOCEBIN/a2x \
+        BIN_XSLTPROC=$USRBIN/xsltproc \
         CC='gcc -m64' \
-        logcmd ./waf configure \
-        --prefix=/usr \
-        --sysconfdir=/etc/inet \
-        --refclock=all \
-        --define=CONFIG_FILE=/etc/inet/ntp.conf \
-        --python=$PYTHON \
-        --pythondir=$PYTHONVENDOR \
-        --pythonarchdir=$PYTHONVENDOR \
-        --nopyc \
-        --nopyo \
-        --nopycache \
+        logcmd ./waf configure $CONFIGURE_OPTS \
         || logerr "--- configure failed"
     logcmd mkdir -p build/main/pylib
     logcmd ln -s . build/main/pylib/64
@@ -94,20 +83,6 @@ make_install() {
 install_ntpdate() {
     logcmd cp $TMPDIR/$BUILDDIR/attic/ntpdate $DESTDIR/usr/bin/ntpdate
     logcmd chmod 755 $DESTDIR/usr/bin/ntpdate
-}
-
-install_files() {
-    logmsg "--- install files"
-
-    logcmd mkdir -p $DESTDIR/etc/inet
-    logcmd cp $SRCDIR/files/ntp.conf $DESTDIR/etc/inet/ntp.conf
-
-    logcmd mkdir -p $DESTDIR/etc/security/auth_attr.d
-    logcmd mkdir -p $DESTDIR/etc/security/prof_attr.d
-    logcmd cp $SRCDIR/files/security/auth_attr \
-        $DESTDIR/etc/security/auth_attr.d/ntp
-    logcmd cp $SRCDIR/files/security/prof_attr \
-        $DESTDIR/etc/security/prof_attr.d/ntp
 }
 
 # Force the testsuite output to be sorted by the binary being tested
@@ -134,7 +109,6 @@ prep_build
 build
 fix_testsuite_output
 install_ntpdate
-install_files
 install_smf network ntpsec.xml ntpsec
 python_compile
 make_package

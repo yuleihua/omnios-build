@@ -12,12 +12,12 @@
 # http://www.illumos.org/license/CDDL.
 # }}}
 
-# Copyright 2020 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2021 OmniOS Community Edition (OmniOSce) Association.
 
 . ../../lib/functions.sh
 
 PROG=cpuid
-VER=1.7.6
+VER=1.8.0
 PKG=system/cpuid
 SUMMARY="A simple CPUID decoder/dumper for x86/x86_64"
 DESC="A program which can dump and extract information from the x86 "
@@ -25,13 +25,13 @@ DESC+="CPUID instruction"
 
 set_arch 64
 
-# No configure
-configure64() { :; }
-
-MAKE_ARGS_WS="CC=\"gcc -m$BUILDARCH\""
-# cpuid uses lower case $prefix
-MAKE_INSTALL_ARGS_WS="$MAKE_ARGS_WS prefix=$PREFIX"
 SKIP_LICENCES="*"
+
+configure64() {
+    MAKE_ARGS_WS="CC=\"gcc -m$BUILDARCH $CFLAGS $CFLAGS64\""
+    # cpuid uses lower case $prefix
+    MAKE_INSTALL_ARGS_WS="$MAKE_ARGS_WS prefix=$PREFIX"
+}
 
 init
 download_source $PROG $VER

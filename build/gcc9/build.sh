@@ -36,6 +36,7 @@ PREFIX=$OPT
 set_gccver $GCCMAJOR
 
 set_arch 64
+set_ssp none
 ARCH=$TRIPLET64
 
 # We're building the 64-bit version of the compiler and tools but we want
@@ -54,7 +55,7 @@ unset LDFLAGS32 LDFLAGS64
 export CONFIG_SHELL=$SHELL
 export MAKESHELL=$SHELL
 # Place the GNU utilities first in the path
-export PATH=/usr/gnu/bin:$PATH
+export PATH=$GNUBIN:$PATH
 
 LANGUAGES="c,c++,fortran,lto,go,objc"
 
@@ -120,7 +121,7 @@ CONFIGURE_OPTS_WS="
     --with-boot-ldflags=\"-R$OPT/lib\"
     --with-boot-cflags=\"-O2\"
     --with-pkgversion=\"OmniOS $RELVER/$VER-$ILVER\"
-    --with-bugurl=https://omniosce.org/about/contact
+    --with-bugurl=$HOMEURL/about/contact
 "
 LDFLAGS="-R$OPT/lib"
 
@@ -139,15 +140,16 @@ make_install() {
 }
 
 tests() {
-    # A specific test to ensure that this is properly enabled by configure
+    # Specific tests to ensure that certain features are properly detected
     egrep -s gcc_cv_as_eh_frame=yes $TMPDIR/$BUILDDIR/gcc/config.log \
         || logerr "The .eh_frame based unwinder is not enabled"
 
-    # A specific test to ensure that thread-local storage is properly
-    # detected and is not being emulated.
     egrep -s gcc_cv_use_emutls=no \
         $TMPDIR/$BUILDDIR/$ARCH/libgcc/config.log \
         || logerr "Emulated TLS is enabled"
+
+    egrep -s gcc_cv_libc_provides_ssp=yes $TMPDIR/$BUILDDIR/gcc/config.log \
+        || logerr "libc support for SSP was not detected"
 
     [ -n "$SKIP_TESTSUITE" ] && return
     if [ -z "$BATCH" ] && ! ask_to_testsuite; then
@@ -155,15 +157,14 @@ tests() {
     fi
 
     export GUILE_AUTO_COMPILE=0
-    export PATH+=:/opt/ooce/bin
+    export PATH+=:$OOCEBIN
     # Some gcc tests (e.g. limits-exprparen.c) need a larger stack
     ulimit -Ss 16385
     # Lots of tests create core files via assertions
     ulimit -c 0
-    # This causes the testsuite to be run twice, once with no additional
-    # options (see the leading , in the {} expression), and once with
-    # -msave-args
-    MAKE_TESTSUITE_ARGS+=" RUNTESTFLAGS=--target_board=unix/\{,-msave-args\}"
+    # This causes the testsuite to be run three times, once with -m32, once
+    # with -m64 and once with -m64 and -msave-args
+    MAKE_TESTSUITE_ARGS+=" RUNTESTFLAGS=--target_board=unix/\{-m32,-m64,-m64/-msave-args\}"
     # If not in batch mode, we've already asked whether this should be run
     # above, so set BATCH
     BATCH=1 run_testsuite "check check-target" "" build.log.testsuite
@@ -191,7 +192,7 @@ download_source $PROG $PROG $VER
 patch_source
 # gcc should be built out-of-tree
 prep_build autoconf -oot
-build
+build -noctf
 tests
 logcmd cp $TMPDIR/$SRC_BUILDDIR/COPYING* $TMPDIR/$BUILDDIR
 make_package

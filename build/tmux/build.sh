@@ -18,11 +18,11 @@
 . ../../lib/functions.sh
 
 PROG=tmux
-VER=3.1b
+VER=3.1c
 PKG=terminal/tmux
 SUMMARY="Terminal multiplexer"
 DESC="$SUMMARY"
-LIBEVENT_VER=2.1.11
+LIBEVENT_VER=2.1.12
 LIBEVENT_DIR=libevent-${LIBEVENT_VER}-stable
 XFORM_ARGS+=" -DLIBEVENT=$LIBEVENT_VER"
 
@@ -67,7 +67,6 @@ CONFIGURE_OPTS+=" --enable-utempter"
 download_source $PROG $PROG $VER
 patch_source
 build
-strip_install
 make_package
 clean_up
 

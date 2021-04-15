@@ -18,7 +18,7 @@
 . ../../lib/functions.sh
 
 PROG=grep
-VER=3.4
+VER=3.6
 PKG=text/gnu-grep
 SUMMARY="GNU grep"
 DESC="GNU grep utilities"
@@ -35,7 +35,6 @@ download_source $PROG $PROG $VER
 patch_source
 prep_build
 build
-strip_install
 run_testsuite check
 make_package
 clean_up

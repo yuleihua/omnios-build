@@ -13,19 +13,18 @@
 # }}}
 #
 # Copyright 2011-2017 OmniTI Computer Consulting, Inc.  All rights reserved.
-# Copyright 2020 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2021 OmniOS Community Edition (OmniOSce) Association.
 
 . ../../lib/functions.sh
 
 PROG=nghttp2
-VER=1.41.0
+VER=1.43.0
 PKG=library/nghttp2
 SUMMARY="nghttp2: HTTP/2 C Library"
 DESC="An implementation of the Hypertext Transfer Protocol version 2 in C"
 
 BUILD_DEPENDS_IPS="ooce/developer/cunit"
 
-LDFLAGS="-lm"
 CONFIGURE_OPTS="
     --enable-lib-only
     --disable-silent-rules
@@ -46,7 +45,7 @@ init
 download_source $PROG $PROG $VER
 patch_source
 prep_build
-build -ctf
+build
 run_testsuite check
 make_isa_stub
 make_package

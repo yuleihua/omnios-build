@@ -18,8 +18,7 @@
 . ../../lib/functions.sh
 
 PROG=automake
-VER=1.16.2
-VERHUMAN=$VER
+VER=1.16.3
 PKG=developer/build/automake
 SUMMARY="GNU Automake"
 DESC="GNU Automake - A Makefile generator"
@@ -35,7 +34,7 @@ download_source $PROG $PROG $VER
 patch_source
 prep_build
 build
-PATH=/usr/gnu/bin:$PATH run_testsuite check
+PATH=$GNUBIN:$PATH run_testsuite check
 make_package
 clean_up
 

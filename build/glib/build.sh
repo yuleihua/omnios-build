@@ -13,12 +13,12 @@
 # }}}
 
 # Copyright 2011-2012 OmniTI Computer Consulting, Inc.  All rights reserved.
-# Copyright 2020 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2021 OmniOS Community Edition (OmniOSce) Association.
 
 . ../../lib/functions.sh
 
 PROG=glib
-VER=2.64.3
+VER=2.68.0
 PKG=library/glib2
 SUMMARY="GNOME utility library"
 DESC="The GNOME general-purpose utility library"
@@ -32,7 +32,7 @@ RUN_DEPENDS_IPS="
 MAKE_TESTSUITE_ARGS=
 
 # use GNU msgfmt; otherwise the build fails
-PATH="/usr/gnu/bin:$PATH:/opt/ooce/bin"
+PATH="$GNUBIN:$PATH:$OOCEBIN"
 
 # With gcc 6 and above, -Werror_format=2 produces errors like:
 #   error: format not a string literal, arguments not checked
@@ -44,6 +44,7 @@ CFLAGS+=" -Wno-error=format-nonliteral -Wno-error=format=2"
 set_standard POSIX
 
 LDFLAGS+=" -Wl,-z,ignore"
+LDFLAGS32+=" -lssp_ns"
 
 CONFIGURE_OPTS="
     --prefix=$PREFIX
@@ -67,26 +68,38 @@ clean_testsuite() {
     run_testsuite test "" $tf
     [ -s $SRCDIR/$tf ] && nawk '
         # Strip failed test output
-        /^The output from .* first failed/ { exit }
+        /^The output from .* first failed/,/Summary of Failures/ { next }
+        /^Full log written/ { exit }
         # Found a test
-        /^ *[0-9][0-9]*\/[0-9]/ {
+        /^ *[0-9][0-9]*\/[0-9][0-9]* / {
             # Remove elapsed time
             sub(/ *[0-9][0-9]*\.[0-9][0-9]* *s/, "")
             # Remove sequence number
             sub(/ *[0-9]*\/[0-9]* */, "")
-            print | "sort"
-            flag = 1
+            if (trailer)
+                print
+            else
+                print | "sort"
             next
         }
-        flag { close "sort" }
-        { print }
+        /Summary of Failures/ {
+            close "sort"
+            trailer = 1
+            print ""
+        }
+        trailer { print }
     ' < $SRCDIR/$tf > $SRCDIR/testsuite.log
-    rm -f $SRCDIR/$tf
+    logcmd mv $SRCDIR/$tf $TMPDIR/
 }
 
-make_clean() {
-    logmsg "--- make (dist)clean"
-    [ -d $TMPDIR/$BUILDDIR ] && logcmd rm -rf $TMPDIR/$BUILDDIR
+fix_rpaths() {
+    # A recent update to Meson has resulted in the libraries ending up with
+    # populated runpaths which causes the illumos build check_rtime to
+    # (rightly) complain. Strip them here.
+    fd lib $DESTDIR -e so | while read so; do
+        logcmd /usr/bin/elfedit -e 'dyn:delete RUNPATH' $so
+        logcmd /usr/bin/elfedit -e 'dyn:delete RPATH' $so
+    done
 }
 
 init
@@ -94,6 +107,7 @@ download_source $PROG $PROG $VER
 patch_source
 prep_build meson
 build
+fix_rpaths
 clean_testsuite
 make_package
 clean_up

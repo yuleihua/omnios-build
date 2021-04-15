@@ -14,12 +14,12 @@
 #
 # Copyright (c) 2014 by Delphix. All rights reserved.
 # Copyright 2017 OmniTI Computer Consulting, Inc.  All rights reserved.
-# Copyright 2020 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2021 OmniOS Community Edition (OmniOSce) Association.
 
 . ../../lib/functions.sh
 
 PROG=git
-VER=2.27.0
+VER=2.31.1
 PKG=developer/versioning/git
 SUMMARY="$PROG - distributed version control system"
 DESC="Git is a free and open source distributed version control system "
@@ -49,7 +49,8 @@ CONFIGURE_OPTS="
     --with-openssl=/usr
 "
 
-MAKE_INSTALL_ARGS+=" perllibdir=/usr/lib/site_perl"
+perllib=`$PERL -MConfig -e 'print $Config{installvendorlib}'`
+MAKE_INSTALL_ARGS+=" perllibdir=$perllib"
 
 # Checking for BMI instructions is very expensive; disable for batch builds
 BMI_EXPECTED=$BATCH
@@ -98,7 +99,7 @@ build
 run_testsuite
 install_man
 install_pod
-strip_install
+install_inetservices
 make_package
 clean_up
 

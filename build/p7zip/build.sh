@@ -13,7 +13,7 @@
 # }}}
 #
 # Copyright 2011-2012 OmniTI Computer Consulting, Inc.  All rights reserved.
-# Copyright 2019 OmniOS Community Edition (OmniOSce) Association.
+# Copyright 2020 OmniOS Community Edition (OmniOSce) Association.
 
 . ../../lib/functions.sh
 
@@ -23,11 +23,10 @@ PKG=compress/p7zip
 SUMMARY="The p7zip compression and archiving utility"
 DESC="$SUMMARY"
 
-# This component does not yet build with gcc 10
-set_gccver 9
-
 SRCVER="${VER}_src_all"
 set_builddir "${PROG}_${VER}"
+
+forgo_isaexec
 
 RUN_DEPENDS_IPS="
     system/library/g++-runtime
@@ -35,6 +34,7 @@ RUN_DEPENDS_IPS="
     shell/bash
 "
 
+SKIP_SSP_CHECK=1
 SKIP_LICENCES=unRar
 
 DEST_HOME=$PREFIX
@@ -47,23 +47,23 @@ MAKE_ARGS=all3
 configure32() {
     logcmd cp makefile.solaris_x86 makefile.machine
 
-    MAKE_ARGS_WS="OPTFLAGS=\"-D_LARGEFILE64_SOURCE $CFLAGS32\""
+    MAKE_ARGS_WS="OPTFLAGS=\"-D_LARGEFILE64_SOURCE $CFLAGS32 $CFLAGS\""
 
     MAKE_INSTALL_ARGS_WS="
         $MAKE_ARGS_WS
         DEST_DIR=\"$DESTDIR\"
-        DEST_BIN=$DEST_HOME/bin/$ISAPART
+        DEST_BIN=$DEST_HOME/bin
         DEST_SHARE=$DEST_HOME/lib
     "
 }
 
 configure64() {
-    MAKE_ARGS_WS="OPTFLAGS=\"-D_LARGEFILE64_SOURCE $CFLAGS64\""
+    MAKE_ARGS_WS="OPTFLAGS=\"-D_LARGEFILE64_SOURCE $CFLAGS64 $CFLAGS\""
 
     MAKE_INSTALL_ARGS_WS="
         $MAKE_ARGS_WS
         DEST_DIR=\"$DESTDIR\"
-        DEST_BIN=$DEST_HOME/bin/$ISAPART64
+        DEST_BIN=$DEST_HOME/bin
         DEST_SHARE=$DEST_HOME/lib/$ISAPART64
     "
 }
@@ -79,14 +79,19 @@ install_sh_wrapper() {
     popd > /dev/null
 }
 
+TESTSUITE_SED="
+    s/[0-9]* CPUs x64/CPUs x64/
+    /^REP=/d
+    /check\/\.\./d
+"
+
 init
 download_source $PROG ${PROG}_${SRCVER}
 patch_source
 prep_build
-build
+build -noctf    # C++
 run_testsuite test
 install_sh_wrapper
-make_isa_stub
 make_package
 clean_up
 

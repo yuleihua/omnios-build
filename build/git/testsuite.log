@@ -1,9 +1,9 @@
     * new script parameters
     * new perl-specific parameters
 *** t0000-basic.sh ***
-# passed all 87 test(s)
+# passed all 85 test(s)
 *** t0001-init.sh ***
-# passed all 45 test(s)
+# passed all 60 test(s)
 *** t0002-gitfile.sh ***
 # passed all 14 test(s)
 *** t0003-attributes.sh ***
@@ -25,7 +25,7 @@
 *** t0011-hashmap.sh ***
 # passed all 14 test(s)
 *** t0012-help.sh ***
-# passed all 139 test(s)
+# passed all 146 test(s)
 *** t0013-sha1dc.sh ***
 # passed all 1 test(s)
 *** t0014-alias.sh ***
@@ -43,7 +43,7 @@
 *** t0020-crlf.sh ***
 # passed all 36 test(s)
 *** t0021-conversion.sh ***
-# passed all 27 test(s)
+# passed all 30 test(s)
 *** t0022-crlf-rename.sh ***
 # passed all 2 test(s)
 *** t0023-crlf-am.sh ***
@@ -81,7 +81,7 @@
 # passed all 2 test(s)
 *** t0063-string-list.sh ***
 # passed all 9 test(s)
-*** t0064-sha1-array.sh ***
+*** t0064-oid-array.sh ***
 # passed all 8 test(s)
 *** t0065-strcmp-offset.sh ***
 # passed all 4 test(s)
@@ -89,9 +89,9 @@
 # passed all 10 test(s)
 *** t0067-parse_pathspec_file.sh ***
 # passed all 8 test(s)
+*** t0068-for-each-repo.sh ***
+# passed all 2 test(s)
 *** t0070-fundamental.sh ***
-# passed all 5 test(s)
-*** t0081-line-buffer.sh ***
 # passed all 8 test(s)
 *** t0090-cache-tree.sh ***
 # passed all 22 test(s)

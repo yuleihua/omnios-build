@@ -60,12 +60,14 @@ LC_TIME=C;      export LC_TIME
 ######################################################################
 
 # Default branch
-RELVER=151035
+RELVER=151037
 DASHREV=0
 PVER=$RELVER.$DASHREV
 
 # Default package publisher
 PKGPUBLISHER=omnios
+
+HOMEURL=https://omnios.org
 
 # Default repository
 PKGSRVR=file://$ROOTDIR/tmp.repo/
@@ -74,12 +76,12 @@ PKGSRVR=file://$ROOTDIR/tmp.repo/
 export SHELL=/usr/bin/bash
 
 # The package publisher email address
-PUBLISHER_EMAIL=sa@omniosce.org
+PUBLISHER_EMAIL=sa@omnios.org
 
 # The github repository root from which some packages are pulled
 GITHUB=https://github.com/omniosorg
 # The main OOCE mirror
-SRCMIRROR=https://mirrors.omniosce.org
+SRCMIRROR=https://mirrors.omnios.org
 
 # The server or path from which to fetch source code and other files.
 # MIRROR may be overridden in lib/site.sh but defaults to the main OOCE mirror
@@ -89,12 +91,12 @@ MIRROR=$SRCMIRROR
 # The production IPS repository for this branch (may be overridden in site.sh)
 # Used for package contents diffing.
 if [ $((RELVER % 2)) == 0 ]; then
-    IPS_REPO=https://pkg.omniosce.org/r$RELVER/core
+    IPS_REPO=https://pkg.omnios.org/r$RELVER/core
 else
-    IPS_REPO=https://pkg.omniosce.org/bloody/core
+    IPS_REPO=https://pkg.omnios.org/bloody/core
 fi
 
-ARCHIVE_TYPES="tar.xz tar.bz2 tar.gz tgz tar zip"
+ARCHIVE_TYPES="tar.zst tar.xz tar.bz2 tar.gz tgz tar zip"
 
 # Default prefix for packages (may be overridden)
 PREFIX=/usr
@@ -129,7 +131,7 @@ TRIPLET64=x86_64-pc-solaris2.11
 #############################################################################
 
 # Perl versions we currently build against
-PERLVER="`/usr/bin/perl -V:version | cut -d\' -f2`"
+PERLVER=`perl -MConfig -e 'print $Config{version}'`
 SPERLVER=${PERLVER%.*}
 
 # Full paths to bins
@@ -152,35 +154,54 @@ PERL_MAKE_TEST=1
 #############################################################################
 # Paths to common tools
 #############################################################################
-WGET=wget
-PATCH=gpatch
-MAKE=gmake
-TESTSUITE_MAKE=gmake
-TAR="gtar --no-same-permissions --no-same-owner"
-GZIP=/opt/ooce/bin/pigz
-BUNZIP2=/opt/ooce/bin/pbunzip2
-ZSTD=/opt/ooce/bin/zstd
-XZCAT=xzcat
-UNZIP=unzip
-AWK=gawk
-GIT=git
-EGREP=/usr/bin/egrep
-RIPGREP=/opt/ooce/bin/rg
-CMAKE=/opt/ooce/bin/cmake
-MESON_MAKE=/opt/ooce/bin/ninja
-REALPATH=/usr/gnu/bin/realpath
-FIND_ELF=/opt/onbld/bin/find_elf
-CHECK_RTIME=/opt/onbld/bin/check_rtime
-# Command for privilege escalation. Can be overridden in site.sh
-PFEXEC=sudo
+USRBIN=/usr/bin
+OOCEBIN=/opt/ooce/bin
+SFWBIN=/usr/sfw/bin
+ONBLDBIN=/opt/onbld/bin
+GNUBIN=/usr/gnu/bin
 
-CTFCONVERT=/opt/onbld/bin/i386/ctfconvert
-CTFCONVERTFLAGS=-l
-PKGSEND=/usr/bin/pkgsend
-PKGLINT=/usr/bin/pkglint
-PKGMOGRIFY=/usr/bin/pkgmogrify
-PKGFMT=/usr/bin/pkgfmt
-PKGDEPEND=/usr/bin/pkgdepend
+AWK=$USRBIN/gawk
+CURL=$USRBIN/curl
+EGREP=$USRBIN/egrep
+GIT=$USRBIN/git
+MAKE=$USRBIN/gmake
+PATCH=$USRBIN/gpatch
+TAR="$USRBIN/gtar --no-same-permissions --no-same-owner"
+TESTSUITE_MAKE=$USRBIN/gmake
+UNZIP=$USRBIN/unzip
+WGET=$USRBIN/wget
+XZCAT=$USRBIN/xzcat
+ZSTD=$USRBIN/zstd
+
+# Command for privilege escalation. Can be overridden in site.sh
+PFEXEC=$USRBIN/sudo
+
+PKGSEND=$USRBIN/pkgsend
+PKGLINT=$USRBIN/pkglint
+PKGMOGRIFY=$USRBIN/pkgmogrify
+PKGFMT=$USRBIN/pkgfmt
+PKGDEPEND=$USRBIN/pkgdepend
+
+BUNZIP2=$OOCEBIN/pbunzip2
+CMAKE=$OOCEBIN/cmake
+FD=$OOCEBIN/fd
+GZIP=$OOCEBIN/pigz
+JQ=$OOCEBIN/jq
+NINJA=$OOCEBIN/ninja
+RIPGREP=$OOCEBIN/rg
+CARGO=$OOCEBIN/cargo
+
+REALPATH=$GNUBIN/realpath
+
+FIND_ELF=$ONBLDBIN/find_elf
+CHECK_RTIME=$ONBLDBIN/check_rtime
+CTFDUMP=$ONBLDBIN/i386/ctfdump
+CTFCONVERT=$ONBLDBIN/i386/ctfconvert
+CTF_FLAGS=
+CTF_CFLAGS="-gdwarf-2"
+
+# Enable CTF by default
+CTF_DEFAULT=1
 
 # Figure out number of logical CPUs for use with parallel gmake jobs (-j)
 # Default to 1.5*nCPUs as we assume the build machine is 100% devoted to
@@ -208,6 +229,18 @@ DONT_REMOVE_INSTALL_DIR=
 #############################################################################
 # C compiler options - these can be overridden by a build script
 #############################################################################
+
+# The list of options which define the build environment
+BUILDENV_OPTS="
+    CONFIGURE_CMD
+    CONFIGURE_OPTS CONFIGURE_OPTS_32 CONFIGURE_OPTS_64
+    CONFIGURE_OPTS_WS_32 CONFIGURE_OPTS_WS_64
+    CFLAGS CFLAGS32 CFLAGS64
+    CXXFLAGS CXXFLAGS32 CXXFLAGS64
+    CPPFLAGS CPPFLAGS32 CPPFLAGS64
+    LDFLAGS LDFLAGS32 LDFLAGS64
+"
+
 # isaexec(3C) variants
 # These variables will be passed to the build to construct multi-arch
 # binary and lib directories in DESTDIR
@@ -224,7 +257,7 @@ CXX=g++
 DEFAULT_GCC_VER=10
 ILLUMOS_GCC_VER=7
 PYTHON2VER=2.7
-PYTHON3VER=3.7
+PYTHON3VER=3.9
 DEFAULT_PYTHON_VER=$PYTHON3VER
 
 # Options to turn compiler features on and off. Associative array keyed by
@@ -249,7 +282,7 @@ typeset -A STANDARDS
 
 STANDARDS[POSIX]="-D_POSIX_C_SOURCE=200112L -D_POSIX_PTHREAD_SEMANTICS"
 STANDARDS[XPG3]="-D_XOPEN_SOURCE"
-STANDARDS[XPG4]="-D_XOPEN_SOURCE -D_XOPEN_VERSION=1"
+STANDARDS[XPG4]="-D_XOPEN_SOURCE -D_XOPEN_VERSION=4"
 STANDARDS[XPG4v2]="-D_XOPEN_SOURCE -D_XOPEN_SOURCE_EXTENDED=1"
 STANDARDS[XPG5]="-D_XOPEN_SOURCE=500 -D__EXTENSIONS__=1"
 STANDARDS[XPG6]="-D_XOPEN_SOURCE=600 -D__EXTENSIONS__=1"
